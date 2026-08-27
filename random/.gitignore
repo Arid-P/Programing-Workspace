@@ -1,0 +1,54 @@
+# ── Flutter / Dart ──────────────────────────────────────────
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.g.dart
+*.freezed.dart
+
+# ── Android ─────────────────────────────────────────────────
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/android/app/google-services.json
+**/android/captures/
+**/android/.idea/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+# ── iOS ─────────────────────────────────────────────────────
+**/ios/.symlinks/
+**/ios/Pods/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# ── IDEs ─────────────────────────────────────────────────────
+.idea/
+.vscode/settings.json
+*.iml
+
+# ── OS junk ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets / Keys ───────────────────────────────────────────
+*.env
+*.pem
+*.keystore
+google-services.json
+GoogleService-Info.plist
+client_secret*.json
+
+# ── Logs ─────────────────────────────────────────────────────
+*.log
+error.log
+
+# ── Misc ─────────────────────────────────────────────────────
+pubspec.lock
+flutter.zip

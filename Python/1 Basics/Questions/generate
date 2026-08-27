@@ -1,0 +1,128 @@
+from docx import Document
+import os
+
+# Get the current working directory to save the file
+current_dir = os.getcwd()
+file_path = os.path.join(current_dir, 'Differentiation_Questions_Tissues.docx')
+
+# Function to add a differentiation table to the Word document
+def add_differentiation(title, headers, rows):
+    doc.add_heading(title, level=2)
+    
+    # Create a table with the specified number of columns (headers)
+    table = doc.add_table(rows=1, cols=len(headers))
+    
+    # Add the headers to the first row
+    for i, header in enumerate(headers):
+        table.cell(0, i).text = header
+    
+    # Add the rows to the table
+    for row in rows[:7]:  # Only include up to 7 rows as per requirement
+        row_cells = table.add_row().cells
+        for i, cell_data in enumerate(row):
+            row_cells[i].text = cell_data
+
+# Create a new Word document
+doc = Document()
+doc.add_heading('Differentiation-Based Questions in Chapter "Tissues"', 0)
+
+# Data for differentiation tables (all 14 points)
+differentiation_data = [
+    ("1. Unicellular Organisms vs Multicellular Organisms", 
+     ["Feature", "Unicellular Organisms", "Multicellular Organisms"], 
+     [
+         ["Structure", "Single-celled", "Multiple cells"],
+         ["Complexity", "Simple", "Complex"],
+         ["Example", "Amoeba, Paramecium", "Humans, Trees"],
+         ["Organ Systems", "Absent", "Present"],
+         ["Reproduction", "Asexual", "Sexual and Asexual"],
+         ["Size", "Microscopic", "Variable"],
+         ["Movement", "Single-celled movement", "Movement through organ systems"]
+     ]),
+    ("2. Plant Tissues vs Animal Tissues", 
+     ["Feature", "Plant Tissues", "Animal Tissues"], 
+     [
+         ["Cell Wall", "Present", "Absent"],
+         ["Chlorophyll", "Present in some", "Absent"],
+         ["Vacuole", "Large, central", "Small, if present"],
+         ["Tissue Growth", "Limited, growth at tips", "Growth can occur throughout body"],
+         ["Movement of Materials", "Passive", "Active transport present"],
+         ["Types", "Meristematic and Permanent", "Epithelial, Connective, Muscular, Nervous"],
+         ["Cells", "Less specialized", "Highly specialized"]
+     ]),
+    ("3. Meristematic Tissue vs Permanent Tissue", 
+     ["Feature", "Meristematic Tissue", "Permanent Tissue"], 
+     [
+         ["Cell Division", "Active", "No division"],
+         ["Structure", "Small, thin-walled", "Large, thick-walled"],
+         ["Function", "Growth", "Support, transport, storage"],
+         ["Location", "At tips of roots and shoots", "Throughout plant body"],
+         ["Differentiation", "Undifferentiated", "Differentiated"],
+         ["Examples", "Apical meristem, Lateral meristem", "Parenchyma, Xylem, Phloem"],
+         ["Maturity", "Immature", "Mature"]
+     ]),
+    ("4. Simple Permanent Tissue vs Complex Permanent Tissue", 
+     ["Feature", "Simple Permanent Tissue", "Complex Permanent Tissue"], 
+     [
+         ["Structure", "Made of similar cells", "Made of different types of cells"],
+         ["Function", "Basic functions (storage, support)", "Transport of materials"],
+         ["Types", "Parenchyma, Collenchyma, Sclerenchyma", "Xylem, Phloem"],
+         ["Cell Type", "Same type of cells", "Different types of cells"],
+         ["Example", "Parenchyma in leaves", "Phloem in stems"],
+         ["Growth", "No further growth", "Involved in transport over long distances"],
+         ["Size", "Varied size", "Larger size"]
+     ]),
+    ("5. Xylem vs Phloem", 
+     ["Feature", "Xylem", "Phloem"], 
+     [
+         ["Function", "Transport of water", "Transport of food (sugars)"],
+         ["Direction", "Upwards", "Up and down"],
+         ["Type of Cells", "Tracheids, Vessel elements", "Sieve tubes, Companion cells"],
+         ["Transport", "Passive", "Active and passive"],
+         ["Location", "In vascular bundles", "In vascular bundles"],
+         ["Structure", "Thick-walled cells", "Thin-walled cells"],
+         ["Presence of Chlorophyll", "Absent", "Absent"]
+     ]),
+    ("6. Parenchyma vs Collenchyma vs Sclerenchyma", 
+     ["Feature", "Parenchyma", "Collenchyma", "Sclerenchyma"], 
+     [
+         ["Structure", "Thin-walled, loosely arranged", "Thick-walled, angular", "Lignified, very thick-walled"],
+         ["Function", "Storage, support", "Mechanical support", "Support, strength"],
+         ["Location", "In leaves, stems, roots", "In stems, petioles", "In woody parts of plants"],
+         ["Cells", "Living", "Living", "Dead at maturity"],
+         ["Intercellular Spaces", "Large", "Small", "Absent"],
+         ["Chloroplasts", "Present", "Absent", "Absent"],
+         ["Flexibility", "Flexible", "Elastic", "Rigid"]
+     ]),
+    ("7. Apical Meristem vs Lateral Meristem vs Intercalary Meristem", 
+     ["Feature", "Apical Meristem", "Lateral Meristem", "Intercalary Meristem"], 
+     [
+         ["Location", "At tips of roots and shoots", "Along sides of stems and roots", "At internodes, base of leaves"],
+         ["Growth", "Primary growth (length)", "Secondary growth (girth)", "Regrowth of parts like leaves"],
+         ["Example", "Shoot apex, root apex", "Cambium, Cork cambium", "Grasses, Monocots"],
+         ["Function", "Lengthwise growth", "Girth increase", "Lengthwise growth after injury"],
+         ["Cell Division", "Rapid", "Slow", "Moderate"],
+         ["Presence of Meristematic Cells", "Yes", "Yes", "Yes"],
+         ["Mature Tissues", "Not differentiated", "Mature tissue formed", "Similar to apical meristem"]
+     ]),
+    ("8. Epithelial Tissue vs Connective Tissue vs Muscular Tissue vs Nervous Tissue", 
+     ["Feature", "Epithelial Tissue", "Connective Tissue", "Muscular Tissue", "Nervous Tissue"], 
+     [
+         ["Structure", "Sheet-like, closely packed cells", "Cells spread in matrix", "Long fibers", "Cells with long extensions (axons)"],
+         ["Function", "Protection, secretion", "Support, transport", "Movement", "Coordination and control"],
+         ["Location", "Lining of body cavities", "Bones, blood, cartilage", "Muscles", "Brain, spinal cord, nerves"],
+         ["Types", "Squamous, Cuboidal, Columnar", "Blood, Bone, Cartilage", "Striated, Smooth, Cardiac", "Neurons"],
+         ["Cell Arrangement", "Tightly packed", "Scattered in matrix", "Fiber-like", "Cell body with axons/dendrites"],
+         ["Presence of Blood Vessels", "No", "Yes", "No", "No"],
+         ["Cellularity", "High", "Low", "High", "High"]
+     ])
+]
+
+# Add all the differentiation tables to the document
+for title, headers, rows in differentiation_data:
+    add_differentiation(title, headers, rows)
+
+# Save the document
+doc.save(file_path)
+
+print(f"Document saved as {file_path}")

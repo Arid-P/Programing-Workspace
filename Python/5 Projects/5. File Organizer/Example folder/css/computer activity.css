@@ -1,0 +1,101 @@
+body {
+    font-size: 10pt;
+    font-weight: bold;
+    text-decoration: underline;
+    color: yellowgreen;
+    background-color: black
+}
+
+h1{
+  font-size: 30pt;
+  color: greenyellow;
+}
+
+h2{
+     font-size: 25pt;
+     text-decoration: underline;
+     color: yellowgreen;
+     }
+
+/* Section A css*/
+
+#divt {
+      border-style: solid;
+      border-color: darkgreen;
+      border-width: 10px;
+      border-bottom-width: 8px;
+      padding: 20px;
+      margin-top: 150px;
+     }
+     
+#divb {
+        border-style: solid;
+        border-color: darkgreen;
+        border-width: 16px;
+        border-top-width: 8px;
+        padding: 20px;
+        margin-bottom: 10px;
+     }
+     
+#div {
+      border-style: solid;
+      border-color: darkgreen;
+      border-width: 16px;
+      border-bottom-width: 8px;
+      border-top-width: 8px;
+      padding: 20px;
+     }
+ 
+ /*Section A css ends here AND Section B css strats from here*/
+
+#divte {
+      border-style: solid;
+      border-color: darkolivegreen;
+      border-width: 10px;
+      border-bottom-width: 8px;
+      padding: 20px;
+      margin-top: 175px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+     }
+     
+#divbe {
+        border-style: solid;
+        border-color: darkolivegreen;
+        border-width: 16px;
+        border-top-width: 8px;
+        padding: 20px;
+}
+
+#dive {
+      border-style: solid;
+      border-color: darkolivegreen;
+      border-width: 16px;
+      border-bottom-width: 8px;
+      border-top-width: 8px;
+      padding: 20px;
+     }
+     
+/*Section B css ends here*/
+
+.b1 {
+        background-color: black;
+        color: limegreen;
+        font-size: 7pc;
+        padding: 20pt;
+        margin: 20pt;
+        border-style: double;
+        border-width: 10pt;
+}
+
+.b2{
+        background-color: black;
+        color: limegreen;
+        font-size: 6pc;
+        padding: 20pt;
+        margin: 20pt;
+        border-style: double;
+        border-width: 10pt;
+}
+

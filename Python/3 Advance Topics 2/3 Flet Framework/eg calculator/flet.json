@@ -1,0 +1,7 @@
+{
+  "app": {
+    "name": "Calculator",
+    "description": "A simple calculator built with Flet",
+    "icon": "assets/icon.png"
+  }
+}

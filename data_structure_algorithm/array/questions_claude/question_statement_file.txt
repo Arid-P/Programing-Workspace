@@ -1,0 +1,18 @@
+Set 1:
+Problem 1 — Basic
+Write a function find_second_largest(arr) that returns the second largest element in a list. No sorting allowed.
+
+Problem 2 — Basic
+Write a function is_palindrome(arr) that returns True if the list reads the same forwards and backwards, False otherwise. No slicing.
+
+Problem 3 — Medium
+Write a function rotate_right(arr, k) that rotates a list to the right by k steps in-place. No slicing. No extra list.
+Example: [1, 2, 3, 4, 5], k=2 → [4, 5, 1, 2, 3]
+
+Problem 4 — Medium
+Write a function pair_sum(arr, target) that returns all unique pairs of numbers that add up to target. No duplicates in output.
+Example: [1, 2, 3, 4, 5], target=5 → [(1,4), (2,3)]
+
+Problem 5 — Hard
+Write a function two_sum(arr, target) that returns the indices of the two numbers that add up to target. One pass only. No brute force O(n²).
+Example: [2, 7, 11, 15], target=9 → [0, 1]
