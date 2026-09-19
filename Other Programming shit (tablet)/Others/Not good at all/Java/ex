@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		   float a = sc.nextFloat();
+		   float b = sc.nextFloat();
+		   float c = sc.nextFloat();
+		   float d = sc.nextFloat();
+		   float e = sc.nextFloat();
+		   float f = sc.nextFloat();
+		   float g = sc.nextFloat();
+		   float h = sc.nextFloat();
+		   
+		   float fp = (a+b+c+d+e+f+g+h) / 8;
+		   System.out.println("Your average percentage is " + fp + "%");
+		   
+		   float i = 85 - fp;
+		   float j = fp - 85;
+		   
+		   if(fp >= 86){
+		           System.out.println("You have scored" + j + "more percentage than Aridaman");
+		       }else if(fp == 85){
+		           System.out.println("Your percentage is equal to Aridaman as he have also scored 85%");
+		       }else if(fp <= 84){
+		           System.out.println("You have scored" + i + "less percentage than Aridaman but still be happy as you have passed");
+		       }else if(fp < 33){
+		           System.out.println("How the hell can you fail if you are a good student");
+		       };
+		       System.out.println("Aridaman have scored 85%");
+	}
+}

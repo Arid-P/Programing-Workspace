@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Enter the number");
+	  Scanner sc = new Scanner(System.in);
+	  float a = sc.nextFloat();
+	  float b = sc.nextFloat();
+
+System.out.println("Now chose which operation want to perform and type the number for each operation");
+System.out.println("Type 1 for addition\nType 2 for subtraction\nType 3 for multiplication\nType 4 for Division");
+
+        int c = sc.nextInt();
+     switch(c){
+        case 1 : 
+	     float sum = a + b;
+	     System.out.println(sum);
+           break;
+	case 2 : 
+	     float dif = a - b;
+	     System.out.println(dif);
+           break;
+	case 3 : 
+	     float pro = a * b;
+	     System.out.println(pro);
+           break;
+	case 4 : 
+	     float quo = a / b;
+	     System.out.println(quo);
+           break;
+	default :
+         System.out. println("Invalid option");
+     }
+  }
+}

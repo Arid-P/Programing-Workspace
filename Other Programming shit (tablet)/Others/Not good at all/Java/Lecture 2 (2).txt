@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+      System.out.println("Enter number of which you want the table to show");
+	 Scanner sc = new Scanner(System.in); 
+	   int n = sc.nextInt();
+	   int a = n * 2;
+	   int b = n * 3;
+	   int c = n * 4;
+	   int d = n * 5;
+	   int e = n * 6;
+	   int f = n * 7;
+	   int g = n * 8;
+	   int h = n * 9;
+	   int i = n * 10;
+		
+ System.out.println("7 × 1 = " + n);
+ System.out.println("7 × 2 = " + a);
+ System.out.println("7 × 3 = " + b);
+ System.out.println("7 × 4 = " + c);
+ System.out.println("7 × 5 = " + d);
+ System.out.println("7 × 6 = " + e);
+ System.out.println("7 × 7 = " + f);
+ System.out.println("7 × 8 = " + g);
+ System.out.println("7 × 9 = " + h);
+ System.out.println("7 × 10 = " + i);
+	}
+}

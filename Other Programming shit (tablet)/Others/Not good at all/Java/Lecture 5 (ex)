@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+     
+     System.out.println("Only write these numbers" + 
+                        "1 3 6 10 15 21 28 36 etc");
+     int n = sc.nextInt();
+
+      int s = 1;
+      int j = 1;
+   
+    for(int i=1; i<=n; i = i+s){
+	
+  	  while(j<=i){
+	   	System.out.print(j + " ");
+	  	  j = j + 1;
+	  }; 
+        s = s + 1;
+   	 System.out.println();
+    }
+  }
+}
