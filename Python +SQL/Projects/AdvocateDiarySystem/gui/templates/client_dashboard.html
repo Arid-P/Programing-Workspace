@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% set show_sidebar = false %}
+{% block title %}Client Dashboard{% endblock %}
+
+{% block content %}
+<h1>Your Case</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Case No:</strong> 456/2024</p>
+        <p><strong>Court:</strong> JM-II</p>
+        <p><strong>Status:</strong> Evidence</p>
+        <p><strong>Next Date:</strong> 12-09-2025</p>
+        <div class="note">
+            Advocate Note: Be present before 10 AM.
+        </div>
+    </div>
+</div>
+{% endblock %}

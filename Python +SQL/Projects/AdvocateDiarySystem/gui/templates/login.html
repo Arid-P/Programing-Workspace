@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set show_sidebar = false %}
+
+{% block content %}
+<div class="login-wrapper">
+    <div class="login-box">
+        <h2>⚖ Advocate Diary</h2>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="error-msg" style="color: #dc2626; margin-bottom: 15px; font-size: 0.9em;">
+                {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="POST">
+            <input type="text" name="user_id" placeholder="User ID (e.g., SAdv_9876543210)" required>
+            <input type="password" name="phone" placeholder="Phone Number" required>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+        
+        <p style="margin-top: 20px; font-size: 0.85em;">
+            New here? <a href="/register">Create an Account</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

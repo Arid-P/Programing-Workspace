@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set show_sidebar = true %}
+{% block title %}Advocate Dashboard{% endblock %}
+
+{% block content %}
+<h1>Today’s Hearings</h1>
+
+<div class="card">
+    <div class="card-header" onclick="toggleSection('todayCases')">
+        Today’s Cases
+    </div>
+    <div id="todayCases" class="card-body">
+        <div class="case-item">
+            <strong>123/2025</strong> — Sharma vs State  
+            <span>ADJ-4 | Arguments</span>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" onclick="toggleSection('pendingCases')">
+        Pending (No Date)
+    </div>
+    <div id="pendingCases" class="card-body hidden">
+        <em>No pending cases</em>
+    </div>
+</div>
+{% endblock %}

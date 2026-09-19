@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="signup-box">
+    <h2>Join the Diary</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-msg">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label>I am registering as</label>
+            <select name="user_type" id="user_type" onchange="toggleAdvFields()">
+                <option value="advocate">Advocate</option>
+                <option value="client">Client</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" name="phone" placeholder="9876543210" required>
+        </div>
+
+        <div id="adv_section">
+            <div class="form-group">
+                <label>Advocate Level</label>
+                <select name="role" id="role" onchange="toggleSeniorBox()">
+                    <option value="senior">Senior Advocate</option>
+                    <option value="junior">Junior Advocate</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="senior_id_group" style="display: none;">
+                <label>Senior's System ID</label>
+                <input type="text" name="senior_id" id="senior_input" placeholder="e.g. SAdv_9876543210">
+            </div>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+    
+    <p style="text-align:center; font-size: 0.9rem; margin-top: 1.5rem;">
+        Already registered? <a href="/" style="color: var(--accent); text-decoration: none;">Login</a>
+    </p>
+</div>
+
+<script>
+function toggleAdvFields() {
+    const type = document.getElementById('user_type').value;
+    document.getElementById('adv_section').style.display = (type === 'advocate') ? 'block' : 'none';
+}
+
+function toggleSeniorBox() {
+    const role = document.getElementById('role').value;
+    const box = document.getElementById('senior_id_group');
+    const input = document.getElementById('senior_input');
+    
+    if (role === 'junior') {
+        box.style.display = 'block';
+        input.required = true;
+    } else {
+        box.style.display = 'none';
+        input.required = false;
+        input.value = ""; // Form sends empty string, your backend handles it as None
+    }
+}
+</script>
+{% endblock %}
