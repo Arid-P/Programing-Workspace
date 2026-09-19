@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
 
-# Realistic experimental points
+# Realistic experi///////////////////////////////////////////mental points
 time_pts = np.array([0, 120, 240, 360, 480, 600, 720, 840, 960, 1080, 1200, 1320])
 temp_pts = np.array([95, 86, 80, 80, 80, 80, 68, 58, 50, 44, 39, 35])
 
@@ -52,3 +52,5 @@ plt.grid(True, which='both', linestyle='--', alpha=0.6)
 plt.legend(loc='upper right')
 
 plt.show()
+
+#/

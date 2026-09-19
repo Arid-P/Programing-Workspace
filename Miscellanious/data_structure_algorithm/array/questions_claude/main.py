@@ -9,7 +9,7 @@ def array_init () -> list:
     return arr
 
 def one (arr, k, target) -> None:
-    from set_one_solution import Solution
+    from Miscellanious.data_structure_algorithm.array.questions_claude.set_one_solution import Solution
     sol = Solution()
     
     outputs = [

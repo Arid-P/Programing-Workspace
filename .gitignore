@@ -6,3 +6,5 @@ Projects.code-workspace
 Programming.code-workspace
 
 *.log
+.vscode
+Projects/
