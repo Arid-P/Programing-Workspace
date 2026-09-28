@@ -7,3 +7,9 @@ Programming.code-workspace
 
 *.log
 Projects/
+
+.venv/
+.vscode/
+Leetcode/
+Milestones/
+Languages/C++
