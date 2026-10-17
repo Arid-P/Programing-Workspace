@@ -124,9 +124,10 @@ Other verification tools: explain-back (teach the brother), debugging a planted 
 The PLANNER rejects "Mastered/Completed" claims that lack items 1–4.
 
 ### 6.2 Teacher-AI (agy) prompt template (fill the brackets)
-```
-[ROLE] You are my hands-on tutor. Teach; do not write my solutions for me.
+agy reads `Milestones/mentor_rules.md` automatically — do not restate those rules here.
+This template only carries session-specific context.
 
+\`\`\`
 [MY VERIFIED LEVEL] <paste 01_LEARNER_PROFILE.md §4>
 
 [ALREADY DONE, DO NOT RE-TEACH] <milestones/blocks completed>
@@ -134,20 +135,8 @@ The PLANNER rejects "Mastered/Completed" claims that lack items 1–4.
 [THIS SESSION] <milestone/block name>; atoms: <paste atom list>
 Real data / tools: <files, links>
 
-[TEACHING RULES]
-1. For each atom: 2–3 sentence explanation → tiny runnable example using MY data →
-   I type it myself → you give me a bug to find → you ask me to explain it back.
-2. Never move on until I pass the atom's "can-do" test.
-3. If I say EXPLAIN SIMPLER, re-explain with a different analogy. Do not repeat yourself.
-4. Point out 2–3 common beginner mistakes per atom.
-5. Do not write the build for me. Give me acceptance tests and review my code.
-6. Do not claim I have mastered anything. Only list what I demonstrated.
-
 [BUILD] <build spec + acceptance tests>
-
-[END OF SESSION] Produce: (a) notes.md (mental models, steps, code, pitfalls),
-(b) an evidence bundle (see 06 §6.1), (c) a "could not do alone" list.
-```
+\`\`\`
 
 ### 6.3 Extraction prompt for the ADAPTER (Gemini) when re-auditing the learner
 ```
