@@ -75,6 +75,8 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 
 ## MILESTONE 01 — JSON + Git Merge Conflicts
 
+**Status (2026-09-30): Substantially complete — 3 open items: fix+test the json.dump() bug, get terminal evidence for one `git reset --soft`, confirm the next 3-4 real commits follow Conventional Commits without reminders. Not blocking M02.**
+
 **Goal:** remove the "JSON blocker" and finally understand git branching/merging/remotes, including a real conflict.
 **Prerequisites:** M00. **Packages:** none required beyond stdlib (`rich` optional for pretty output).
 **Real data (download once via browser, save into `data/`):**
@@ -83,32 +85,32 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 - Bonus later: TickTick backup exports as **CSV** (Settings → Backup & Import → Create Backup on the web app), a good CSV→JSON exercise.
 
 ### Atoms — JSON
-- [ ] M01.01 JSON syntax rules: double quotes only, no trailing commas, six value types (object, array, string, number, `true/false`, `null`).
-- [ ] M01.02 JSON is *text*; a Python dict is an in-memory object. Map: `true/false/null` ↔ `True/False/None`; JSON keys are always strings.
-- [ ] M01.03 `json.load(f)` (file → object) vs `json.loads(s)` (string → object).
-- [ ] M01.04 `json.dump(obj, f, indent=2)` (object → file) vs `json.dumps(obj)` (object → string).
-- [ ] M01.05 Always `with open(path, encoding="utf-8")`.
-- [ ] M01.06 Nested access: `data[0]["address"]["geo"]["lat"]`; mixed list/dict paths.
-- [ ] M01.07 Safe access: `.get(key, default)`, catching `KeyError`/`TypeError`, checking types.
-- [ ] M01.08 Filter, sort and group lists of objects: comprehensions, `sorted(key=...)`, `collections.Counter`, `defaultdict`.
-- [ ] M01.09 Read-modify-write: never `json.dump` across separate runs blindly; write to a temp file then `os.replace`; keep a backup.
-- [ ] M01.10 Invalid JSON: `json.JSONDecodeError` gives line/column; read the message.
-- [ ] M01.11 `sort_keys`, `ensure_ascii=False`, `default=str` for non-serializable types (e.g. `datetime`).
-- [ ] M01.12 Inspect JSON from the terminal: `python -m json.tool`, optionally `jq`.
-- [ ] M01.13 CSV ↔ JSON with `csv.DictReader`/`DictWriter` (also a Class 12 CBSE topic).
+- [x] M01.01 JSON syntax rules: double quotes only, no trailing commas, six value types (object, array, string, number, `true/false`, `null`).
+- [x] M01.02 JSON is *text*; a Python dict is an in-memory object. Map: `true/false/null` ↔ `True/False/None`; JSON keys are always strings.
+- [x] M01.03 `json.load(f)` (file → object) vs `json.loads(s)` (string → object).
+- [~] M01.04 `json.dump(obj, f, indent=2)` (object → file) vs `json.dumps(obj)` (object → string).
+- [x] M01.05 Always `with open(path, encoding="utf-8")`.
+- [x] M01.06 Nested access: `data[0]["address"]["geo"]["lat"]`; mixed list/dict paths.
+- [x] M01.07 Safe access: `.get(key, default)`, catching `KeyError`/`TypeError`, checking types.
+- [x] M01.08 Filter, sort and group lists of objects: comprehensions, `sorted(key=...)`, `collections.Counter`, `defaultdict`.
+- [x] M01.09 Read-modify-write: never `json.dump` across separate runs blindly; write to a temp file then `os.replace`; keep a backup.
+- [x] M01.10 Invalid JSON: `json.JSONDecodeError` gives line/column; read the message.
+- [x] M01.11 `sort_keys`, `ensure_ascii=False`, `default=str` for non-serializable types (e.g. `datetime`).
+- [x] M01.12 Inspect JSON from the terminal: `python -m json.tool`, optionally `jq`.
+- [x] M01.13 CSV ↔ JSON with `csv.DictReader`/`DictWriter` (also a Class 12 CBSE topic).
 
 ### Atoms — Git
-- [ ] M01.14 Three areas: working directory, staging area, repository; a commit is a snapshot.
-- [ ] M01.15 Branches: `git switch -c name`, `git branch`, deleting merged branches.
-- [ ] M01.16 Merge types: fast-forward vs three-way merge.
-- [ ] M01.17 Conflict markers: `<<<<<<< HEAD`, `=======`, `>>>>>>> branch`; what each side means.
-- [ ] M01.18 Resolving: edit file → `git add` → `git commit` (or `git merge --continue`); `git merge --abort` to bail out.
-- [ ] M01.19 Remotes: `git remote add origin`, `git push -u origin main`, `git clone`.
-- [ ] M01.20 **`fetch` downloads without touching your files; `pull` = `fetch` + merge**; also `pull --rebase` (concept).
-- [ ] M01.21 Inspect history: `git log --oneline --graph --all`, `git diff`, `git diff origin/main`.
-- [ ] M01.22 `.gitignore` patterns; stop tracking an already-added file (`git rm --cached`).
-- [ ] M01.23 Undo tools: `git restore`, `git reset --soft/--mixed/--hard` (concept), `git revert`.
-- [ ] M01.24 Commit message hygiene (Conventional Commits, e.g. `feat(m01): ...`).
+- [x] M01.14 Three areas: working directory, staging area, repository; a commit is a snapshot.
+- [x] M01.15 Branches: `git switch -c name`, `git branch`, deleting merged branches.
+- [x] M01.16 Merge types: fast-forward vs three-way merge.
+- [x] M01.17 Conflict markers: `<<<<<<< HEAD`, `=======`, `>>>>>>> branch`; what each side means.
+- [x] M01.18 Resolving: edit file → `git add` → `git commit` (or `git merge --continue`); `git merge --abort` to bail out.
+- [x] M01.19 Remotes: `git remote add origin`, `git push -u origin main`, `git clone`.
+- [x] M01.20 **`fetch` downloads without touching your files; `pull` = `fetch` + merge**; also `pull --rebase` (concept).
+- [~] M01.21 Inspect history: `git log --oneline --graph --all`, `git diff`, `git diff origin/main`.
+- [x] M01.22 `.gitignore` patterns; stop tracking an already-added file (`git rm --cached`).
+- [~] M01.23 Undo tools: `git restore`, `git reset --soft/--mixed/--hard` (concept), `git revert`.
+- [~] M01.24 Commit message hygiene (Conventional Commits, e.g. `feat(m01): ...`).
 
 ### Ordered learning sequence
 1. Download JSON, `python -m json.tool` it, read it by eye (M01.01–02, 12).

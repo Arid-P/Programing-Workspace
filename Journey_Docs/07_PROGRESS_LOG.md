@@ -30,6 +30,23 @@ Update procedure: `06` §9.
 - Produced this 8-file document set (v1.0).
 - **Pending:** Class 11/12 diagnostic; `git log` check; repo creation and links.
 
+### 2026-09-30 — Milestone 01 — substantially complete
+- Atoms achieved: M01.01-03,05-20,22 (19 of 24)
+- Atoms partial: M01.04, M01.21, M01.23, M01.24
+- Built: process_todos.py, todo_tool.py (argparse CLI, atomic writes, verified under
+  corruption/10-rapid-add/double-run stress tests with real terminal output)
+- Evidence provided: real git log --graph with actual commit hashes (6213621 fast-forward,
+  7781706 three-way merge), real branch-delete-safety error message, real git rm --cached
+  output, real git revert output. Missing: reset --soft/mixed/hard terminal proof, diff
+  variant terminal proof.
+- Discrepancy found: json.dump() code example in learner's own README still has an
+  unfixed bug (dumps() called with a file arg) — flagged twice now, not yet fixed.
+- Correction accepted: learner's own README had 'git switch -c' backwards (said it
+  creates-if-missing; actually it only creates, errors if branch exists already).
+- Next action: fix+test json.dump() bug; get reset --soft terminal proof; start M02
+  in parallel.
+- Hours: not recorded (still pending — start logging from M02).
+
 *(Add new entries below this line using the format at the bottom of this file.)*
 
 ---
@@ -74,6 +91,7 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D13 | 2026-09-28 | C++ paused Jan–Mar 2027; Phase 3 compressed to 5 blocks | Time budget (4.5 h/week) |
 | D14 | 2026-09-28 | Use MySQL/MariaDB (not SQLite) for CBSE SQL practice | Board syllabus is MySQL-style |
 | D15 | 2026-09-28 | TEACHER reports need an evidence bundle | Prior AI over-claims (see `01` §9) |
+| D18 | 2026-09-30 | Milestones/Journey_Docs/ is an UNTRACKED working copy (gitignored) that agy edits directly, since agy's access is scoped to Milestones/ only. The learner periodically copies Milestones/Journey_Docs/* over the canonical, git-tracked Programing-Workspace/Journey_Docs/ to sync. | agy cannot reach the root workspace repo |
 
 ---
 
@@ -82,7 +100,7 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | Phase | Repo | URL | Created | Last push | Notes |
 |---|---|---|---|---|---|
 | Docs | `journey-docs` | <TBD> | | | This document set |
-| 1 | `milestones` | <TBD> | | | Needs a real remote for M01's merge-conflict work |
+| 1 | milestones | https://github.com/Arid-P/Fixing_Fundamentals | | | Real remote confirmed via git_notes.md, 2026-09-30 |
 | 2 | `cbse-cs-11-12` | <TBD> | | | |
 | 3 | `cpp-electronics-path` | <TBD> | | | |
 

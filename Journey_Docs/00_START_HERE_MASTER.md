@@ -121,20 +121,23 @@ Assumptions (unverified, confirm with the learner):
 
 ## 4. Current Pointer (update this after every session)
 
-- **Date of pointer:** 2026-09-28
-- **Phase 1:** Milestone 00 ✅ done. Next: **Milestone 01** (JSON + Git merge conflicts). Prompt seed is in `02` under M01.
+- **Date of pointer:** 2026-09-30
+- **Phase 1:** Milestone 00 ✅ done. Milestone 01 substantially complete (JSON mostly verified, Git verified with real evidence for branches/merges/gitignore/revert; open: json.dump() bug fix, reset --soft proof, commit-habit confirmation — see 02 for detail). **Next: start Milestone 02 (APIs & HTTP)** in parallel with closing M01's 3 open items.
 - **Phase 2:** Not started. Next: run the Class 11 / 12 true/false diagnostic (`03` §7), then start Class 11 Unit 1 in Oct 2026.
 - **Phase 3:** Not started. Next: install g++, follow the first learncpp topics, build gates in CircuitVerse.
 - **Math:** dormant until a build needs it (`05`).
 
 ### Pending verifications and open questions
 
-1. Run `git log --oneline` in the Milestones repo to confirm M00 commits exist (an AI report claimed a commit style not seen in the learner's own notes; the learner says he committed after each topic).
+1. [RESOLVED — confirmed via real git log --graph output in the M01 report] Run `git log --oneline` in the Milestones repo to confirm M00 commits exist (an AI report claimed a commit style not seen in the learner's own notes; the learner says he committed after each topic).
 2. Confirm which "half of Class 12 Python" the learner has actually done (diagnostic in `03`).
 3. Workspace has a folder `Python/3 Advance Topics 2/4 Libraries/Flask`, but the learner reports never having written Flask. Confirm authorship/depth before M03.
 4. Learner reported having written *some* HTML (self-check item 58 was false) but no CSS or JavaScript. Confirm scope during M04 diagnostic.
 5. Brother's school pacing is unknown; Class 11/12 dates above are the learner's, not the school's.
 6. Real GitHub repo URLs are not created yet; placeholders live in `07_PROGRESS_LOG.md` §4.
+7. Fix+test the json.dump() bug in the learner's own README code example (still present, unfixed, as of 2026-09-30).
+8. Get terminal evidence for a real `git reset --soft HEAD~1` (only revert was demonstrated with actual output; reset was explained but not run+proven).
+9. Confirm Conventional Commits habit sticks across the next several real commits without being reminded — check with `git log --oneline` in a future session.
 
 ---
 

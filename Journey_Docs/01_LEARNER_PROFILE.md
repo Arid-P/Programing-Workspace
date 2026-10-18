@@ -41,7 +41,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - FastAPI: has written basic routes himself; used a Pydantic model for a request body; tested endpoints via `/docs`.
 - SQL: writes basic queries from memory; primary/foreign keys; created tables himself; understands what an ORM does; has queried a DB from Python.
 - NumPy: array creation/operations/slicing (retention weaker than he fears).
-- Git: init/add/commit/push, has created branches.
+- Git (updated 2026-09-30): three areas, branch lifecycle (create/switch/safe-delete/force-delete), fast-forward vs three-way merge (verified with real commit graphs), conflict resolution, remotes (fetch/pull/push -u/clone), .gitignore + git rm --cached, git revert. Still shaky: git reset variants (explained, unproven), commit-message habit (understood, not yet automatic).
 - DSA (LeetCode-level): arrays, hashmaps, two pointers, stacks, queues; binary search; recursion; Big-O estimation; conceptual linked lists. Solved a handful of easy/medium problems (Two Sum, Add Two Numbers, Longest Substring Without Repeating Characters, Best Time to Buy/Sell Stock, Remove Duplicates from Sorted Array, HackerRank array set).
 - Debugging own code with prints/debugger; knows what a dependency and an environment variable are; understands frontend vs backend conceptually.
 - **Milestone 00 (uv):** completed and explained in his own README (see `07` log).
@@ -52,7 +52,6 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - Inheritance: understands, has not used it properly.
 - FastAPI path vs query parameters: understands theory, needs conscious effort in practice.
 - One-to-many / many-to-many relationships: mostly conceptual.
-- `git pull` vs `git fetch`: his statement was imprecise ("pull overrides your files"). Correct model: `pull` = `fetch` + merge into the current branch.
 
 ### GAP (never done / cannot do)
 - **JSON:** cannot write, read, or use it reliably (`json.dump/load` never used successfully).

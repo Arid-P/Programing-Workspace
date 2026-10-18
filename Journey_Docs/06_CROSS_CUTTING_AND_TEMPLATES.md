@@ -46,6 +46,22 @@ For diagrams: hand-drawn photo, ASCII, or Mermaid text is enough. Clarity beats 
 | `cbse-cs-11-12` | Phase 2: notes, record-file programs, projects, diagnostic results |
 | `cpp-electronics-path` | Phase 3: C++ exercises, block builds, simulator links/screenshots, math notes |
 
+### 3.1 The Journey_Docs working-copy pattern (important — read before editing)
+Two copies of Journey_Docs exist on purpose:
+1. **Canonical, git-tracked:** `~/Programing-Workspace/Journey_Docs/` — lives in the
+   root workspace repo. This is the source of truth between sessions.
+2. **Working copy, untracked:** `~/Programing-Workspace/Milestones/Journey_Docs/` —
+   gitignored (see Milestones/.gitignore). agy edits THIS copy, because agy's
+   filesystem access is scoped to Milestones/ only and cannot reach the canonical copy.
+
+Workflow: PLANNER issues edits as a prompt → agy applies them to the Milestones/
+working copy → the learner copies Milestones/Journey_Docs/* over the canonical copy
+to sync (`cp -r Milestones/Journey_Docs/* Journey_Docs/` from the workspace root) →
+the learner commits the canonical copy's changes as part of the root repo's normal
+commits. Never edit the canonical copy and the working copy independently in the same
+cycle — always treat the working copy as the draft and the canonical copy as what
+gets synced TO, not edited directly, during an agy session.
+
 ### Workspace layout (extend the existing `~/Programing-Workspace`)
 ```
 Programing-Workspace/
