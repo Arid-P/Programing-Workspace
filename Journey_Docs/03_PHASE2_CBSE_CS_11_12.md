@@ -37,8 +37,8 @@ Atom legend: `[ ]` not started · `[~]` partial · `[x]` verified. Since he alre
 
 ### Unit 2 — Computational Thinking and Programming-I (45 marks)
 Problem solving
-- [ ] C11-U2-01 Steps of problem solving: analyse, algorithm, code, test, debug.
-- [ ] C11-U2-02 Flowchart symbols and drawing; pseudocode; decomposition.
+- [x] C11-U2-01 Steps of problem solving: analyse, algorithm, code, test, debug.
+- [x] C11-U2-02 Flowchart symbols and drawing; pseudocode; decomposition.
 Python basics
 - [ ] C11-U2-03 Features of Python; interactive vs script mode; "hello world".
 - [ ] C11-U2-04 Character set and tokens: keyword, identifier, literal, operator, punctuator.
