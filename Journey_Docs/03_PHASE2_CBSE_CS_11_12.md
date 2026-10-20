@@ -40,9 +40,9 @@ Problem solving
 - [x] C11-U2-01 Steps of problem solving: analyse, algorithm, code, test, debug.
 - [x] C11-U2-02 Flowchart symbols and drawing; pseudocode; decomposition.
 Python basics
-- [ ] C11-U2-03 Features of Python; interactive vs script mode; "hello world".
-- [ ] C11-U2-04 Character set and tokens: keyword, identifier, literal, operator, punctuator.
-- [ ] C11-U2-05 Variables, l-value vs r-value, comments.
+- [x] C11-U2-03 Features of Python; interactive vs script mode; "hello world".
+- [x] C11-U2-04 Character set and tokens: keyword, identifier, literal, operator, punctuator.
+- [x] C11-U2-05 Variables, l-value vs r-value, comments.
 - [ ] C11-U2-06 Data types: int, float, complex, bool, str, list, tuple, dict, `None`.
 - [ ] C11-U2-07 Mutable vs immutable types.
 - [ ] C11-U2-08 Operators: arithmetic, relational, logical, assignment, augmented assignment, identity (`is`, `is not`), membership (`in`, `not in`).

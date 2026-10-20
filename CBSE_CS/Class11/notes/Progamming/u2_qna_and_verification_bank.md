@@ -44,3 +44,56 @@ This file records the **exact, raw questions** presented during the sessions, th
     *   *Correction on Statement 2:* Statement 2 is **FALSE**. Pseudocode is intentionally informal, language-agnostic, and relaxed; it does not follow strict syntax, keywords, or punctuation of any specific compiler/interpreter.
     *   *Correction on Statement 3:* Statement 3 is **TRUE**. An algorithm can take zero inputs (e.g., an algorithm that prints the first 50 Fibonacci numbers or current time requires no external input), but it **must** produce at least one output to be meaningful.
 
+
+
+---
+
+### Topic 03, 04 & 05: Python Basics, Execution Modes, Tokens, and Variables
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. In Python, what is the exact operational difference between typing `2 + 5` into the Interactive Mode prompt versus saving `2 + 5` inside a `.py` file and running it in Script Mode?
+2. Examine the following list of proposed variable names. Classify each as **Valid** or **Invalid**, and for every invalid one, state the exact syntactic rule violated:
+   - `_3rd_record`
+   - `total-sum`
+   - `True`
+   - `2nd_player`
+   - `while_count`
+3. Classify every individual token in the following Python statement into one of the 5 CBSE token categories:
+   ```python
+   score = (points * 2) + 10
+   ```
+4. Define **L-value** and **R-value** in the context of Python assignment statements. Using those definitions, explain precisely why the Python statement `x + y = 100` generates a `SyntaxError`.
+
+##### True / False Statements
+* Statement 1: In Python, an identifier can begin with an underscore (`_`) but cannot begin with a number.
+* Statement 2: The keywords `def`, `return`, and `import` can be written as `Def`, `Return`, and `Import` interchangeably.
+* Statement 3: The scientific literal `2.5e3` represents the float value $2500.0$.
+* Statement 4: An unassigned triple-quoted string literal (`""" ... """`) placed inside a Python file is treated as a comment and ignored during execution.
+* Statement 5: The statement `a, b = b, a` is syntactically invalid because multiple L-values cannot appear on the left of an assignment operator.
+
+#### Raw Student Answer (Verbatim):
+> If you type 2 plus 5 into the interactive mode, of, Python, then it will give the output of 7 directly on the screen. But if you type 2 plus 5 inside .py file, it will give you nothing even on running it. Moreover, if you close the session, the 2 plus five does have to vanish. while the 2 plus five, will exists in the .py  file unless the file itself is deleted
+> Invalid: True (keyword), 2nd+player (starts with number)
+> identifier: score, points
+> literals: numeric (2, 10)
+> operators: *, +, =
+> delimitors: (,)  
+> The L-value and R-value in the context of Python-side menstruation means the left-hand value and the right-hand value respectively. Or the expression of the value on the left-hand side of the equal sign and the right-hand side of the equal sign respectively. The L values are half constraints. They can only be values which are assigned equal, which can be assigned to a person. While R values do not have any specific distribution, they are with some rules. like they can get any expression and value available without any such things, but not a keyword. For the Python statement x plus y equals 100, it is invalid because the left value or the l value practice x plus y is an expression, but a left value can never be an expression.
+> t, f, t, t, f
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Correct.** Interactive Mode (REPL) automatically evaluates expressions and echoes the result (`7`) immediately to stdout; however, the command is non-persistent (vanishes when the session terminates). Script mode files (`.py`) execute batch commands and do not display unevaluated expression statements unless wrapped in `print()`; scripts are stored persistently on secondary storage.
+*   **Q2:** **Mostly Correct (1 missing case):**
+    *   `_3rd_record`: **Valid** (can start with an underscore and contain alphanumeric characters).
+    *   `total-sum`: **Invalid** (contains hyphen `-`, which is an arithmetic operator, not an identifier character).
+    *   `True`: **Invalid** (cannot use a reserved Python keyword).
+    *   `2nd_player`: **Invalid** (identifiers cannot begin with a digit).
+    *   `while_count`: **Valid** (begins with a letter; `while` is a keyword, but `while_count` is a unique compound name and thus valid).
+*   **Q3:** **Correct.** 
+    *   Identifiers: `score`, `points`
+    *   Literals: `2`, `10` (integer numeric literals)
+    *   Operators: `*`, `+`, `=` (arithmetic and assignment operators)
+    *   Punctuators / Delimiters: `(`, `)`
+*   **Q4:** **Correct.** An **L-value** represents a locator or reference to an assignable memory location appearing on the LHS of `=`. An **R-value** is any expression or literal that evaluates to a value on the RHS. The expression `x + y` computes a temporary value in an accumulator register rather than referencing an assignable memory target; thus `x + y = 100` triggers `SyntaxError: cannot assign to expression`.
+*   **True/False Statements:** `t, f, t, t, f` (5/5 Correct).
