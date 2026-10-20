@@ -47,6 +47,17 @@ Update procedure: `06` §9.
   in parallel.
 - Hours: not recorded (still pending — start logging from M02).
 
+### 2026-10-19 — CBSE Class 11 Unit 1 — COMPLETE
+- Atoms achieved: C11-U1-01 through C11-U1-10 (10 of 10, all verified)
+- C11-U1-10 retest: passed cold (3 bytes UTF-8, 2 bytes UTF-16 for Devanagari)
+- Evidence quality: raw Q&A file with verbatim student answers, explicit grading
+  showing real corrections — independently spot-checked by the planner across
+  all 10 topics, conversions and Boolean algebra reverified by hand
+- No pre-unit diagnostic was run (acceptable for Unit 1 — content was new;
+  MANDATORY before Unit 2, which overlaps proven Python skill)
+- Next action: new agy chat generates the Class 11 diagnostic as a fillable md
+  file before any Unit 2 teaching begins
+
 *(Add new entries below this line using the format at the bottom of this file.)*
 
 ---

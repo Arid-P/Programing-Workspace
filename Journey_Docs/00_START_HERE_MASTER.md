@@ -123,7 +123,7 @@ Assumptions (unverified, confirm with the learner):
 
 - **Date of pointer:** 2026-09-30
 - **Phase 1:** Milestone 00 ✅ done. Milestone 01 substantially complete (JSON mostly verified, Git verified with real evidence for branches/merges/gitignore/revert; open: json.dump() bug fix, reset --soft proof, commit-habit confirmation — see 02 for detail). **Next: start Milestone 02 (APIs & HTTP)** in parallel with closing M01's 3 open items.
-- **Phase 2:** Not started. Next: run the Class 11 / 12 true/false diagnostic (`03` §7), then start Class 11 Unit 1 in Oct 2026.
+- **Phase 2 — ACTIVE:** Unit 1 (Computer Systems & Organisation) FULLY COMPLETE, all 10 atoms verified via real raw Q&A evidence (CBSE_CS/Class11/notes/Computer_Systems/u1_qna_and_verification_bank.md), including a passed retest on C11-U1-10 (Devanagari UTF-8 vs UTF-16 byte counts). No pre-unit diagnostic was run for Unit 1 (acceptable — content was genuinely new). Next: run the Class 11 diagnostic (03 §7) in a NEW agy chat before starting Unit 2 (Python) — mandatory this time, since Unit 2 overlaps heavily with already-proven skill in 01_LEARNER_PROFILE.md.
 - **Phase 3:** Not started. Next: install g++, follow the first learncpp topics, build gates in CircuitVerse.
 - **Math:** dormant until a build needs it (`05`).
 

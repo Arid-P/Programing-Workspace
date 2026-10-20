@@ -24,16 +24,16 @@ Atom legend: `[ ]` not started · `[~]` partial · `[x]` verified. Since he alre
 ## 2. CLASS 11 ATOMS
 
 ### Unit 1 — Computer Systems and Organisation (10 marks)
-- [ ] C11-U1-01 Basic organisation: hardware vs software; input device, output device, CPU.
-- [ ] C11-U1-02 Memory types: primary, cache, secondary; speed/size/cost ordering.
-- [ ] C11-U1-03 Units of memory: bit, byte, KB, MB, GB, TB, PB (1 KB = 1024 B).
-- [ ] C11-U1-04 Types of software: system software (OS, utilities, device drivers), programming tools, application software.
-- [ ] C11-U1-05 Language translators: assembler, compiler, interpreter (differences).
-- [ ] C11-U1-06 Operating system functions and user interfaces (CLI/GUI).
-- [ ] C11-U1-07 Boolean logic: NOT, AND, OR, NAND, NOR, XOR; truth tables.
-- [ ] C11-U1-08 De Morgan's laws; simplify small expressions; draw logic circuits.
-- [ ] C11-U1-09 Number systems: binary, octal, decimal, hexadecimal and conversions in all directions (including fractions if the textbook includes them).
-- [ ] C11-U1-10 Encoding schemes: ASCII, ISCII, Unicode (UTF-8, UTF-32).
+- [x] C11-U1-01 Basic organisation: hardware vs software; input device, output device, CPU.
+- [x] C11-U1-02 Memory types: primary, cache, secondary; speed/size/cost ordering.
+- [x] C11-U1-03 Units of memory: bit, byte, KB, MB, GB, TB, PB (1 KB = 1024 B).
+- [x] C11-U1-04 Types of software: system software (OS, utilities, device drivers), programming tools, application software.
+- [x] C11-U1-05 Language translators: assembler, compiler, interpreter (differences).
+- [x] C11-U1-06 Operating system functions and user interfaces (CLI/GUI).
+- [x] C11-U1-07 Boolean logic: NOT, AND, OR, NAND, NOR, XOR; truth tables.
+- [x] C11-U1-08 De Morgan's laws; simplify small expressions; draw logic circuits.
+- [x] C11-U1-09 Number systems: binary, octal, decimal, hexadecimal and conversions in all directions (including fractions if the textbook includes them).
+- [x] C11-U1-10 Encoding schemes: ASCII, ISCII, Unicode (UTF-8, UTF-32).
 
 ### Unit 2 — Computational Thinking and Programming-I (45 marks)
 Problem solving
