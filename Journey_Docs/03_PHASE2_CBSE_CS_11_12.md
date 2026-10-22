@@ -54,8 +54,8 @@ Control flow
 - [x] C11-U2-13 `if`, `if-else`, `if-elif-else` with flowcharts (absolute value, sort 3 numbers, divisibility).
 - [x] C11-U2-14 `for`, `range()`, `while`, `break`, `continue`, nested loops; patterns, series sums, factorial.
 Strings
-- [ ] C11-U2-15 String operations: concatenation, repetition, membership, slicing; traversal with loops.
-- [ ] C11-U2-16 String methods (must recall exact behavior): `len, capitalize, title, lower, upper, count, find, index, endswith, startswith, isalnum, isalpha, isdigit, islower, isupper, isspace, lstrip, rstrip, strip, replace, join, partition, split`.
+- [x] C11-U2-15 String operations: concatenation, repetition, membership, slicing; traversal with loops.
+- [x] C11-U2-16 String methods (must recall exact behavior): `len, capitalize, title, lower, upper, count, find, index, endswith, startswith, isalnum, isalpha, isdigit, islower, isupper, isspace, lstrip, rstrip, strip, replace, join, partition, split`.
 Lists
 - [ ] C11-U2-17 Lists: indexing, operations, traversal, nested lists.
 - [ ] C11-U2-18 List functions/methods: `len, list, append, extend, insert, count, index, remove, pop, reverse, sort, sorted, min, max, sum`.

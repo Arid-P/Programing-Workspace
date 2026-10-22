@@ -277,3 +277,64 @@ This file records the **exact, raw questions** presented during the sessions, th
 *   **Q3:** **100% Correct.** The triangular number summation $1 + 2 + 3 + 4 = 10$. Passes: $i=1 \implies 1$; $i=2 \implies 3$; $i=3 \implies 6$; $i=4 \implies 10$.
 *   **Q4:** **100% Correct.** A year is a leap year if `(y % 400 == 0) or (y % 4 == 0 and y % 100 != 0)`.
 *   **True/False Statements:** `f, t, t, f, t` (5/5 Correct).
+
+
+---
+
+### Topic 15 & 16: Strings, Operations, Slicing Mechanics, and the 23 CBSE Methods
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Contrast `s.find("z")` and `s.index("z")` on the string `s = "cbse"`. State the exact output or behavior of each. When would a programmer prefer `find()` over `index()`?
+2. Predict the exact 3-element tuple returned by each of the following calls to `partition()`:
+   - Call A: `"user@mail.com".partition("@")`
+   - Call B: `"data.structure.notes".partition(".")`
+   - Call C: `"computer".partition("#")`
+3. Predict the exact `list` output of each of the following three `split()` statements:
+   - `"  Sun   Moon    Earth  ".split()`
+   - `"red,,green,blue".split(",")`
+   - `"red,,green,blue".split()`.
+4. Predict the exact string slice result for each:
+   - `"COMPUTATION"[2:8:2]`
+   - `"PYTHON"[::-1]`
+   - `"HELLO"[-1:-5:-1]`
+   - `"CBSE"[1:50]`
+
+##### True / False Statements
+* Statement 1: If the delimiter passed to `s.partition(sep)` is not found in `s`, Python raises a `ValueError`.
+* Statement 2: The expression `"-".join([10, 20, 30])` evaluates to `"10-20-30"`.
+* Statement 3: The string method call `"pYTHON pROGRAM".capitalize()` evaluates to `"Python program"`.
+* Statement 4: An out-of-range string slice expression such as `"CODE"[10:20]` generates an `IndexError`.
+* Statement 5: The method call `"aaaa".count("aa")` returns `2` because Python counts only non-overlapping occurrences.
+
+#### Raw Student Answer (Verbatim):
+> 1. Both find and index are almost exactly the same, the difference arises ony when the provided substring doesnt exist in the string. For such a cae find returns 1 but index raises a ValueError.
+> 2.A. ("user", "@", "mail.com")
+> B. ("data", ".", "structure.notes")
+> C. ("computer", "", "")
+> 3. ["Sun", "Moon", "Earth"]
+> ['red','','green','blue']
+> ["red,,green,blue"]
+> 4. "MUA"
+> "NOHTYP"
+> "OLLE"
+> "BSE"
+> f, f (gives TypeError), f, f, t
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Correct (with minor typo note).** On failure, `find()` returns **`-1`** (negative one, not 1), while `index()` raises `ValueError: substring not found`. `find()` is preferred when absence is a normal condition to check via `if s.find("x") != -1:`. `index()` is preferred when absence is an exceptional error or in generic sequence code (since lists/tuples only have `.index()`, not `.find()`).
+*   **Q2:** **100% Correct.**
+    *   A: `('user', '@', 'mail.com')`
+    *   B: `('data', '.', 'structure.notes')` (splits at first delimiter only)
+    *   C: `('computer', '', '')` (missing delimiter returns original string and two empty strings).
+*   **Q3:** **100% Correct.**
+    *   Default `split()` groups whitespace: `['Sun', 'Moon', 'Earth']`.
+    *   `split(",")` preserves empty items: `['red', '', 'green', 'blue']`.
+    *   `split()` without commas or spaces finds no whitespace: `['red,,green,blue']`.
+*   **Q4:** **100% Correct.**
+    *   `"COMPUTATION"[2:8:2]` $\implies$ `"MUA"` (indices 2, 4, 6).
+    *   `"PYTHON"[::-1]` $\implies$ `"NOHTYP"` (reversal).
+    *   `"HELLO"[-1:-5:-1]` $\implies$ `"OLLE"` (negative indices stepping backward).
+    *   `"CBSE"[1:50]` $\implies$ `"BSE"` (safe clamping).
+*   **True/False Statements:** `f, f, f, f, t` (4/5 Correct).
+    *   *Correction on Statement 3:* Statement 3 is **TRUE**. `s.capitalize()` capitalizes **only the first character** (index 0) and forces **all remaining characters in the entire string to lowercase**. Hence `"pYTHON pROGRAM".capitalize()` produces `"Python program"`. (Contrast with `.title()` which produces `"Python Program"`).
