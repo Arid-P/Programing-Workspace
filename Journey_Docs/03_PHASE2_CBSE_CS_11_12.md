@@ -47,8 +47,8 @@ Python basics
 - [x] C11-U2-07 Mutable vs immutable types.
 - [x] C11-U2-08 Operators: arithmetic, relational, logical, assignment, augmented assignment, identity (`is`, `is not`), membership (`in`, `not in`).
 - [x] C11-U2-09 Precedence, expression evaluation, implicit and explicit type conversion.
-- [ ] C11-U2-10 Console input/output.
-- [ ] C11-U2-11 Errors: syntax, logical, run-time.
+- [x] C11-U2-10 Console input/output.
+- [x] C11-U2-11 Errors: syntax, logical, run-time.
 Control flow
 - [ ] C11-U2-12 Indentation; sequential, conditional, iterative flow.
 - [ ] C11-U2-13 `if`, `if-else`, `if-elif-else` with flowcharts (absolute value, sort 3 numbers, divisibility).
@@ -68,7 +68,7 @@ Dictionaries
 - [ ] C11-U2-23 Dict functions/methods: `len, dict, keys, values, items, get, update, del, clear, fromkeys, copy, pop, popitem, setdefault, max, min, sorted`.
 - [ ] C11-U2-24 Dict programs (character counting, employee/salary dictionary).
 Modules
-- [ ] C11-U2-25 `import module` vs `from module import name`.
+- [x] C11-U2-25 `import module` vs `from module import name`.
 - [ ] C11-U2-26 `math`: `pi, e, sqrt, ceil, floor, pow, fabs, sin, cos, tan`.
 - [ ] C11-U2-27 `random`: `random, randint, randrange` (know endpoints included/excluded).
 - [ ] C11-U2-28 `statistics`: `mean, median, mode`.

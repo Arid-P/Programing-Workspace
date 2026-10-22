@@ -154,3 +154,59 @@ This file records the **exact, raw questions** presented during the sessions, th
     *   `"Python" or "CBSE"` $\rightarrow$ `"Python"` (short-circuit returns the first truthy operand).
     *   `"" and "CBSE"` $\rightarrow$ `""` (short-circuit returns the first falsy operand).
 *   **True/False Statements:** `t, t, false, t, false` (5/5 Correct).
+
+
+---
+
+### Topic 10, 11 & 25: Console I/O, Error Classification, and Module Imports
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Predict the exact, character-for-character console output produced by the following two Python lines:
+   ```python
+   print("Delhi", "Mumbai", "Chennai", sep=" -> ", end=" ## ")
+   print("Kolkata", "Bengaluru", sep=" & ")
+   ```
+2. A beginner student writes the following bill calculator script:
+   ```python
+   item_price = input("Enter item price: ")
+   tax_rate = 0.18
+   total_bill = item_price + (item_price * tax_rate)
+   print("Total:", total_bill)
+   ```
+   What exact error does Python generate when this script is run, on which line does it fail, and why? Show the corrected assignment line for `item_price`.
+3. Classify each of the following three scenarios into **Syntax Error**, **Run-time Error**, or **Logical Error**, and state whether the error is caught *before* or *during* program execution:
+   - **Scenario A:** A script has `def calc_area(r)` without a trailing colon `:` on line 12.
+   - **Scenario B:** A function attempts to compute `percentage = marks / total_subjects` where `total_subjects` is `0`.
+   - **Scenario C:** A programmer computes simple interest using `si = p * r * t / 100` but types `si = p * r + t / 100`.
+4. Contrast `import math` with `from math import sqrt` in terms of namespace isolation. If a script executes `import math as m`, can the programmer still call `math.sqrt(9)`? Explain why or why not.
+
+##### True / False Statements
+* Statement 1: If a Python script contains a Syntax Error on line 40, lines 1 through 39 will execute and print their outputs before the error is reported.
+* Statement 2: The `input()` function can return an integer object if the user enters only digits without spaces or decimal points.
+* Statement 3: An `IndentationError` in Python is a subclass of `SyntaxError` and is detected during the parsing phase before runtime.
+* Statement 4: Calling `print("Hello", end="")` ensures that the subsequent `print()` statement will output on the same line immediately following `"Hello"`.
+* Statement 5: The wildcard statement `from math import *` requires all math functions to be accessed using the `math.` prefix.
+
+#### Raw Student Answer (Verbatim):
+> 1. Delhi -> Mumbai -> Chennai ## 
+> 2. It fails on line 3 when the operation "item_price * tax_price" is prformed as itemprice is a string data type variable while tax raet is a float, and string and float cannot be multiplied together (I think it will give ValueError). To fix it, make the first line to item_price = float(input("Enter item price: "))
+> 3. A. Syntax Error, before execution
+> B. Run-time Error, during
+> c. Logical Error, never caught by python.
+> DOUBT: What is a namespace?
+> 4. import math imports the whole module into the local namespace and to acess a func of it we need to do like math.sqrt(25) . But in from math import sqrt only the sqrt function is imported into the local namespace. 
+> No, bcz now the refrence to the module is m not math in the namespace
+> f, f, t, t, f
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Partially Complete.** The user provided the output of the first line, but missed the second line. Because `end=" ## "` replaces the default newline, the second `print()` outputs on the **exact same line**:
+    `Delhi -> Mumbai -> Chennai ## Kolkata & Bengaluru`
+*   **Q2:** **Correct.** Line 3 fails with `TypeError: can't multiply sequence by non-int of type 'float'`. Because `input()` always returns a `str`, multiplying a string by a float is illegal. Correct line 1: `item_price = float(input("Enter item price: "))`.
+*   **Q3:** **100% Correct.**
+    *   A: **Syntax Error** (caught before execution during parsing).
+    *   B: **Run-time Error** (`ZeroDivisionError`, raised during execution).
+    *   C: **Logical Error** (program runs cleanly but produces incorrect answers; never detected by Python).
+*   **Q4:** **Correct.** `import math` binds the module object to the name `math` in the current namespace; functions must be accessed via dot notation `math.sqrt()`. `from math import sqrt` binds the identifier `sqrt` directly in the local namespace. When aliased (`import math as m`), the identifier `math` is **not** bound, so calling `math.sqrt(9)` raises a `NameError: name 'math' is not defined`.
+*   **Doubt Addressed (Namespace):** A **namespace** is a mapping from names (identifiers) to objects (like variables, functions, modules). Internally in Python, it is implemented as a dictionary (`name: object_reference`). It ensures that names in different scopes do not collide (e.g., `math.sqrt` lives in module `math`'s namespace, separate from a local variable `sqrt`).
+*   **True/False Statements:** `f, f, t, t, f` (5/5 Correct).
