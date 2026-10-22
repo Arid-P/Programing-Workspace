@@ -97,3 +97,60 @@ This file records the **exact, raw questions** presented during the sessions, th
     *   Punctuators / Delimiters: `(`, `)`
 *   **Q4:** **Correct.** An **L-value** represents a locator or reference to an assignable memory location appearing on the LHS of `=`. An **R-value** is any expression or literal that evaluates to a value on the RHS. The expression `x + y` computes a temporary value in an accumulator register rather than referencing an assignable memory target; thus `x + y = 100` triggers `SyntaxError: cannot assign to expression`.
 *   **True/False Statements:** `t, f, t, t, f` (5/5 Correct).
+
+
+---
+
+### Topic 06, 07, 08 & 09: Data Types, Mutability, Operators, Precedence, and Type Conversion
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Trace the step-by-step evaluation order and final values for the following two Python expressions, explaining which associativity rule applies:
+   - Expression A: `2 ** 3 ** 2`
+   - Expression B: `5 + 3 * 2 // 4 - 1`
+2. Using Python's floor division and modulo definition $r = a - (b \times (a // b))$, determine the exact evaluated output of:
+   - `-13 // 4`
+   - `-13 % 4`
+   - `13 % -4`
+3. Explain why `int(4.8)` evaluates cleanly to `4`, whereas `int("4.8")` crashes with a `ValueError`. How must a programmer properly convert `"4.8"` to an integer?
+4. What do each of the following expressions evaluate to, and why?
+   - `bool("False")`
+   - `bool("")`
+   - `"Python" or "CBSE"`
+   - `"" and "CBSE"`
+
+##### True / False Statements
+* Statement 1: Tuples and strings are categorized as immutable sequences because their individual elements cannot be modified in place.
+* Statement 2: In the complex number literal `z = 4 + 7j`, both `z.real` and `z.imag` return floating-point numbers.
+* Statement 3: The chained comparison `10 > 5 == True` evaluates to `True` in Python.
+* Statement 4: If `a = [10, 20]` and `b = a`, then `b += [30]` mutates `a` in place so that `a` becomes `[10, 20, 30]`.
+* Statement 5: The identity operator `is` evaluates to `True` if two variables have the same values, even if they reside at different memory addresses.
+
+#### Raw Student Answer (Verbatim):
+> 1. 2**3**2 = 2**(3**2) = 2**9 = 512
+> 5 + 3 * 2 // 4 - 1 = 5 + (3 * 2) // 4 - 1  = 5 + (6 // 4) - 1 = 5 + 1 -1 = 5
+> 2. -13 // 4 = floor(-3.25) = -4
+> -13 % 4 = 3
+> 13 % -4 = 13 - (13 * (-4)) = 13 + 52= 65
+> 3. If you provide an float value within the integer function, then it turns the integer part of the float. But if you provide a string which contains any characters other than a base 10 integer value, the integer function returns or crashes with a value error. So the programmer must first convert the string of 4.8 to using float to a float value of 4.8 and just as in the first statement we can use the int function to convert the 4.8 float value into a clean integer of 4.
+> 4. True, False, "Python", ""
+> t, t, false, t, false
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Correct.** 
+    *   `**` has right-to-left associativity: $3^2 = 9 \implies 2^9 = 512$.
+    *   In `5 + 3 * 2 // 4 - 1`, `*` and `//` have higher precedence than `+` and `-` and evaluate left-to-right: $3 \times 2 = 6 \implies 6 // 4 = 1 \implies 5 + 1 - 1 = 5$.
+*   **Q2:** **Mostly Correct (arithmetic slip on part 3):**
+    *   `-13 // 4 = -4` (Correct: $\lfloor -3.25 \rfloor = -4$).
+    *   `-13 % 4 = 3` (Correct: $-13 - (4 \times -4) = -13 - (-16) = 3$).
+    *   `13 % -4 = -3`: The formula is $r = a - (b \times (a // b))$.
+        *   $a // b = 13 // -4 = -4$.
+        *   $r = 13 - ((-4) \times (-4)) = 13 - 16 = -3$.
+        *   *(Rule of Thumb: In Python, the sign of the modulo result always takes the sign of the divisor $b$. Since $b = -4$, the remainder must be negative).*
+*   **Q3:** **Correct.** `int(float_val)` performs truncation towards zero. `int(str_val)` strictly expects a string representing a base-10 integer; non-integer characters like the decimal dot `.` trigger `ValueError`. The fix is double casting: `int(float("4.8"))`.
+*   **Q4:** **Correct.**
+    *   `bool("False")` $\rightarrow$ `True` (any non-empty string is truthy).
+    *   `bool("")` $\rightarrow$ `False` (empty string is falsy).
+    *   `"Python" or "CBSE"` $\rightarrow$ `"Python"` (short-circuit returns the first truthy operand).
+    *   `"" and "CBSE"` $\rightarrow$ `""` (short-circuit returns the first falsy operand).
+*   **True/False Statements:** `t, t, false, t, false` (5/5 Correct).

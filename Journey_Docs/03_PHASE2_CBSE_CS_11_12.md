@@ -43,10 +43,10 @@ Python basics
 - [x] C11-U2-03 Features of Python; interactive vs script mode; "hello world".
 - [x] C11-U2-04 Character set and tokens: keyword, identifier, literal, operator, punctuator.
 - [x] C11-U2-05 Variables, l-value vs r-value, comments.
-- [ ] C11-U2-06 Data types: int, float, complex, bool, str, list, tuple, dict, `None`.
-- [ ] C11-U2-07 Mutable vs immutable types.
-- [ ] C11-U2-08 Operators: arithmetic, relational, logical, assignment, augmented assignment, identity (`is`, `is not`), membership (`in`, `not in`).
-- [ ] C11-U2-09 Precedence, expression evaluation, implicit and explicit type conversion.
+- [x] C11-U2-06 Data types: int, float, complex, bool, str, list, tuple, dict, `None`.
+- [x] C11-U2-07 Mutable vs immutable types.
+- [x] C11-U2-08 Operators: arithmetic, relational, logical, assignment, augmented assignment, identity (`is`, `is not`), membership (`in`, `not in`).
+- [x] C11-U2-09 Precedence, expression evaluation, implicit and explicit type conversion.
 - [ ] C11-U2-10 Console input/output.
 - [ ] C11-U2-11 Errors: syntax, logical, run-time.
 Control flow
