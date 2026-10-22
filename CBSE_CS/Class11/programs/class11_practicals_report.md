@@ -200,3 +200,151 @@ A B C
 A B C D 
 ```
 
+
+
+---
+
+### Program 04: Count Vowels, Consonants, Uppercase, and Lowercase Characters
+* **File:** [`p04_string_character_counts.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p04_string_character_counts.py)
+* **Topic Alignment:** Unit 2 — Strings (Traversal, Character Classification Predicates)
+* **Aim:** Input a line of text from the user and calculate the frequency of vowels, consonants, uppercase characters, and lowercase characters.
+
+#### Algorithm:
+1. Input string `text`. Initialize a counter dictionary with keys `'vowels'`, `'consonants'`, `'uppercase'`, `'lowercase'` set to 0.
+2. Iterate through each character `el` in `text`:
+   - If `el.isalpha()` is false (digit, space, symbol), skip to next character.
+   - If `el.lower()` is in `['a', 'e', 'i', 'o', 'u']`, increment `'vowels'`; else increment `'consonants'`.
+   - If `el.islower()` is true, increment `'lowercase'`; else increment `'uppercase'`.
+3. Return and display the frequency breakdown.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 04: Count Vowels, Consonants, Uppercase, and Lowercase Characters
+CBSE Class 11 Practical File
+"""
+
+def analyze_string(text: str) -> dict[str, int]:
+    counter = {"vowels": 0, "consonants": 0, "uppercase": 0, "lowercase": 0}
+
+    for el in text:
+        if not el.isalpha():
+            continue
+
+        # Checking for vowels and consonants
+        if el.lower() in ["a", "e", "i", "o", "u"]:
+            counter["vowels"] += 1
+        else:
+            counter["consonants"] += 1
+
+        # Checking for uppercase and lowercase
+        if el.islower():
+            counter["lowercase"] += 1
+        else:
+            counter["uppercase"] += 1
+
+    return counter
+
+
+if __name__ == "__main__":
+    line = input("Enter a string: ")
+    counts = analyze_string(line)
+
+    print("\n--- String Analysis ---")
+    print(f"Vowels:     {counts.get('vowels', 0)}")
+    print(f"Consonants: {counts.get('consonants', 0)}")
+    print(f"Uppercase:  {counts.get('uppercase', 0)}")
+    print(f"Lowercase:  {counts.get('lowercase', 0)}")
+```
+
+#### Sample Execution Outputs:
+```text
+Enter a string: Python 3.12 Programming!
+
+--- String Analysis ---
+Vowels:     4
+Consonants: 13
+Uppercase:  2
+Lowercase:  15
+```
+
+---
+
+### Program 05: String Palindrome Check and Case Conversion
+* **File:** [`p05_palindrome_string_case_conversion.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p05_palindrome_string_case_conversion.py)
+* **Topic Alignment:** Unit 2 — Strings (Traversal, Two-Pointer Algorithm, Case Conversion Mechanics)
+* **Aim:** Check whether an input string is a palindrome using two-pointer traversal, and construct a new string with inverted case (toggling uppercase to lowercase and vice-versa) using ASCII code boundaries without `swapcase()`.
+
+#### Algorithm:
+1. **Palindrome Check:**
+   - Initialize two pointers `l = 0` and `r = len(text) - 1`.
+   - While `l < r`: if `text[l] != text[r]`, return `False`; increment `l` and decrement `r`.
+   - If pointers meet or cross with all characters matching, return `True`.
+2. **Case Inversion:**
+   - Initialize an empty result string `str_new = ""`.
+   - Iterate through each character `el` in `text`:
+     - If `not el.isalpha()`, append `el` directly to `str_new`.
+     - Else check ASCII code: if `ord(el) > 90` (lowercase $97..122$), convert with `el.upper()`; else (uppercase $65..90$), convert with `el.lower()`.
+   - Return `str_new`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 05: String Palindrome Check and Case Conversion
+CBSE Class 11 Practical File
+"""
+
+def is_palindrome(text: str) -> bool:
+    l, r = 0, len(text) - 1
+
+    while l < r:
+        if text[l] != text[r]:
+            return False
+        l += 1
+        r -= 1
+
+    return True
+
+
+def toggle_case(text: str) -> str:
+    str_new = ""
+
+    for el in text:
+        if not el.isalpha():
+            str_new += el
+            continue
+
+        if ord(el) > 90:
+            str_new += el.upper()
+        else:
+            str_new += el.lower()
+
+    return str_new
+
+
+if __name__ == "__main__":
+    user_str = input("Enter a string: ")
+
+    # 1. Palindrome Check
+    if is_palindrome(user_str):
+        print(f"'{user_str}' is a PALINDROME.")
+    else:
+        print(f"'{user_str}' is NOT a palindrome.")
+
+    # 2. Case Conversion
+    converted = toggle_case(user_str)
+    print(f"Case-toggled string: '{converted}'")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Palindrome string):
+Enter a string: racecar
+'racecar' is a PALINDROME.
+Case-toggled string: 'RACECAR'
+
+Test Run 2 (Mixed case sentence):
+Enter a string: Hello World 123!
+'Hello World 123!' is NOT a palindrome.
+Case-toggled string: 'hELLO wORLD 123!'
+```
