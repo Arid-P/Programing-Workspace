@@ -50,9 +50,9 @@ Python basics
 - [x] C11-U2-10 Console input/output.
 - [x] C11-U2-11 Errors: syntax, logical, run-time.
 Control flow
-- [ ] C11-U2-12 Indentation; sequential, conditional, iterative flow.
-- [ ] C11-U2-13 `if`, `if-else`, `if-elif-else` with flowcharts (absolute value, sort 3 numbers, divisibility).
-- [ ] C11-U2-14 `for`, `range()`, `while`, `break`, `continue`, nested loops; patterns, series sums, factorial.
+- [x] C11-U2-12 Indentation; sequential, conditional, iterative flow.
+- [x] C11-U2-13 `if`, `if-else`, `if-elif-else` with flowcharts (absolute value, sort 3 numbers, divisibility).
+- [x] C11-U2-14 `for`, `range()`, `while`, `break`, `continue`, nested loops; patterns, series sums, factorial.
 Strings
 - [ ] C11-U2-15 String operations: concatenation, repetition, membership, slicing; traversal with loops.
 - [ ] C11-U2-16 String methods (must recall exact behavior): `len, capitalize, title, lower, upper, count, find, index, endswith, startswith, isalnum, isalpha, isdigit, islower, isupper, isspace, lstrip, rstrip, strip, replace, join, partition, split`.
