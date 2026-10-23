@@ -389,3 +389,63 @@ This file records the **exact, raw questions** presented during the sessions, th
 *   **Q4:** **Correct.** `sort()` mutates in place, keeps `id()` unchanged, and returns `None`. `sorted()` returns a new list with a different `id()`. Sorting `[5, "apple"]` raises `TypeError: '<' not supported between instances of 'str' and 'int'`.
 *   **True/False Statements:** `f, f, t, t, t` (4/5 Correct).
     *   *Correction on Statement 4:* Statement 4 is **TRUE**. `lst.pop([index])` accepts an optional index parameter. Calling `lst.pop(0)` removes and returns the element at index 0 (the first element).
+
+
+---
+
+### Topic 20 & 21: Tuples, Immutability, Operations, and Built-ins
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. What is the data type and value of each of the following four variables?
+   - `a = (10)`
+   - `b = (10,)`
+   - `c = 10, 20, 30`
+   - `d = ()`
+2. Consider the tuple `t = (1, [10, 20], 3)`.
+   - What happens if a programmer executes `t[1].append(30)`?
+   - What happens if a programmer executes `t[1] = [10, 20, 30]`?
+   Explain the difference in terms of object references and tuple immutability.
+3. Predict the exact output and data type for each of the following expressions:
+   - `sorted((4, 1, 3, 2))`
+   - `(1, 2) + (3, 4)`
+   - `(1, 2) * 0`
+   - `(1, 2) * -3`
+4. If `t = (10, 20, 30)`, what exact exception is raised by each of the following erroneous statements?
+   - `x, y = t`
+   - `t.index(99)`
+   - `t.append(40)`
+   - `min(())`
+
+##### True / False Statements
+* Statement 1: Calling `sorted((5, 2, 8))` returns the tuple `(2, 5, 8)`.
+* Statement 2: The method `t.find(10)` returns `-1` if integer 10 is missing from tuple `t`.
+* Statement 3: The operation `(1, 2) + [3, 4]` produces the combined tuple `(1, 2, 3, 4)`.
+* Statement 4: Tuples can be used as keys in Python dictionaries, but lists cannot.
+* Statement 5: Slicing a tuple, such as `(1, 2, 3, 4)[1:3]`, returns a new tuple `(2, 3)`.
+
+#### Raw Student Answer (Verbatim):
+> 1. Except a all are tuple. a = 10; b=(10) (a tuple with single element); c = (10, 20, 30);  = () (empty tuple)
+> 2. t[1].append(30) makes the tuple (1, [10, 20, 30], 3) as here we are changing the list which is mutable while the tuple remains the sasme as it stores a obj refrence for the list.
+> But t[1] = [10, 20, 30] raises a TypeError as this time we are changing the tuple by assigning one of its element with something else contyradicting its immutablity
+> 3. [1, 2, 3, 4]
+> (1, 2, 3, 4)
+> ()
+> ()
+> 4. ValueError
+> ValueError
+> AttributeError
+> TypeError
+> f, t, f, t, t
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **100% Correct.** `a` is `int` (value 10); `b` is `tuple` (`(10,)`); `c` is `tuple` (`(10, 20, 30)`); `d` is empty `tuple` (`()`).
+*   **Q2:** **100% Correct.** Accurate explanation: `t[1].append(30)` mutates the inner mutable list in place without modifying the reference address stored by the tuple. `t[1] = [...]` attempts to rebind index 1 of the tuple, violating tuple immutability and raising `TypeError: 'tuple' object does not support item assignment`.
+*   **Q3:** **100% Correct.** `sorted()` returns `list [1, 2, 3, 4]`. Concatenation returns `tuple (1, 2, 3, 4)`. Non-positive repetition produces empty tuples `()`.
+*   **Q4:** **Mostly Correct (1 exception correction):**
+    *   `x, y = t`: `ValueError: too many values to unpack (expected 2)` (Correct).
+    *   `t.index(99)`: `ValueError: tuple.index(x): x not in tuple` (Correct).
+    *   `t.append(40)`: `AttributeError: 'tuple' object has no attribute 'append'` (Correct).
+    *   `min(())`: **`ValueError: min() iterable argument is empty`** (NOT TypeError! Empty sequences passed to `min()` or `max()` raise `ValueError`).
+*   **True/False Statements:** `f, f, f, t, t` (4/5 Correct).
+    *   *Correction on Statement 2:* Statement 2 is **FALSE**. Tuples do **NOT** have a `.find()` method! Calling `t.find(10)` raises **`AttributeError: 'tuple' object has no attribute 'find'`** (only strings support `.find()`; sequences like lists and tuples only have `.index()`).

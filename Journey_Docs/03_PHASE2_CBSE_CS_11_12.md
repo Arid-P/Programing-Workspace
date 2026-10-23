@@ -61,8 +61,8 @@ Lists
 - [x] C11-U2-18 List functions/methods: `len, list, append, extend, insert, count, index, remove, pop, reverse, sort, sorted, min, max, sum`.
 - [x] C11-U2-19 List programs: max/min/mean, linear search, frequency counting.
 Tuples
-- [ ] C11-U2-20 Tuples: indexing, operations, tuple assignment, nested tuples; `len, tuple, count, index, sorted, min, max, sum`.
-- [ ] C11-U2-21 Tuple programs (min/max/mean, linear search, frequency).
+- [x] C11-U2-20 Tuples: indexing, operations, tuple assignment, nested tuples; `len, tuple, count, index, sorted, min, max, sum`.
+- [x] C11-U2-21 Tuple programs (min/max/mean, linear search, frequency).
 Dictionaries
 - [ ] C11-U2-22 Dictionaries: keys access, mutability, traversal.
 - [ ] C11-U2-23 Dict functions/methods: `len, dict, keys, values, items, get, update, del, clear, fromkeys, copy, pop, popitem, setdefault, max, min, sorted`.
