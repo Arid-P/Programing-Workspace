@@ -642,3 +642,41 @@ This file records the **exact, raw questions** presented during the sessions, th
 *   **Q3:** **100% Correct.** Mathematical range is $[10.0, 15.0)$. $10.0$ can be produced (when `random()` is 0.0); $15.0$ can never be produced (1.0 is excluded).
 *   **Q4:** **Mostly Correct (arithmetic slip):** Stepping by 4 starting at 10 generates $10, 14, 18, 22, \mathbf{26}$ (not 28, since $22 + 4 = 26$). Next term would be 30, which is excluded. 30 can never be returned.
 *   **True/False Statements:** `f, t, f, t, f` (5/5 Correct).
+
+
+---
+
+### Topic 28: The `statistics` Module
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Predict the exact return value and data type for each of the following calls:
+   - `statistics.mean([10, 20, 30])`
+   - `statistics.median([7, 1, 4])`
+   - `statistics.median([10, 20, 30, 40])`
+   - `statistics.mode([1, 2, 2, 3])`
+2. Contrast `statistics.mode()` with `statistics.mean()` regarding the types of data they can process. Can `statistics.mode()` process non-numeric data like strings? Give an example.
+3. What happens in modern Python (3.8+) if you call `statistics.mode([4, 4, 9, 9, 1])` where two elements tie for the highest frequency? Which value is returned and why?
+4. What exact exception is raised if an empty list `[]` is passed to `statistics.mean([])`?
+
+##### True / False Statements
+* Statement 1: You must manually sort a list in ascending order before passing it to `statistics.median()`, otherwise an incorrect median is returned.
+* Statement 2: For an even number of data points, `statistics.median([2, 4, 6, 8])` returns the float value `5.0`.
+* Statement 3: The call `statistics.mode(["apple", "banana", "apple"])` evaluates to `"apple"`.
+* Statement 4: If all elements in a dataset are distinct with frequency 1, such as `[1, 2, 3, 4]`, modern Python's `mode()` returns the first element `1`.
+* Statement 5: Calling `statistics.mean([])` returns `0.0`.
+
+#### Raw Student Answer (Verbatim):
+> 1. 20; 4; 25.0; 2
+> 2. mean can only process numeric data and it computesthe arithematic mean of the numeric sequence provided. mode can accept any categorable data typ like number, string etc. 
+> eg, l1 = [10, 30, 50, 30]; l2=[1, 2, 3, 3, a', 'a', 'b', 'c', 'a', 4]; statistics.mean(l1) = 30; statistics.mode(l1)=30; statistics.mode(l2)= 'a'; statistics.mean(l2) raises TypeError
+> 3. Out of the elements with the same and highest frequency thhe element that occurs first in the original data is returned. 4.
+> 4. statistics.StatisticsError is raised
+> F, T, T, T, F
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **100% Correct.** `mean([10, 20, 30]) \implies 20` (or `20.0`); `median([7, 1, 4]) \implies 4` (sorted: 1, 4, 7); `median([10, 20, 30, 40]) \implies 25.0` (even count average); `mode([1, 2, 2, 3]) \implies 2`.
+*   **Q2:** **100% Correct.** Accurate explanation: `mean()` strictly requires numeric operands and computes $\sum x / n$. `mode()` operates on nominal/categorical data including strings, symbols, and numbers.
+*   **Q3:** **100% Correct.** In Python 3.8+, ties in `mode()` return the first-occurring mode in the input sequence ($\mathbf{4}$).
+*   **Q4:** **100% Correct.** Raises **`statistics.StatisticsError: mean requires at least one data point`**.
+*   **True/False Statements:** `f, t, t, t, f` (5/5 Correct).
