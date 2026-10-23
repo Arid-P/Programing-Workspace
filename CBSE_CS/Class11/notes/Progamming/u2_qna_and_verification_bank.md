@@ -602,3 +602,43 @@ This file records the **exact, raw questions** presented during the sessions, th
 *   **Q2:** **100% Correct.** Raises `ValueError: math domain error`. Both `math.pow(4, 0.5)` and `math.sqrt(4)` return float `2.0`.
 *   **Q3:** **100% Correct.** Trigonometric functions expect angles in radians. Correct formulation: `math.sin(math.radians(30))` or `math.sin(30 * math.pi / 180)`.
 *   **True/False Statements:** `f, t, f, t, f` (5/5 Correct).
+
+
+---
+
+### Topic 27: The `random` Module
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Compare `random.randint(1, 10)` and `random.randrange(1, 10)`:
+   - What is the set of possible integer outputs for each?
+   - Can either function return `10`?
+2. What are the minimum and maximum possible values generated for `RESULT` in the following code?
+   ```python
+   import random
+   PICK = random.randint(5, 12) + random.randrange(2, 6)
+   ```
+3. What is the mathematical range of values produced by the expression `10 + random.random() * 5`? State whether `10.0` and `15.0` can ever be produced.
+4. A student writes `num = random.randrange(10, 30, 4)`. List all possible integers that `num` could take. Can `num` ever be `30`?
+
+##### True / False Statements
+* Statement 1: The call `random.random()` can return the value `1.0`.
+* Statement 2: The call `random.randint(5, 5)` returns the integer `5` without raising an error.
+* Statement 3: The call `random.randint(10, 5)` evaluates to a random integer between 5 and 10.
+* Statement 4: `random.randrange(10)` generates random integers from `0` to `9` inclusive.
+* Statement 5: In `random.randrange(start, stop)`, the `stop` argument is included in the possible outputs.
+
+#### Raw Student Answer (Verbatim):
+> 1. randint = 1 2 3 4 5 6 7  8 9 10; randrange = 1 2 3 4 5  6 7 8 9 
+> Yes randint can
+> 2. min = 7 (5 2); max = 17 (12 5)
+> 3. the range is 10+[0.0, 5.0)= [10.0, 15.0) . Only 10.0 is possible 
+> 4. num can be 10, 14, 18, 22, 28. NO NUM CAN NEVER BE 30
+> F, T, F, T, F
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **100% Correct.** `randint(1, 10)` generates $1..10$ (closed interval $[1, 10]$); `randrange(1, 10)` generates $1..9$ (half-open interval $[1, 10)$). `randint` can return 10; `randrange` cannot.
+*   **Q2:** **100% Correct.** $\text{Min} = 5 + 2 = \mathbf{7}$; $\text{Max} = 12 + 5 = \mathbf{17}$.
+*   **Q3:** **100% Correct.** Mathematical range is $[10.0, 15.0)$. $10.0$ can be produced (when `random()` is 0.0); $15.0$ can never be produced (1.0 is excluded).
+*   **Q4:** **Mostly Correct (arithmetic slip):** Stepping by 4 starting at 10 generates $10, 14, 18, 22, \mathbf{26}$ (not 28, since $22 + 4 = 26$). Next term would be 30, which is excluded. 30 can never be returned.
+*   **True/False Statements:** `f, t, f, t, f` (5/5 Correct).
