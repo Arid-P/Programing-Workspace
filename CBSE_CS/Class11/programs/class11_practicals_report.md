@@ -489,3 +489,92 @@ Enter list elements separated by spaces: 10 20 30 40 50
 Original List: ['10', '20', '30', '40', '50']
 Swapped List:  ['20', '10', '40', '30', '50']
 ```
+
+
+---
+
+### Program 08: Student Records Dictionary (Roll, Name, Marks)
+* **File:** [`p08_student_records_dictionary.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p08_student_records_dictionary.py)
+* **Topic Alignment:** Unit 2 — Dictionaries (Key Access, Filtering, Safe Querying with `.get()`)
+* **Aim:** Store student records in a dictionary mapping `roll_number -> {"name": str, "marks": float}`, display records, filter students scoring above 75%, and implement safe search by roll number without `KeyError`.
+
+#### Algorithm:
+1. Initialize nested dictionary `records` with sample data.
+2. **Filtering (`filter_top_students`):**
+   - Initialize empty dictionary `result = {}`.
+   - Iterate through `(roll, info)` in `students.items()`:
+     - If `info["marks"] > threshold`, update `result` with `{roll: info}`.
+   - Return `result`.
+3. **Safe Search (`search_student`):**
+   - Return `students.get(roll, None)`. If present, returns student dict; if absent, safely returns `None`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 08: Student Records Dictionary (Roll, Name, Marks)
+CBSE Class 11 Practical File
+"""
+
+def filter_top_students(
+    students: dict[int, dict], threshold: float = 75.0
+) -> dict[int, dict]:
+    result = {}
+    for roll, info in students.items():
+        if info["marks"] > threshold:
+            result.update({roll: info})
+
+    return result
+
+
+def search_student(students: dict[int, dict], roll: int) -> dict | None:
+    return students.get(roll, None)
+
+
+if __name__ == "__main__":
+    records = {
+        101: {"name": "Aman Sharma", "marks": 88.5},
+        102: {"name": "Rohit Verma", "marks": 68.0},
+        103: {"name": "Priya Singh", "marks": 92.0},
+        104: {"name": "Neha Gupta", "marks": 74.5},
+        105: {"name": "Siddharth Jain", "marks": 81.0},
+    }
+
+    print("--- All Student Records ---")
+    for roll, info in records.items():
+        print(f"Roll: {roll} | Name: {info['name']} | Marks: {info['marks']}%")
+
+    print("\n--- Students Scoring Above 75% ---")
+    top_students = filter_top_students(records, 75.0)
+    for roll, info in top_students.items():
+        print(f"Roll: {roll} | Name: {info['name']} | Marks: {info['marks']}%")
+
+    print("\n--- Search Student by Roll Number ---")
+    search_roll = int(input("Enter roll number to search: "))
+    found = search_student(records, search_roll)
+    if found:
+        print(f"Found: Name = {found['name']}, Marks = {found['marks']}%")
+    else:
+        print(f"Roll number {search_roll} not found in database.")
+```
+
+#### Sample Execution Outputs:
+```text
+--- All Student Records ---
+Roll: 101 | Name: Aman Sharma | Marks: 88.5%
+Roll: 102 | Name: Rohit Verma | Marks: 68.0%
+Roll: 103 | Name: Priya Singh | Marks: 92.0%
+Roll: 104 | Name: Neha Gupta | Marks: 74.5%
+Roll: 105 | Name: Siddharth Jain | Marks: 81.0%
+
+--- Students Scoring Above 75% ---
+Roll: 101 | Name: Aman Sharma | Marks: 88.5%
+Roll: 103 | Name: Priya Singh | Marks: 92.0%
+Roll: 105 | Name: Siddharth Jain | Marks: 81.0%
+
+--- Search Student by Roll Number ---
+Enter roll number to search: 103
+Found: Name = Priya Singh, Marks = 92.0%
+
+Enter roll number to search: 999
+Roll number 999 not found in database.
+```
