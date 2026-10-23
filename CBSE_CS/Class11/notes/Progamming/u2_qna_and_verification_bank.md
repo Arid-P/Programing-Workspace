@@ -449,3 +449,122 @@ This file records the **exact, raw questions** presented during the sessions, th
     *   `min(())`: **`ValueError: min() iterable argument is empty`** (NOT TypeError! Empty sequences passed to `min()` or `max()` raise `ValueError`).
 *   **True/False Statements:** `f, f, f, t, t` (4/5 Correct).
     *   *Correction on Statement 2:* Statement 2 is **FALSE**. Tuples do **NOT** have a `.find()` method! Calling `t.find(10)` raises **`AttributeError: 'tuple' object has no attribute 'find'`** (only strings support `.find()`; sequences like lists and tuples only have `.index()`).
+
+
+---
+
+### Topic 22, 23 & 24: Dictionaries, Mutability, Methods, and Algorithms
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Examine the following four proposed dictionary declarations. For each, state whether it is **Valid** or **Raises Exception**. If it raises an exception, name the exception and explain why:
+   - `d1 = {1: "one", "pi": 3.14, (1, 2): "point"}`
+   - `d2 = {[1, 2]: "numbers"}`
+   - `d3 = {(1, [2, 3]): "nested"}`
+   - `d4 = {True: "yes", 1: "one"}` *(What does `d4` contain and what is its length?)*
+2. Trace the exact printed output of the following sequence:
+   ```python
+   info = {"user": "admin"}
+   val1 = info.setdefault("user", "guest")
+   val2 = info.setdefault("role", "manager")
+   print("val1:", val1)
+   print("val2:", val2)
+   print("info:", info)
+   ```
+3. Contrast `del d["key"]`, `d.pop("key")`, and `d.pop("key", "default")` when `"key"` is **missing** from `d`. What is the exact behavior of each?
+4. A student runs `sorted({"c": 100, "a": 500, "b": 200})`. What is the exact return value and data type? Does it sort by keys or by values?
+
+##### True / False Statements
+* Statement 1: In Python dictionaries, searching for a key using `key in d` checks whether `key` is in the dictionary's keys, not its values.
+* Statement 2: The method `d.popitem()` on an empty dictionary returns `None`.
+* Statement 3: The method `dict.fromkeys(["a", "b", "c"], 0)` creates the dictionary `{'a': 0, 'b': 0, 'c': 0}`.
+* Statement 4: Executing `d.get("missing_key")` raises a `KeyError`.
+* Statement 5: The keyword `del` can be used to remove an entry from a dictionary via `del d[key]`.
+
+#### Raw Student Answer (Verbatim):
+> 1. d2 raises TypeError as list is a mutable obj and hence cannot be used as keys. For rest thy are valid
+> d4 is {1: "one"} length is 1 as True == 1
+> 2. {"user": "guest"}
+> {"user": "admin", "role": "manager"}
+> {"user": "admin"}
+> 3. the first 2 raise KeyError while the third one returns "default"
+> 4. ["c", "b", "a"] list type. Sorted by keys
+> idk, f, t, f, t
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Mostly Correct (1 missed exception):**
+    *   `d1`: **Valid** (all keys are immutable).
+    *   `d2`: **Raises `TypeError: unhashable type: 'list'`** (Correct: lists are mutable).
+    *   `d3`: **Raises `TypeError: cannot use 'tuple' as a dict key (unhashable type: 'list')`**! (A tuple is only hashable if **all** of its elements are hashable; containing a mutable list makes the tuple unhashable).
+    *   `d4`: Contains `{True: 'one'}` with `len(d4) == 1` because `True == 1` and `hash(True) == hash(1)`. The value `"yes"` is overwritten by `"one"`.
+*   **Q2:** **Model Trace Correction:** `setdefault(k, default)` returns the **value** of key `k`, not a dictionary:
+    *   `val1 = info.setdefault("user", "guest")` $\implies$ `"user"` exists, returns existing value `"admin"`.
+    *   `val2 = info.setdefault("role", "manager")` $\implies$ `"role"` missing, inserts `'role': 'manager'` and returns `"manager"`.
+    *   Outputs:
+        - `val1: admin`
+        - `val2: manager`
+        - `info: {'user': 'admin', 'role': 'manager'}`
+*   **Q3:** **100% Correct.** `del d["key"]` and `d.pop("key")` both raise `KeyError: 'key'`, whereas `d.pop("key", "default")` safely catches the absence and returns `"default"`.
+*   **Q4:** **Mostly Correct (ascending sort order note).** Returns **`['a', 'b', 'c']`** (data type `list`, sorted in ascending order of **keys**).
+*   **True/False Statements:** `t, f, t, f, t` (4/5 Correct).
+    *   *Clarification on Statement 1:* Statement 1 is **TRUE**. In Python, `x in d` strictly checks dictionary **keys** (`d.keys()`). To search values, you must explicitly write `x in d.values()`.
+
+
+---
+
+### Topic 22, 23 & 24: Dictionaries, Mutability, Methods, and Algorithms
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Examine the following four proposed dictionary declarations. For each, state whether it is **Valid** or **Raises Exception**. If it raises an exception, name the exception and explain why:
+   - `d1 = {1: "one", "pi": 3.14, (1, 2): "point"}`
+   - `d2 = {[1, 2]: "numbers"}`
+   - `d3 = {(1, [2, 3]): "nested"}`
+   - `d4 = {True: "yes", 1: "one"}` *(What does `d4` contain and what is its length?)*
+2. Trace the exact printed output of the following sequence:
+   ```python
+   info = {"user": "admin"}
+   val1 = info.setdefault("user", "guest")
+   val2 = info.setdefault("role", "manager")
+   print("val1:", val1)
+   print("val2:", val2)
+   print("info:", info)
+   ```
+3. Contrast `del d["key"]`, `d.pop("key")`, and `d.pop("key", "default")` when `"key"` is **missing** from `d`. What is the exact behavior of each?
+4. A student runs `sorted({"c": 100, "a": 500, "b": 200})`. What is the exact return value and data type? Does it sort by keys or by values?
+
+##### True / False Statements
+* Statement 1: In Python dictionaries, searching for a key using `key in d` checks whether `key` is in the dictionary's keys, not its values.
+* Statement 2: The method `d.popitem()` on an empty dictionary returns `None`.
+* Statement 3: The method `dict.fromkeys(["a", "b", "c"], 0)` creates the dictionary `{'a': 0, 'b': 0, 'c': 0}`.
+* Statement 4: Executing `d.get("missing_key")` raises a `KeyError`.
+* Statement 5: The keyword `del` can be used to remove an entry from a dictionary via `del d[key]`.
+
+#### Raw Student Answer (Verbatim):
+> 1. d2 raises TypeError as list is a mutable obj and hence cannot be used as keys. For rest thy are valid
+> d4 is {1: "one"} length is 1 as True == 1
+> 2. {"user": "guest"}
+> {"user": "admin", "role": "manager"}
+> {"user": "admin"}
+> 3. the first 2 raise KeyError while the third one returns "default"
+> 4. ["c", "b", "a"] list type. Sorted by keys
+> idk, f, t, f, t
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Mostly Correct (1 missed exception):**
+    *   `d1`: **Valid** (all keys are immutable).
+    *   `d2`: **Raises `TypeError: unhashable type: 'list'`** (Correct: lists are mutable).
+    *   `d3`: **Raises `TypeError: cannot use 'tuple' as a dict key (unhashable type: 'list')`**! (A tuple is only hashable if **all** of its elements are hashable; containing a mutable list makes the tuple unhashable).
+    *   `d4`: Contains `{True: 'one'}` with `len(d4) == 1` because `True == 1` and `hash(True) == hash(1)`. The value `"yes"` is overwritten by `"one"`.
+*   **Q2:** **Model Trace Correction:** `setdefault(k, default)` returns the **value** of key `k`, not a dictionary:
+    *   `val1 = info.setdefault("user", "guest")` $\implies$ `"user"` exists, returns existing value `"admin"`.
+    *   `val2 = info.setdefault("role", "manager")` $\implies$ `"role"` missing, inserts `'role': 'manager'` and returns `"manager"`.
+    *   Outputs:
+        - `val1: admin`
+        - `val2: manager`
+        - `info: {'user': 'admin', 'role': 'manager'}`
+*   **Q3:** **100% Correct.** `del d["key"]` and `d.pop("key")` both raise `KeyError: 'key'`, whereas `d.pop("key", "default")` safely catches the absence and returns `"default"`.
+*   **Q4:** **Mostly Correct (ascending sort order note).** Returns **`['a', 'b', 'c']`** (data type `list`, sorted in ascending order of **keys**).
+*   **True/False Statements:** `t, f, t, f, t` (4/5 Correct).
+    *   *Clarification on Statement 1:* Statement 1 is **TRUE**. In Python, `x in d` strictly checks dictionary **keys** (`d.keys()`). To search values, you must explicitly write `x in d.values()`.
+

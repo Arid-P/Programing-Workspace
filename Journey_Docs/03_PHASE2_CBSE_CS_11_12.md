@@ -64,9 +64,9 @@ Tuples
 - [x] C11-U2-20 Tuples: indexing, operations, tuple assignment, nested tuples; `len, tuple, count, index, sorted, min, max, sum`.
 - [x] C11-U2-21 Tuple programs (min/max/mean, linear search, frequency).
 Dictionaries
-- [ ] C11-U2-22 Dictionaries: keys access, mutability, traversal.
-- [ ] C11-U2-23 Dict functions/methods: `len, dict, keys, values, items, get, update, del, clear, fromkeys, copy, pop, popitem, setdefault, max, min, sorted`.
-- [ ] C11-U2-24 Dict programs (character counting, employee/salary dictionary).
+- [x] C11-U2-22 Dictionaries: keys access, mutability, traversal.
+- [x] C11-U2-23 Dict functions/methods: `len, dict, keys, values, items, get, update, del, clear, fromkeys, copy, pop, popitem, setdefault, max, min, sorted`.
+- [x] C11-U2-24 Dict programs (character counting, employee/salary dictionary).
 Modules
 - [x] C11-U2-25 `import module` vs `from module import name`.
 - [ ] C11-U2-26 `math`: `pi, e, sqrt, ceil, floor, pow, fabs, sin, cos, tan`.
