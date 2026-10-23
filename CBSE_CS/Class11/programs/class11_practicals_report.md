@@ -578,3 +578,367 @@ Found: Name = Priya Singh, Marks = 92.0%
 Enter roll number to search: 999
 Roll number 999 not found in database.
 ```
+
+
+---
+
+### Program 09: Fibonacci Series Generation (N Terms and Upper Limit)
+* **File:** [`p09_fibonacci_series.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p09_fibonacci_series.py)
+* **Topic Alignment:** Unit 2 — Iterative Statements & List Accumulation
+* **Aim:** Generate the Fibonacci series $0, 1, 1, 2, 3, 5, \dots$ both for the first $N$ terms and up to a maximum numerical value limit $M$.
+
+#### Algorithm:
+1. **First $N$ Terms (`generate_fibonacci_n_terms`):**
+   - If $n \le 0$, return `[]`.
+   - If $n = 1$, return `[0]`.
+   - If $n = 2$, return `[0, 1]`.
+   - Otherwise, pre-allocate a list of size $n$, set index 0 to 0 and index 1 to 1.
+   - For $i$ from 2 to $n - 1$:
+     - Compute $\text{series}[i] = \text{series}[i - 1] + \text{series}[i - 2]$.
+   - Return `series`.
+2. **Up to Value Limit $M$ (`generate_fibonacci_up_to_limit`):**
+   - Handle base values for $limit < 0$, $limit = 0$, and $limit = 1$.
+   - Initialize series with `[0, 1, 1]`.
+   - While True:
+     - Compute $\text{curr\_term} = \text{series}[-1] + \text{series}[-2]$.
+     - If $\text{curr\_term} > limit$, break and return `series`.
+     - Append `curr_term` to `series`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 09: Fibonacci Series Generation
+CBSE Class 11 Practical File
+"""
+
+from typing import Optional
+
+
+def generate_fibonacci_n_terms(n: int) -> list[int]:
+    """
+    Generate the first n terms of the Fibonacci series.
+
+    Parameters:
+        n (int): Number of terms to generate.
+
+    Returns:
+        list[int]: A list containing the first n Fibonacci numbers.
+                   If n <= 0, return an empty list [].
+    """
+
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    else:
+        series = [0] * n  # to save from the new memory chunk hazard with append
+        series[1] = 1
+
+    for i in range(2, n):
+        series[i] = series[i - 1] + series[i - 2]
+
+    return series
+
+
+def generate_fibonacci_up_to_limit(limit: int) -> list[int]:
+    """
+    Generate all Fibonacci numbers less than or equal to `limit`.
+
+    Parameters:
+        limit (int): Upper bound value.
+
+    Returns:
+        list[int]: All Fibonacci numbers <= limit.
+                   If limit < 0, return [].
+    """
+    if limit < 0:
+        return []
+    elif limit == 0:
+        return [0]
+    elif limit == 1:
+        return [0, 1, 1]
+
+    series = [0, 1, 1]
+
+    i = 3
+    while True:
+        curr_term = series[i - 1] + series[i - 2]
+
+        if curr_term > limit:
+            return series
+
+        series.append(curr_term)
+        i += 1
+
+
+if __name__ == "__main__":
+    print("--- Program 09: Fibonacci Series ---")
+
+    # 1. First N terms
+    num_terms = int(input("Enter number of terms (N): "))
+    terms = generate_fibonacci_n_terms(num_terms)
+    print(f"First {num_terms} Fibonacci terms: {terms}")
+
+    # 2. Terms up to limit
+    max_val = int(input("\nEnter maximum value limit (M): "))
+    series_limit = generate_fibonacci_up_to_limit(max_val)
+    print(f"Fibonacci terms up to {max_val}: {series_limit}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Standard execution):
+Enter number of terms (N): 7
+First 7 Fibonacci terms: [0, 1, 1, 2, 3, 5, 8]
+
+Enter maximum value limit (M): 20
+Fibonacci terms up to 20: [0, 1, 1, 2, 3, 5, 8, 13]
+
+Test Run 2 (Boundary inclusive check):
+Enter number of terms (N): 2
+First 2 Fibonacci terms: [0, 1]
+
+Enter maximum value limit (M): 13
+Fibonacci terms up to 13: [0, 1, 1, 2, 3, 5, 8, 13]
+```
+
+---
+
+### Program 10: Sum of Mathematical Series (Powers & Factorials)
+* **File:** [`p10_series_sum_alternating_powers.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p10_series_sum_alternating_powers.py)
+* **Topic Alignment:** Unit 2 — For Loops, Accumulators, and Math Module
+* **Aim:** Compute the sum of a geometric power series $1 + x + x^2 + \dots + x^n$ and an alternating sign factorial series $x - \frac{x^2}{2!} + \frac{x^3}{3!} - \dots \pm \frac{x^n}{n!}$.
+
+#### Algorithm:
+1. **Geometric Power Series (`sum_geometric_powers`):**
+   - Initialize `total = 0.0`.
+   - Loop `i` from 0 to $n$:
+     - Add $x^i$ to `total`.
+   - Return `total`.
+2. **Alternating Factorial Series (`sum_alternating_factorial_series`):**
+   - Initialize `series = 0.0`.
+   - Loop `i` from 1 to $n$:
+     - Compute term sign: $(-1)^{i - 1}$.
+     - Compute term magnitude: $\frac{x^i}{i!}$ using `math.factorial(i)`.
+     - Add signed term to `series`.
+   - Return `series`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 10: Sum of Mathematical Series
+CBSE Class 11 Practical File
+"""
+
+
+def sum_geometric_powers(x: float, n: int) -> float:
+    """
+    Calculate the sum: 1 + x + x^2 + x^3 + ... + x^n
+
+    Parameters:
+        x (float): Base value.
+        n (int): Maximum power (non-negative integer).
+
+    Returns:
+        float: Sum of the series.
+    """
+    total = 0.0
+    for i in range(n + 1):
+        total += x ** i
+    return total
+
+
+def sum_alternating_factorial_series(x: float, n: int) -> float:
+    """
+    Calculate the alternating series sum:
+    x - (x^2 / 2!) + (x^3 / 3!) - (x^4 / 4!) + ... up to n terms.
+
+    Parameters:
+        x (float): Base value.
+        n (int): Number of terms (n >= 1).
+
+    Returns:
+        float: Sum of the series.
+    """
+    from math import factorial as fact
+
+    series = 0
+    for i in range(1, n + 1):
+        series += (-1) ** (i - 1) * (x**i / fact(i))
+
+    return series
+
+
+if __name__ == "__main__":
+    print("--- Program 10: Mathematical Series Sums ---")
+    val_x = float(input("Enter value of x: "))
+    val_n = int(input("Enter value of n (integer >= 0): "))
+
+    # 1. Geometric Powers
+    s1 = sum_geometric_powers(val_x, val_n)
+    print(f"\nSeries 1: 1 + x + x^2 + ... + x^{val_n} = {s1}")
+
+    # 2. Alternating Factorial Series
+    if val_n >= 1:
+        s2 = sum_alternating_factorial_series(val_x, val_n)
+        print(f"Series 2: x - x^2/2! + x^3/3! - ... ({val_n} terms) = {s2}")
+    else:
+        print("Series 2 requires n >= 1.")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1:
+Enter value of x: 2
+Enter value of n (integer >= 0): 3
+
+Series 1: 1 + x + x^2 + ... + x^3 = 15.0
+Series 2: x - x^2/2! + x^3/3! - ... (3 terms) = 1.3333333333333333
+
+Test Run 2:
+Enter value of x: 1
+Enter value of n (integer >= 0): 4
+
+Series 1: 1 + x + x^2 + ... + x^4 = 5.0
+Series 2: x - x^2/2! + x^3/3! - ... (4 terms) = 0.625
+```
+
+---
+
+### Program 11: Number Classification (Armstrong, Perfect, Palindrome)
+* **File:** [`p11_number_classification.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p11_number_classification.py)
+* **Topic Alignment:** Unit 2 — While Loops, Digit Extraction, and Modulo Arithmetic
+* **Aim:** Classify any input positive integer as an Armstrong number (order $k$), a Perfect number, and a Palindrome number using mathematical reversal.
+
+#### Algorithm:
+1. **Armstrong Check (`is_armstrong`):**
+   - If $n \le 0$, return `False`.
+   - Determine number of digits $k$ in $n$.
+   - While $n > 0$: extract last digit via $n \pmod{10}$, compute $(\text{last\_digit})^k$, add to sum, and update $n \leftarrow n \mathbin{//} 10$.
+   - Return True if sum equals original number.
+2. **Perfect Number Check (`is_perfect`):**
+   - If $n \le 1$, return `False`.
+   - Initialize `div_sum = 1`.
+   - For $d$ from 2 to $n - 1$: if $n \pmod d == 0$, add $d$ to `div_sum`.
+   - Return True if `div_sum == n`.
+3. **Palindrome Check (`is_palindrome_number`):**
+   - If $n < 0$, return `False`.
+   - Initialize `reversed_num = 0`, `temp = n`.
+   - While `temp > 0`:
+     - `reversed_num = (reversed_num * 10) + (temp % 10)`
+     - `temp = temp // 10`
+   - Return True if `reversed_num == n`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 11: Number Classification (Armstrong, Perfect, Palindrome)
+CBSE Class 11 Practical File
+"""
+
+
+def is_armstrong(n: int) -> bool:
+    """
+    Check if positive integer n is an Armstrong number.
+    Note: Standard Armstrong numbers are non-negative.
+    """
+    if n <= 0:
+        return False
+
+    k = len(str(n))
+    dup_n: int = n
+    cube_sum = 0
+
+    while n > 0:
+        last_digit: int = n % 10
+        cube_sum += last_digit**k
+        n //= 10
+
+    if cube_sum != dup_n:
+        return False
+
+    return True
+
+
+def is_perfect(n: int) -> bool:
+    """
+    Check if positive integer n is a Perfect number.
+    A perfect number is equal to the sum of its proper positive divisors (excluding n itself).
+    """
+    if n <= 1:
+        return False
+
+    div_sum = 1
+    for d in range(2, n):
+        if n % d == 0:
+            div_sum += d
+
+    if div_sum != n:
+        return False
+
+    return True
+
+
+def is_palindrome_number(n: int) -> bool:
+    """
+    Check if integer n is a palindrome number using arithmetic digit reversal
+    (without converting the integer to a string).
+    """
+    if n < 0:
+        return False
+
+    reversed_num = 0
+    temp = n
+    while temp > 0:
+        reversed_num = (reversed_num * 10) + (temp % 10)
+        temp //= 10
+
+    return reversed_num == n
+
+
+if __name__ == "__main__":
+    print("--- Program 11: Number Classification ---")
+    num = int(input("Enter an integer to inspect: "))
+
+    arm = is_armstrong(num)
+    perf = is_perfect(num)
+    pal = is_palindrome_number(num)
+
+    print(f"\nResults for {num}:")
+    print(f"- Armstrong Number:  {arm}")
+    print(f"- Perfect Number:    {perf}")
+    print(f"- Palindrome Number: {pal}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (3-digit Armstrong):
+Enter an integer to inspect: 153
+Results for 153:
+- Armstrong Number:  True
+- Perfect Number:    False
+- Palindrome Number: False
+
+Test Run 2 (4-digit Armstrong):
+Enter an integer to inspect: 9474
+Results for 9474:
+- Armstrong Number:  True
+- Perfect Number:    False
+- Palindrome Number: False
+
+Test Run 3 (Perfect Number):
+Enter an integer to inspect: 28
+Results for 28:
+- Armstrong Number:  False
+- Perfect Number:    True
+- Palindrome Number: False
+
+Test Run 4 (Palindrome Number):
+Enter an integer to inspect: 1331
+Results for 1331:
+- Armstrong Number:  False
+- Perfect Number:    False
+- Palindrome Number: True
+```
