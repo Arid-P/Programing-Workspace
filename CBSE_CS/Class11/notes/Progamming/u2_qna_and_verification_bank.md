@@ -338,3 +338,54 @@ This file records the **exact, raw questions** presented during the sessions, th
     *   `"CBSE"[1:50]` $\implies$ `"BSE"` (safe clamping).
 *   **True/False Statements:** `f, f, f, f, t` (4/5 Correct).
     *   *Correction on Statement 3:* Statement 3 is **TRUE**. `s.capitalize()` capitalizes **only the first character** (index 0) and forces **all remaining characters in the entire string to lowercase**. Hence `"pYTHON pROGRAM".capitalize()` produces `"Python program"`. (Contrast with `.title()` which produces `"Python Program"`).
+
+
+---
+
+### Topic 17, 18 & 19: Lists, Operations, Methods, and Algorithms
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Contrast `lst.append([1, 2])` with `lst.extend([1, 2])` when called on `lst = [10, 20]`. Show the resulting list and its length for each. What happens if you call `lst.extend(50)`?
+2. A programmer executes the following sequence of commands on list `a = [10, 20, 30]`:
+   ```python
+   a.insert(100, 40)
+   a.insert(-100, 5)
+   ```
+   Does either call raise an `IndexError`? What is the exact resulting list?
+3. What is the exact output or exception raised by each of the following?
+   - Call A: `[1, 2, 3].remove(5)`
+   - Call B: `[].pop()`
+   - Call C: `[1, True, 0, False].count(True)`
+   - Call D: `sum(["a", "b", "c"])`
+4. Explain the difference between `my_list.sort()` and `sorted(my_list)` in terms of return value, in-place mutation, and memory identity (`id()`). What exception is raised if `my_list = [5, "apple"]` is sorted?
+
+##### True / False Statements
+* Statement 1: Slicing a list beyond its bounds, such as `[1, 2, 3][10:20]`, raises an `IndexError`.
+* Statement 2: Lists in Python support a `.find()` method that returns `-1` when an element is not present.
+* Statement 3: The assignment `grid = [[0] * 3] * 3` creates a $3 \times 3$ grid where modifying `grid[0][0] = 5` inadvertently modifies index 0 of all three rows.
+* Statement 4: `lst.pop(0)` removes and returns the first element of `lst`.
+* Statement 5: The built-in `sum([10, 20, 30], 5)` evaluates to `65` because the optional `start` parameter defaults to 0 and adds to the total sum.
+
+#### Raw Student Answer (Verbatim):
+> 1. append add a element at the end of the list, irrspective of the type of the added element. If element is intger it adds a integer but if it is a list or some other tuple it adds the whole iterable as a single element. lst.append([1, 2]) => [10, 20, [1, 2]]
+> While xtends the list by adding the elements of the iterable provide as individual elements within the list. lst.extend([1, 2]) => [10, 20, 1, 2]
+> 2. No, after the two commands the list is [5, 10, 20, 30, 40]
+> 3. A. Index eror as 5 isnt present in the list
+> B. IndexError as the list is empty
+> C. 2
+> D. TypeError as addition isnt possible between int and str
+> 4. sort function sorts the list by changing the object directly and returns None, ie, the original list is changed. sorted function sorts the list and returns a new list object, ie, the original one is preserved and you get a new sorted list. 
+> f, f, t, f, t
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **Mostly Correct (1 omission).** Accurate distinction between appending as a single object vs extending by iterating. If `lst.extend(50)` is called, Python raises **`TypeError: 'int' object is not iterable`** because `extend` demands an iterable argument.
+*   **Q2:** **100% Correct.** Neither raises an error. `insert` clamps index $\ge \text{len}$ to the end and index $\le -\text{len}$ to the beginning: `[5, 10, 20, 30, 40]`.
+*   **Q3:** **Mostly Correct (1 exception correction):**
+    *   Call A: Raises **`ValueError: list.remove(x): x not in list`** (NOT IndexError! `remove()` searches by *value*, and missing values trigger `ValueError`).
+    *   Call B: Raises `IndexError: pop from empty list` (Correct).
+    *   Call C: Returns `2` (Correct: `True == 1`).
+    *   Call D: Raises `TypeError: unsupported operand type(s) for +: 'int' and 'str'` (Correct).
+*   **Q4:** **Correct.** `sort()` mutates in place, keeps `id()` unchanged, and returns `None`. `sorted()` returns a new list with a different `id()`. Sorting `[5, "apple"]` raises `TypeError: '<' not supported between instances of 'str' and 'int'`.
+*   **True/False Statements:** `f, f, t, t, t` (4/5 Correct).
+    *   *Correction on Statement 4:* Statement 4 is **TRUE**. `lst.pop([index])` accepts an optional index parameter. Calling `lst.pop(0)` removes and returns the element at index 0 (the first element).

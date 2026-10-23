@@ -57,9 +57,9 @@ Strings
 - [x] C11-U2-15 String operations: concatenation, repetition, membership, slicing; traversal with loops.
 - [x] C11-U2-16 String methods (must recall exact behavior): `len, capitalize, title, lower, upper, count, find, index, endswith, startswith, isalnum, isalpha, isdigit, islower, isupper, isspace, lstrip, rstrip, strip, replace, join, partition, split`.
 Lists
-- [ ] C11-U2-17 Lists: indexing, operations, traversal, nested lists.
-- [ ] C11-U2-18 List functions/methods: `len, list, append, extend, insert, count, index, remove, pop, reverse, sort, sorted, min, max, sum`.
-- [ ] C11-U2-19 List programs: max/min/mean, linear search, frequency counting.
+- [x] C11-U2-17 Lists: indexing, operations, traversal, nested lists.
+- [x] C11-U2-18 List functions/methods: `len, list, append, extend, insert, count, index, remove, pop, reverse, sort, sorted, min, max, sum`.
+- [x] C11-U2-19 List programs: max/min/mean, linear search, frequency counting.
 Tuples
 - [ ] C11-U2-20 Tuples: indexing, operations, tuple assignment, nested tuples; `len, tuple, count, index, sorted, min, max, sum`.
 - [ ] C11-U2-21 Tuple programs (min/max/mean, linear search, frequency).
