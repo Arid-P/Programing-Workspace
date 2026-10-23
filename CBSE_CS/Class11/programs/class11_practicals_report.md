@@ -348,3 +348,144 @@ Enter a string: Hello World 123!
 'Hello World 123!' is NOT a palindrome.
 Case-toggled string: 'hELLO wORLD 123!'
 ```
+
+
+---
+
+### Program 06: List Operations — Linear Search and Manual Min/Max/Mean
+* **File:** [`p06_list_linear_search_min_max.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p06_list_linear_search_min_max.py)
+* **Topic Alignment:** Unit 2 — Lists (Algorithms, Traversal, Statistical Computations)
+* **Aim:** Manually determine the minimum, maximum, and arithmetic mean of a numerical list without built-in functions, and implement an iterative linear search returning the target index or $-1$.
+
+#### Algorithm:
+1. **Min/Max/Mean:**
+   - Initialize `minimum = nums[0]`, `maximum = nums[0]`, `total = 0`.
+   - Iterate through each number in `nums`: add to `total`, update `minimum` if smaller, update `maximum` if larger.
+   - Return `minimum`, `maximum`, and `mean = total / len(nums)`.
+2. **Linear Search:**
+   - Iterate index `i` from 0 to `len(lst) - 1`.
+   - If `lst[i] == target`, return `i`.
+   - If loop exhausts without match, return `-1`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 06: List Operations — Linear Search and Manual Min/Max/Mean
+CBSE Class 11 Practical File
+"""
+
+def linear_search(lst: list, target) -> int:
+    for i in range(len(lst)):
+        if lst[i] == target:
+            return i
+    
+    return -1
+
+
+def compute_min_max_mean(nums: list[float]) -> tuple[float, float, float]:
+    result = [nums[0], nums[0], 0]
+
+    for el in nums:
+        # Sum
+        result[2] += el
+
+        # min check
+        if result[0] > el:
+            result[0] = el
+        
+        # max check
+        if result[1] < el:
+            result[1] = el   
+
+    return result[0], result[1], result[2] / len(nums)
+
+
+if __name__ == "__main__":
+    raw_input = input("Enter numbers separated by spaces: ")
+    data = [float(x) for x in raw_input.split()]
+    
+    if not data:
+        print("List is empty!")
+    else:
+        # 1. Min, Max, Mean
+        minimum, maximum, mean = compute_min_max_mean(data)
+        print(f"\n--- Statistics ---")
+        print(f"Minimum: {minimum}")
+        print(f"Maximum: {maximum}")
+        print(f"Mean:    {mean:.2f}")
+        
+        # 2. Linear Search
+        search_target = float(input("\nEnter a number to search for: "))
+        found_idx = linear_search(data, search_target)
+        if found_idx != -1:
+            print(f"Number {search_target} found at index {found_idx}.")
+        else:
+            print(f"Number {search_target} was not found in the list.")
+```
+
+#### Sample Execution Outputs:
+```text
+Enter numbers separated by spaces: 10 50 20 40 30
+
+--- Statistics ---
+Minimum: 10.0
+Maximum: 50.0
+Mean:    30.00
+
+Enter a number to search for: 20
+Number 20.0 found at index 2.
+```
+
+---
+
+### Program 07: Swap Even and Odd Positioned Elements in a List
+* **File:** [`p07_list_swap_even_odd.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p07_list_swap_even_odd.py)
+* **Topic Alignment:** Unit 2 — Lists (In-Place Mutation, Index Arithmetic, Stepping)
+* **Aim:** Swap adjacent elements at even and odd index positions ($0 \leftrightarrow 1, 2 \leftrightarrow 3, \dots$) in place, preserving the last element untouched if the list has odd length.
+
+#### Algorithm:
+1. If `len(lst) <= 1`, return immediately.
+2. Compute `upper_limit = (len(lst) // 2) * 2`.
+3. Loop index `i` from 0 up to `upper_limit` stepping by 2:
+   - Swap: `lst[i], lst[i + 1] = lst[i + 1], lst[i]`.
+4. The list is modified in place with $O(1)$ auxiliary space.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 07: Swap Even and Odd Positioned Elements in a List
+CBSE Class 11 Practical File
+"""
+
+def swap_adjacent_elements(lst: list) -> None:
+    if len(lst) <= 1:
+        return 
+
+    upper_limit = ((len(lst) // 2) * 2) 
+    for i in range(0, upper_limit, 2):  # Runs like 0, 2, 4, 6
+        lst[i], lst[i + 1] = lst[i + 1], lst[i]
+
+
+if __name__ == "__main__":
+    raw_input = input("Enter list elements separated by spaces: ")
+    user_list = raw_input.split()
+
+    print(f"\nOriginal List: {user_list}")
+    swap_adjacent_elements(user_list)
+    print(f"Swapped List:  {user_list}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Even number of elements):
+Enter list elements separated by spaces: A B C D E F
+
+Original List: ['A', 'B', 'C', 'D', 'E', 'F']
+Swapped List:  ['B', 'A', 'D', 'C', 'F', 'E']
+
+Test Run 2 (Odd number of elements):
+Enter list elements separated by spaces: 10 20 30 40 50
+
+Original List: ['10', '20', '30', '40', '50']
+Swapped List:  ['20', '10', '40', '30', '50']
+```
