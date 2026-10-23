@@ -568,3 +568,37 @@ This file records the **exact, raw questions** presented during the sessions, th
 *   **True/False Statements:** `t, f, t, f, t` (4/5 Correct).
     *   *Clarification on Statement 1:* Statement 1 is **TRUE**. In Python, `x in d` strictly checks dictionary **keys** (`d.keys()`). To search values, you must explicitly write `x in d.values()`.
 
+
+
+---
+
+### Topic 26: The `math` Module
+
+#### Raw Questions Given:
+##### Conceptual QnA
+1. Predict the exact return value and data type for each of the following:
+   - `math.ceil(-3.7)`
+   - `math.floor(-3.7)`
+   - `math.pow(3, 2)`
+   - `math.fabs(-10)`
+2. What exact exception is raised if a student runs `math.sqrt(-16)`? How does `math.pow(4, 0.5)` differ from `math.sqrt(4)`?
+3. If a student wants to calculate the sine of $30^\circ$, why does `math.sin(30)` produce `-0.9880316...` instead of `0.5`? Show the exact Python expression required to calculate $\sin(30^\circ)$ correctly.
+
+##### True / False Statements
+* Statement 1: The function `math.floor(5.8)` returns the floating-point value `5.0`.
+* Statement 2: The expression `type(math.sqrt(9))` evaluates to `<class 'float'>`.
+* Statement 3: The `math` module will automatically return a `complex` number if a negative number is passed to `math.sqrt()`.
+* Statement 4: `math.ceil(7.0)` returns `7`.
+* Statement 5: The trigonometric functions in Python's `math` module expect angles measured in degrees.
+
+#### Raw Student Answer (Verbatim):
+> 1. -3, -4, 9.0, 10.0
+> 2. ValueError. Nothing
+> 3. The different answer occurs because math.sin expects t angle to be in radian instead of degree. the student should use math.sin(math.radians(30))
+> f, t, f, t, f
+
+#### CBSE Evaluation & Model Answers:
+*   **Q1:** **100% Correct.** `math.ceil(-3.7)` returns `int -3`; `math.floor(-3.7)` returns `int -4`; `math.pow(3, 2)` returns `float 9.0`; `math.fabs(-10)` returns `float 10.0`.
+*   **Q2:** **100% Correct.** Raises `ValueError: math domain error`. Both `math.pow(4, 0.5)` and `math.sqrt(4)` return float `2.0`.
+*   **Q3:** **100% Correct.** Trigonometric functions expect angles in radians. Correct formulation: `math.sin(math.radians(30))` or `math.sin(30 * math.pi / 180)`.
+*   **True/False Statements:** `f, t, f, t, f` (5/5 Correct).

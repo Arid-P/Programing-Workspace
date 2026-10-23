@@ -69,7 +69,7 @@ Dictionaries
 - [x] C11-U2-24 Dict programs (character counting, employee/salary dictionary).
 Modules
 - [x] C11-U2-25 `import module` vs `from module import name`.
-- [ ] C11-U2-26 `math`: `pi, e, sqrt, ceil, floor, pow, fabs, sin, cos, tan`.
+- [x] C11-U2-26 `math`: `pi, e, sqrt, ceil, floor, pow, fabs, sin, cos, tan`.
 - [ ] C11-U2-27 `random`: `random, randint, randrange` (know endpoints included/excluded).
 - [ ] C11-U2-28 `statistics`: `mean, median, mode`.
 
