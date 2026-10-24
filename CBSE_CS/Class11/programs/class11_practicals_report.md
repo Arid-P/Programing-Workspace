@@ -942,3 +942,457 @@ Results for 1331:
 - Perfect Number:    False
 - Palindrome Number: True
 ```
+
+
+---
+
+### Program 12: Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
+* **File:** [`p12_gcd_lcm.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p12_gcd_lcm.py)
+* **Topic Alignment:** Unit 2 — While Loops, Functions, and Euclidean Algorithm
+* **Aim:** Compute the GCD (HCF) and LCM of two positive integers using the Euclidean algorithm and the relationship $\text{LCM}(a, b) = \frac{a \times b}{\text{GCD}(a, b)}$.
+
+#### Algorithm:
+1. **GCD Calculation (`compute_gcd`):**
+   - Validate that $a > 0$ and $b > 0$.
+   - While $b > 0$:
+     - Update $(a, b) \leftarrow (b, a \pmod b)$.
+   - Return $a$.
+2. **LCM Calculation (`compute_lcm`):**
+   - If $a = 0$ or $b = 0$, return 0.
+   - Compute $\text{gcd} = \text{compute\_gcd}(a, b)$.
+   - Return $(a \times b) \mathbin{//} \text{gcd}$.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 12: Greatest Common Divisor (GCD) and Least Common Multiple (LCM)
+CBSE Class 11 Practical File
+"""
+
+
+def compute_gcd(a: int, b: int) -> int:
+    """
+    Compute the GCD of two integers using the Euclidean algorithm.
+
+    Parameters:
+        a (int), b (int): Input integers.
+
+    Returns:
+        int: Greatest common divisor (non-negative).
+    """
+
+    if a <= 0 or b <= 0:
+        raise ValueError("GCD of non positive numbers cannot be computed")
+    elif a == 1 or b == 1:
+        return 1
+
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+
+def compute_lcm(a: int, b: int) -> int:
+    """
+    Compute the LCM of two integers.
+
+    Parameters:
+        a (int), b (int): Input integers.
+
+    Returns:
+        int: Least common multiple.
+        Note: If either a or b is 0, LCM is defined as 0.
+    """
+
+    if a == 0 or b == 0:
+        return 0
+    elif a <= 0 or b <= 0:
+        raise ValueError("LCM of negative numbers cannot be computed")
+
+    gcd = compute_gcd(a, b)
+    return a * b // gcd
+
+
+if __name__ == "__main__":
+    print("--- Program 12: GCD & LCM Calculator ---")
+    val_a = int(input("Enter first integer (a): "))
+    val_b = int(input("Enter second integer (b): "))
+
+    gcd_res = compute_gcd(val_a, val_b)
+    lcm_res = compute_lcm(val_a, val_b)
+
+    print(f"\nFor numbers {val_a} and {val_b}:")
+    print(f"- GCD (HCF): {gcd_res}")
+    print(f"- LCM:       {lcm_res}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Standard values):
+Enter first integer (a): 12
+Enter second integer (b): 18
+
+For numbers 12 and 18:
+- GCD (HCF): 6
+- LCM:       36
+
+Test Run 2 (Co-prime numbers):
+Enter first integer (a): 17
+Enter second integer (b): 13
+
+For numbers 17 and 13:
+- GCD (HCF): 1
+- LCM:       221
+```
+
+---
+
+### Program 13: Factorial, Permutations (nPr), and Combinations (nCr)
+* **File:** [`p13_factorial_permutations.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p13_factorial_permutations.py)
+* **Topic Alignment:** Unit 2 — Loops, Function Modularisation, and Combinatorics
+* **Aim:** Compute $n!$ iteratively and calculate permutations ${}^n P_r = \frac{n!}{(n-r)!}$ and combinations ${}^n C_r = \frac{n!}{r!(n-r)!}$.
+
+#### Algorithm:
+1. **Factorial (`compute_factorial`):**
+   - If $n < 0$, raise `ValueError`.
+   - If $n = 0$, return 1.
+   - Initialize `fact = 1`.
+   - While $n > 0$: multiply `fact *= n` and decrement $n \leftarrow n - 1$.
+   - Return `fact`.
+2. **Permutations (`compute_nPr`):**
+   - Validate $0 \le r \le n$.
+   - Return $\text{compute\_factorial}(n) \mathbin{//} \text{compute\_factorial}(n - r)$.
+3. **Combinations (`compute_nCr`):**
+   - If $n = r$, return 1.
+   - Return $\text{compute\_nPr}(n, r) \mathbin{//} \text{compute\_factorial}(r)$.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 13: Factorial, Permutations (nPr), and Combinations (nCr)
+CBSE Class 11 Practical File
+"""
+
+
+def compute_factorial(n: int) -> int:
+    """
+    Calculate n! iteratively.
+
+    Parameters:
+        n (int): Non-negative integer.
+
+    Returns:
+        int: Factorial of n (0! = 1, 1! = 1).
+        Raises ValueError if n < 0.
+    """
+
+    if n < 0:
+        raise ValueError("only non negative integers are within the domain")
+    elif n == 0:
+        return 1
+
+    fact = 1
+    while n > 0:
+        fact *= n
+        n = n - 1
+
+    return fact
+
+
+def compute_nPr(n: int, r: int) -> int:
+    """
+    Compute permutations: n! / (n - r)!
+    Valid conditions: 0 <= r <= n
+    """
+    if n < r:
+        raise ValueError(
+            "n (number of objects) must be greater or equal to r (number of objects being selected)"
+        )
+    elif n == r:
+        return compute_factorial(n)
+    elif n < 0 or r < 0:
+        raise ValueError("Only non negaative integers are in domain")
+
+    return compute_factorial(n) // compute_factorial(n - r)
+
+
+def compute_nCr(n: int, r: int) -> int:
+    """
+    Compute combinations: n! / (r! * (n - r)!)
+    Valid conditions: 0 <= r <= n
+    """
+    if n == r:
+        return 1
+
+    return compute_nPr(n, r) // compute_factorial(r)
+
+
+if __name__ == "__main__":
+    print("--- Program 13: Factorial, nPr, and nCr ---")
+    n_val = int(input("Enter n (total items >= 0): "))
+    r_val = int(input("Enter r (items chosen, 0 <= r <= n): "))
+
+    if n_val < 0 or r_val < 0 or r_val > n_val:
+        print("Invalid inputs! Ensure n >= 0 and 0 <= r <= n.")
+    else:
+        fact_n = compute_factorial(n_val)
+        fact_r = compute_factorial(r_val)
+        npr = compute_nPr(n_val, r_val)
+        ncr = compute_nCr(n_val, r_val)
+
+        print(f"\nFactorial ({n_val}!): {fact_n}")
+        print(f"Factorial ({r_val}!): {fact_r}")
+        print(f"Permutations P({n_val}, {r_val}): {npr}")
+        print(f"Combinations C({n_val}, {r_val}): {ncr}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1:
+Enter n (total items >= 0): 5
+Enter r (items chosen, 0 <= r <= n): 2
+
+Factorial (5!): 120
+Factorial (2!): 2
+Permutations P(5, 2): 20
+Combinations C(5, 2): 10
+
+Test Run 2 (Boundary edge cases):
+Enter n (total items >= 0): 4
+Enter r (items chosen, 0 <= r <= n): 4
+
+Factorial (4!): 24
+Factorial (4!): 24
+Permutations P(4, 4): 24
+Combinations C(4, 4): 1
+```
+
+---
+
+### Program 14: Find the Largest and Second Largest in a List
+* **File:** [`p14_second_largest_in_list.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p14_second_largest_in_list.py)
+* **Topic Alignment:** Unit 2 — Lists, Single-Pass Algorithms ($O(n)$)
+* **Aim:** Find the largest and strictly second largest distinct elements in a list without using `sort()` or `sorted()`.
+
+#### Algorithm:
+1. Handle base lengths: if list is empty return `(None, None)`; if length 1 return `(nums[0], None)`.
+2. Initialize `max_val = None` and `sec_max = None`.
+3. For each element `el` in `nums`:
+   - If `max_val is None` or `el > max_val`:
+     - Update `sec_max = max_val` and `max_val = el`.
+   - Else if `el != max_val` and (`sec_max is None` or `el > sec_max`):
+     - Update `sec_max = el`.
+4. Return `(max_val, sec_max)`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 14: Find the Largest and Second Largest in a List
+CBSE Class 11 Practical File
+"""
+
+
+def find_largest_and_second_largest(
+    nums: list[float],
+) -> tuple[float | None, float | None]:
+    """
+    Find the largest and strictly second largest distinct number in a list without sorting.
+
+    Parameters:
+        nums (list[float]): Input list of numerical values.
+
+    Returns:
+        tuple[float | None, float | None]: (largest, second_largest)
+        If list has fewer than 2 distinct elements, second_largest is None.
+        If list is empty, return (None, None).
+    """
+    if not nums:
+        return None, None
+    elif len(nums) == 1:
+        return nums[0], None
+    elif len(nums) == 2:
+        if nums[0] == nums[1]:
+            return (nums[0], None)
+
+        return (nums[0], nums[1]) if nums[0] > nums[1] else (nums[1], nums[0])
+
+    max_val = None
+    sec_max = None
+
+    for el in nums:
+        if max_val is None or el > max_val:
+            sec_max = max_val
+            max_val = el
+        elif el != max_val and (sec_max is None or el > sec_max):
+            sec_max = el
+
+    return (max_val, sec_max)
+
+
+if __name__ == "__main__":
+    print("--- Program 14: Largest and Second Largest in List ---")
+    raw = input("Enter numbers separated by spaces: ")
+    numbers = [float(val) for val in raw.split()]
+
+    first, second = find_largest_and_second_largest(numbers)
+    print(f"\nGiven list: {numbers}")
+    print(f"Largest:        {first}")
+    print(f"Second Largest: {second}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Distinct elements with duplicates):
+Enter numbers separated by spaces: 12 45 2 45 31 8
+
+Given list: [12.0, 45.0, 2.0, 45.0, 31.0, 8.0]
+Largest:        45.0
+Second Largest: 31.0
+
+Test Run 2 (First element largest):
+Enter numbers separated by spaces: 50 20 30 40
+
+Given list: [50.0, 20.0, 30.0, 40.0]
+Largest:        50.0
+Second Largest: 40.0
+
+Test Run 3 (All identical elements):
+Enter numbers separated by spaces: 10 10 10
+
+Given list: [10.0, 10.0, 10.0]
+Largest:        10.0
+Second Largest: None
+```
+
+---
+
+### Program 15: Count Frequency of Elements in a List
+* **File:** [`p15_list_element_frequencies.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p15_list_element_frequencies.py)
+* **Topic Alignment:** Unit 2 — Lists, Dictionaries, and Frequency Counting
+* **Aim:** Count the occurrence frequency of each unique element in a list using manual traversal and dictionary mappings.
+
+#### Algorithm:
+1. **Manual Frequency Counting (`count_frequencies_manual`):**
+   - Build a `unique` list by appending each element only if `el not in unique`.
+   - For each unique element `u_el`:
+     - Count its occurrences by traversing `lst`.
+     - Append `(u_el, freq)` tuple to results.
+   - Return list of tuples.
+2. **Dictionary Frequency Counting (`count_frequencies_dict`):**
+   - Extract unique items into `unique` using `not in`.
+   - Initialize dictionary with `dict().fromkeys(unique, 0)`.
+   - Traverse `frequency.keys()`:
+     - Count occurrences in `lst` and update dictionary key with count.
+   - Return frequency dictionary.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 15: Count Frequency of Elements in a List
+CBSE Class 11 Practical File
+"""
+
+from typing import Any
+
+
+def count_frequencies_manual(lst: list) -> list[tuple[Any, int]]:
+    """
+    Count frequencies manually without built-in count() or dictionaries.
+
+    Parameters:
+        lst (list): List of arbitrary elements.
+
+    Returns:
+        list[tuple[Any, int]]: List of (element, frequency) tuples in order of first appearance.
+    """
+    unique = []
+    for el in lst:
+        if el not in unique:
+            unique.append(el)
+
+    frequency: list[tuple[Any, int]] = []
+
+    for u_el in unique:
+        freq = 0
+        for el in lst:
+            if el == u_el:
+                freq += 1
+
+        frequency.append((u_el, freq))
+
+    return frequency
+
+
+def count_frequencies_dict(lst: list) -> dict[Any, int]:
+    """
+    Count frequencies using a Python dictionary.
+
+    Parameters:
+        lst (list): List of hashable elements.
+
+    Returns:
+        dict[Any, int]: Mapping of element -> count.
+    """
+    unique = []
+    for el in lst:
+        if el not in unique:
+            unique.append(el)
+
+    frequency: dict[Any, int] = dict().fromkeys(unique, 0)
+    del unique  # to free up space
+
+    for u_el in frequency.keys():
+        freq = 0
+        for el in lst:
+            if el == u_el:
+                freq += 1
+
+        frequency.update({u_el: freq})
+
+    return frequency
+
+
+if __name__ == "__main__":
+    print("--- Program 15: Frequency of Elements in List ---")
+    raw = input("Enter elements separated by spaces: ")
+    elements = raw.split()
+
+    print(f"\nOriginal List: {elements}")
+
+    # Method 1: Manual List Frequency
+    manual_freq = count_frequencies_manual(elements)
+    print("\n--- Frequency Table (Manual Method) ---")
+    print(f"{'Element':<15} {'Frequency':<10}")
+    print("-" * 25)
+    for item, count in manual_freq:
+        print(f"{str(item):<15} {count:<10}")
+
+    # Method 2: Dictionary Frequency
+    dict_freq = count_frequencies_dict(elements)
+    print("\n--- Frequency Table (Dictionary Method) ---")
+    print(f"{'Element':<15} {'Frequency':<10}")
+    print("-" * 25)
+    for item, count in dict_freq.items():
+        print(f"{str(item):<15} {count:<10}")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run:
+Enter elements separated by spaces: apple banana apple orange banana apple
+
+Original List: ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+
+--- Frequency Table (Manual Method) ---
+Element         Frequency 
+-------------------------
+apple           3         
+banana          2         
+orange          1         
+
+--- Frequency Table (Dictionary Method) ---
+Element         Frequency 
+-------------------------
+apple           3         
+banana          2         
+orange          1         
+```
