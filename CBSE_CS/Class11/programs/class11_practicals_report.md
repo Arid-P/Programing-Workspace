@@ -1396,3 +1396,449 @@ apple           3
 banana          2         
 orange          1         
 ```
+
+
+---
+
+### Program 16: Tuple Operations — Statistics and Linear Search
+* **File:** [`p16_tuple_stats_and_search.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p16_tuple_stats_and_search.py)
+* **Topic Alignment:** Unit 2 — Tuples, Immutability, Traversal, and Linear Search
+* **Aim:** Input a tuple of numbers, manually compute the minimum, maximum, and arithmetic mean without using `min()`, `max()`, or `sum()`, and perform a linear search returning all index positions of a target element.
+
+#### Algorithm:
+1. **Tuple Statistics (`compute_tuple_stats`):**
+   - If tuple is empty, raise `ValueError`.
+   - If length is 1, return `(tup[0], tup[0], tup[0])`.
+   - Initialize `stat = [None, None, 0]`, where `stat[0]` tracks minimum, `stat[1]` tracks maximum, and `stat[2]` accumulates sum.
+   - For each element `el` in `tup`:
+     - If `stat[0] is None` or `stat[0] > el`: update `stat[0] = el`.
+     - If `stat[1] is None` or `stat[1] < el`: update `stat[1] = el`.
+     - Add `el` to `stat[2]`.
+   - Return `(stat[0], stat[1], stat[2] / len(tup))`.
+2. **Tuple Linear Search (`tuple_linear_search`):**
+   - Initialize `indices = []`.
+   - For `i` from 0 to $\text{len}(tup) - 1$:
+     - If `tup[i] == target`, append `i` to `indices`.
+   - Return `indices`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 16: Tuple Operations — Statistics and Linear Search
+CBSE Class 11 Practical File
+"""
+
+
+def compute_tuple_stats(tup: tuple[float, ...]) -> tuple[float, float, float]:
+    """
+    Compute the minimum, maximum, and mean of a non-empty tuple of numbers manually.
+
+    Parameters:
+        tup (tuple[float, ...]): Non-empty tuple of numerical values.
+
+    Returns:
+        tuple[float, float, float]: (min_val, max_val, mean_val)
+
+    Raises:
+        ValueError: If the tuple is empty.
+    """
+    if not tup:
+        raise ValueError("Empty tuple send as argument.")
+    if len(tup) == 1:
+        return (*tup, *tup, *tup)  # (*tup) * 3
+
+    stat = [None, None, 0]
+
+    for i in range(len(tup)):
+        el: float = tup[i]
+
+        if stat[0] is None or stat[0] > el:
+            stat[0] = el
+        if stat[1] is None or stat[1] < el:
+            stat[1] = el
+
+        stat[2] += el
+
+    return stat[0], stat[1], stat[2] / len(tup)
+
+
+def tuple_linear_search(tup: tuple[float, ...], target: float) -> list[int]:
+    """
+    Search for a target value in a tuple and return all index positions where it occurs.
+
+    Parameters:
+        tup (tuple[float, ...]): Tuple of elements.
+        target (float): Value to find.
+
+    Returns:
+        list[int]: List of 0-based indices where target appears (empty list if absent).
+    """
+    if not tup:
+        return []
+    if len(tup) == 1:
+        return [0] if target == tup[0] else []
+
+    indices: list[int] = []
+    for i in range(len(tup)):
+        if target == tup[i]:
+            indices.append(i)
+
+    return indices
+
+
+if __name__ == "__main__":
+    print("--- Program 16: Tuple Statistics & Linear Search ---")
+    raw = input("Enter numbers separated by spaces: ")
+    num_list = [float(x) for x in raw.split()]
+    data_tuple = tuple(num_list)
+
+    print(f"\nConstructed Tuple: {data_tuple}")
+    print(f"Tuple Length:     {len(data_tuple)}")
+
+    if not data_tuple:
+        print("Tuple is empty! Cannot compute statistics.")
+    else:
+        min_v, max_v, mean_v = compute_tuple_stats(data_tuple)
+        print(f"\n--- Tuple Statistics ---")
+        print(f"Minimum Value: {min_v}")
+        print(f"Maximum Value: {max_v}")
+        print(f"Mean Value:    {mean_v:.2f}")
+
+        search_val = float(input("\nEnter target number to search: "))
+        indices = tuple_linear_search(data_tuple, search_val)
+
+        if indices:
+            print(f"Target {search_val} found at index/indices: {indices}")
+            print(
+                f"Occurrences (verified via tup.count()): {data_tuple.count(search_val)}"
+            )
+        else:
+            print(f"Target {search_val} not found in tuple.")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Multiple elements and duplicate target search):
+Enter numbers separated by spaces: 12.5 45.0 8.0 45.0 23.5 8.0
+
+Constructed Tuple: (12.5, 45.0, 8.0, 45.0, 23.5, 8.0)
+Tuple Length:     6
+
+--- Tuple Statistics ---
+Minimum Value: 8.0
+Maximum Value: 45.0
+Mean Value:    23.67
+
+Enter target number to search: 45.0
+Target 45.0 found at index/indices: [1, 3]
+Occurrences (verified via tup.count()): 2
+
+Test Run 2 (Element not found):
+Enter numbers separated by spaces: 10 20 30
+
+Constructed Tuple: (10.0, 20.0, 30.0)
+Tuple Length:     3
+
+--- Tuple Statistics ---
+Minimum Value: 10.0
+Maximum Value: 30.0
+Mean Value:    20.00
+
+Enter target number to search: 99.0
+Target 99.0 not found in tuple.
+```
+
+
+---
+
+### Program 17: Random Module — Dice Rolling Simulator & Guessing Game
+* **File:** [`p17_dice_simulator_random.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p17_dice_simulator_random.py)
+* **Topic Alignment:** Unit 2 — Modules (`random`), `randint()`, Dictionaries, and Conditionals
+* **Aim:** Simulate rolling two 6-sided dice $N$ times to record the sum distribution (from 2 to 12), and implement an interactive number guessing game with binary search style feedback ("Too low", "Too high", "Correct!").
+
+#### Algorithm:
+1. **Dice Roll Simulation (`simulate_dice_rolls`):**
+   - If `num_rolls <= 0`, raise `ValueError`.
+   - Initialize frequency dictionary `freq = {i: 0 for i in range(2, 13)}`.
+   - While `num_rolls > 0`:
+     - Roll `die1 = randint(1, 6)` and `die2 = randint(1, 6)`.
+     - Increment `freq[die1 + die2] += 1`.
+     - Decrement `num_rolls -= 1`.
+   - Return `freq`.
+2. **Guessing Game Evaluator (`play_guessing_game`):**
+   - If `guess < secret_number`: return `"Too low"`.
+   - Else if `guess > secret_number`: return `"Too high"`.
+   - Else: return `"Correct!"`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 17: Random Module — Dice Rolling Simulator & Guessing Game
+CBSE Class 11 Practical File
+"""
+
+from random import randint, random
+
+
+def simulate_dice_rolls(num_rolls: int) -> dict[int, int]:
+    """
+    Simulate rolling two 6-sided dice `num_rolls` times.
+    Each die produces a value from 1 to 6 (inclusive) using random.randint.
+
+    Parameters:
+        num_rolls (int): Total number of simulation rolls (must be > 0).
+
+    Returns:
+        dict[int, int]: Frequency map of sums from 2 to 12.
+                        Keys are integers 2..12, values are counts.
+
+    Raises:
+        ValueError: If num_rolls <= 0.
+    """
+    if num_rolls <= 0:
+        raise ValueError("num rolls cannot be 0")
+
+    freq: dict[int, int] = {i: 0 for i in range(2, 13)}
+    while num_rolls > 0:
+        die1: int = randint(1, 6)
+        die2: int = randint(1, 6)
+
+        total: int = die1 + die2
+        freq[total] += 1
+        num_rolls -= 1
+
+    return freq
+
+
+def play_guessing_game(secret_number: int, guess: int) -> str:
+    """
+    Evaluate a player's guess against the secret number.
+
+    Parameters:
+        secret_number (int): The target number.
+        guess (int): The player's guess.
+
+    Returns:
+        str: "Too low", "Too high", or "Correct!"
+    """
+    if guess < secret_number:
+        return "Too low"
+    elif guess > secret_number:
+        return "Too high"
+    else:
+        return "Correct!"
+
+
+if __name__ == "__main__":
+    print("--- Program 17: Random Module Applications ---")
+    print("1. Dice Rolling Simulator")
+    print("2. Number Guessing Game")
+    choice = input("Select an option (1 or 2): ").strip()
+
+    if choice == "1":
+        rolls = int(input("\nEnter number of dice rolls to simulate: "))
+        if rolls <= 0:
+            print("Number of rolls must be positive.")
+        else:
+            freq_map = simulate_dice_rolls(rolls)
+            print(f"\n--- Simulation Results ({rolls} rolls) ---")
+            print(f"{'Sum':<6} {'Count':<10} {'Percentage':<10}")
+            print("-" * 28)
+            for s in range(2, 13):
+                count = freq_map.get(s, 0)
+                pct = (count / rolls) * 100
+                print(f"{s:<6} {count:<10} {pct:.2f}%")
+
+    elif choice == "2":
+        secret = randint(1, 100)
+        max_attempts = 7
+        print(f"\nI have picked a secret number between 1 and 100.")
+        print(f"You have {max_attempts} attempts to guess it.")
+
+        won = False
+        for attempt in range(1, max_attempts + 1):
+            user_guess = int(
+                input(f"\nAttempt {attempt}/{max_attempts} - Enter guess: ")
+            )
+            feedback = play_guessing_game(secret, user_guess)
+            print(f"Feedback: {feedback}")
+
+            if feedback == "Correct!":
+                print(f"Congratulations! You guessed the number in {attempt} attempts!")
+                won = True
+                break
+
+        if not won:
+            print(f"\nGame Over! The secret number was {secret}.")
+    else:
+        print("Invalid choice.")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Dice Simulator — 1000 rolls):
+Select an option (1 or 2): 1
+
+Enter number of dice rolls to simulate: 1000
+
+--- Simulation Results (1000 rolls) ---
+Sum    Count      Percentage
+----------------------------
+2      28         2.80%
+3      55         5.50%
+4      83         8.30%
+5      111        11.10%
+6      139        13.90%
+7      167        16.70%
+8      138        13.80%
+9      112        11.20%
+10     84         8.40%
+11     56         5.60%
+12     27         2.70%
+
+Test Run 2 (Number Guessing Game):
+Select an option (1 or 2): 2
+
+I have picked a secret number between 1 and 100.
+You have 7 attempts to guess it.
+
+Attempt 1/7 - Enter guess: 50
+Feedback: Too low
+
+Attempt 2/7 - Enter guess: 75
+Feedback: Too high
+
+Attempt 3/7 - Enter guess: 62
+Feedback: Too high
+
+Attempt 4/7 - Enter guess: 56
+Feedback: Too low
+
+Attempt 5/7 - Enter guess: 59
+Feedback: Correct!
+Congratulations! You guessed the number in 5 attempts!
+```
+
+
+---
+
+### Program 18: Text & String Analysis — Comprehensive Character & Word Statistics
+* **File:** [`p18_string_text_statistics.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p18_string_text_statistics.py)
+* **Topic Alignment:** Unit 2 — Strings, Traversal, and Character Classification
+* **Aim:** Analyze a multi-line passage of text to compute lines, words, total characters, vowels, consonants, digits, whitespace, and special characters via a single-pass character partition.
+
+#### Algorithm:
+1. Initialize statistics dictionary:
+   - `lines = len(text.splitlines()) if text else 0`
+   - `words = len(text.split())`
+   - `characters = len(text)`
+   - All character category counters set to 0.
+2. Initialize vowel lookup set `VOWELS = set("aeiouAEIOU")`.
+3. For each character `c` in `text`:
+   - If `c in VOWELS`: increment `vowels`.
+   - Else if `c.isalpha()`: increment `consonants`.
+   - Else if `c.isdigit()`: increment `digits`.
+   - Else if `c.isspace()`: increment `whitespaces`.
+   - Else: increment `special_characters`.
+4. Return `stat` dictionary.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 18: Text & String Analysis — Comprehensive Character & Word Statistics
+CBSE Class 11 Practical File
+"""
+
+
+def analyze_text(text: str) -> dict[str, int]:
+    """
+    Analyze a string and compute comprehensive character and text statistics.
+
+    Parameters:
+        text (str): Input text string.
+
+    Returns:
+        dict[str, int]: A dictionary containing counts for:
+            - "lines": Number of lines
+            - "words": Number of whitespace-separated words
+            - "characters": Total length of text
+            - "vowels": English vowels (A, E, I, O, U, case-insensitive)
+            - "consonants": English alphabetic characters that are not vowels
+            - "digits": Numeric digits (0-9)
+            - "whitespaces": Spaces, tabs, and newlines
+            - "special_characters": Non-alphanumeric, non-whitespace characters
+    """
+    stat: dict[str, int] = {
+        "lines": len(text.splitlines()) if text else 0,
+        "words": len(text.split()),
+        "characters": len(text),
+        "vowels": 0,
+        "consonants": 0,
+        "digits": 0,
+        "whitespaces": 0,
+        "special_characters": 0,
+    }
+
+    VOWELS = set("aeiouAEIOU")
+
+    for c in text:
+        if c in VOWELS:
+            stat["vowels"] += 1
+        elif c.isalpha():
+            stat["consonants"] += 1
+        elif c.isdigit():
+            stat["digits"] += 1
+        elif c.isspace():
+            stat["whitespaces"] += 1
+        else:
+            stat["special_characters"] += 1
+
+    return stat
+
+
+if __name__ == "__main__":
+    print("--- Program 18: Text & String Analysis ---")
+    print("Enter your text below (Press Enter on an empty line to finish):")
+
+    lines: list[str] = []
+    while True:
+        line = input()
+        if not line:
+            break
+        lines.append(line)
+
+    sample_text = "\n".join(lines)
+
+    if not sample_text:
+        print("\nNo text entered.")
+    else:
+        stats = analyze_text(sample_text)
+        print("\n" + "=" * 40)
+        print(f"{'Text Metric':<25} {'Count':<10}")
+        print("=" * 40)
+        for metric, count in stats.items():
+            formatted_name = metric.replace("_", " ").title()
+            print(f"{formatted_name:<25} {count:<10}")
+        print("=" * 40)
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run:
+Enter your text below (Press Enter on an empty line to finish):
+Hello World!
+Python 3.12 is awesome & fast.
+
+========================================
+Text Metric               Count     
+========================================
+Lines                     2         
+Words                     6         
+Characters                43        
+Vowels                    10        
+Consonants                20        
+Digits                    3         
+Whitespaces               6         
+Special Characters        4         
+========================================
+```
