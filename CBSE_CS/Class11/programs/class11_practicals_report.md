@@ -1842,3 +1842,347 @@ Whitespaces               6
 Special Characters        4         
 ========================================
 ```
+
+
+---
+
+### Program 19: Math Module Applications — Mathematical & Trigonometric Tables
+* **File:** [`p19_math_module_table.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p19_math_module_table.py)
+* **Topic Alignment:** Unit 2 — Modules (`math`), Functions, and Domain Protection
+* **Aim:** Utilize Python's `math` module functions (`sqrt`, `floor`, `ceil`, `fabs`, `radians`, `sin`, `cos`, `tan`) to tabulate mathematical properties and trigonometric outputs.
+
+#### Algorithm:
+1. **Mathematical Properties (`compute_math_properties`):**
+   - Compute `square = val ** 2`.
+   - Protect domain: if `val >= 0`, compute `math.sqrt(val)`; otherwise return `None`.
+   - Compute `floor = float(math.floor(val))`.
+   - Compute `ceil = float(math.ceil(val))`.
+   - Compute `fabs = math.fabs(val)`.
+   - Return dictionary of properties.
+2. **Trigonometric Calculations (`compute_trig_values`):**
+   - Convert degrees to radians: `rad = math.radians(angle_degrees)`.
+   - Compute `sin(rad)`, `cos(rad)`, and `tan(rad)`.
+   - Return dictionary with degrees, radians, and trigonometric values.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 19: Math Module Applications — Mathematical & Trigonometric Tables
+CBSE Class 11 Practical File
+"""
+
+import math
+
+
+def compute_math_properties(val: float) -> dict[str, float | None]:
+    """
+    Compute mathematical properties for a real number using the `math` module.
+
+    Parameters:
+        val (float): Input real number.
+
+    Returns:
+        dict[str, float | None]: A dictionary with keys:
+            - "val": Original value
+            - "square": val ** 2
+            - "sqrt": math.sqrt(val) if val >= 0 else None (to avoid domain error)
+            - "floor": float(math.floor(val))
+            - "ceil": float(math.ceil(val))
+            - "fabs": math.fabs(val)
+    """
+    return {
+        "val": val,
+        "square": val**2,
+        "sqrt": math.sqrt(val) if val >= 0 else None,
+        "floor": float(math.floor(val)),
+        "ceil": float(math.ceil(val)),
+        "fabs": math.fabs(val),
+    }
+
+
+def compute_trig_values(angle_degrees: float) -> dict[str, float]:
+    """
+    Compute trigonometric values for an angle given in degrees.
+
+    Parameters:
+        angle_degrees (float): Angle in degrees.
+
+    Returns:
+        dict[str, float]: A dictionary with keys:
+            - "degrees": Original angle in degrees
+            - "radians": math.radians(angle_degrees)
+            - "sin": math.sin(radians)
+            - "cos": math.cos(radians)
+            - "tan": math.tan(radians)
+    """
+    radians = math.radians(angle_degrees)
+
+    return {
+        "degrees": angle_degrees,
+        "radians": math.radians(angle_degrees),
+        "sin": math.sin(radians),
+        "cos": math.cos(radians),
+        "tan": math.tan(radians),
+    }
+
+
+if __name__ == "__main__":
+    print("--- Program 19: Math Module Applications ---")
+    print("1. Mathematical Functions Table")
+    print("2. Trigonometric Values Table")
+    choice = input("Select an option (1 or 2): ").strip()
+
+    if choice == "1":
+        raw = input("\nEnter numbers separated by spaces (e.g. -3.7 0 4 9.5): ")
+        numbers = [float(x) for x in raw.split()]
+
+        print("\n" + "=" * 65)
+        print(
+            f"{'Value':<10} {'Square':<12} {'Sqrt':<12} {'Floor':<10} {'Ceil':<10} {'Fabs':<10}"
+        )
+        print("=" * 65)
+        for num in numbers:
+            props = compute_math_properties(num)
+            sqrt_str = (
+                f"{props['sqrt']:.4f}" if props["sqrt"] is not None else "DomainErr"
+            )
+            print(
+                f"{props['val']:<10.2f} "
+                f"{props['square']:<12.2f} "
+                f"{sqrt_str:<12} "
+                f"{props['floor']:<10.0f} "
+                f"{props['ceil']:<10.0f} "
+                f"{props['fabs']:<10.2f}"
+            )
+        print("=" * 65)
+
+    elif choice == "2":
+        standard_angles = [0.0, 30.0, 45.0, 60.0, 90.0, 180.0]
+        print(f"\nComputing for standard angles: {standard_angles}")
+
+        print("\n" + "=" * 55)
+        print(
+            f"{'Degrees':<10} {'Radians':<12} {'sin(x)':<12} {'cos(x)':<12} {'tan(x)':<12}"
+        )
+        print("=" * 55)
+        for ang in standard_angles:
+            trig = compute_trig_values(ang)
+            tan_val = trig["tan"]
+            tan_str = f"{tan_val:.4f}" if abs(tan_val) < 1e10 else "Undefined"
+            print(
+                f"{trig['degrees']:<10.1f} "
+                f"{trig['radians']:<12.4f} "
+                f"{trig['sin']:<12.4f} "
+                f"{trig['cos']:<12.4f} "
+                f"{tan_str:<12}"
+            )
+        print("=" * 55)
+    else:
+        print("Invalid choice.")
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Math Properties Table):
+Select an option (1 or 2): 1
+
+Enter numbers separated by spaces (e.g. -3.7 0 4 9.5): -3.7 0 4 9.5
+
+=================================================================
+Value      Square       Sqrt         Floor      Ceil       Fabs      
+=================================================================
+-3.70      13.69        DomainErr    -4         -3         3.70      
+0.00       0.00         0.0000       0          0          0.00      
+4.00       16.00        2.0000       4          4          4.00      
+9.50       90.25        3.0822       9          10         9.50      
+=================================================================
+
+Test Run 2 (Trigonometric Table):
+Select an option (1 or 2): 2
+
+Computing for standard angles: [0.0, 30.0, 45.0, 60.0, 90.0, 180.0]
+
+=======================================================
+Degrees    Radians      sin(x)       cos(x)       tan(x)      
+=======================================================
+0.0        0.0000       0.0000       1.0000       0.0000      
+30.0       0.5236       0.5000       0.8660       0.5774      
+45.0       0.7854       0.7071       0.7071       1.0000      
+60.0       1.0472       0.8660       0.5000       1.7321      
+90.0       1.5708       1.0000       0.0000       Undefined   
+180.0      3.1416       0.0000       -1.0000      -0.0000     
+=======================================================
+```
+
+---
+
+### Program 20: Comprehensive Dataset Statistics — Manual vs Statistics Module
+* **File:** [`p20_dataset_statistics.py`](file:///home/hp/Programing-Workspace/CBSE_CS/Class11/programs/p20_dataset_statistics.py)
+* **Topic Alignment:** Unit 2 — Statistics Module, Central Tendencies, and Stable Sorting
+* **Aim:** Manually compute arithmetic mean, median (odd and even dataset handling), and mode (first-occurring mode in multimodal ties using stable negative-frequency sorting), and cross-verify with the standard `statistics` module.
+
+#### Algorithm:
+1. **Manual Statistics (`compute_manual_statistics`):**
+   - If `data` is empty, raise `ValueError`.
+   - **Mean:** $\frac{\sum \text{data}}{\text{len}(\text{data})}$.
+   - **Mode:** Count frequencies using dictionary mapping. Sort items by `-frequency` using stable sort `sorted(..., key=lambda tup: -tup[1])`. Select the first key `[0][0]`, preserving original occurrence order in case of frequency ties.
+   - **Median:** Sort copy of data. If length $n$ is odd, median is `data[n // 2]`. If $n$ is even, median is `(data[n // 2 - 1] + data[n // 2]) / 2.0`.
+   - Return dictionary containing `"mean"`, `"median"`, and `"mode"`.
+2. **Module Statistics (`compute_module_statistics`):**
+   - If `data` is empty, raise `ValueError`.
+   - Return `{"mean": statistics.mean(data), "median": statistics.median(data), "mode": statistics.mode(data)}`.
+
+#### Verified Student Implementation:
+```python
+"""
+Program 20: Comprehensive Dataset Statistics — Manual vs Statistics Module
+CBSE Class 11 Practical File
+"""
+
+from statistics import mean, median, mode
+
+
+def count_frequencies_dict(lst: list) -> dict[int, int]:
+    freq = {}
+    for el in lst:
+        freq[el] = freq.get(el, 0) + 1
+    return freq
+
+
+def compute_manual_statistics(data: list[float]) -> dict[str, float]:
+    """
+    Manually compute mean, median, and mode for a non-empty list of numbers.
+
+    Parameters:
+        data (list[float]): Non-empty list of numerical values.
+
+    Returns:
+        dict[str, float]: A dictionary containing:
+            - "mean": Arithmetic mean
+            - "median": Median value
+            - "mode": Most frequent value (first encountered if tied)
+
+    Raises:
+        ValueError: If data is empty.
+    """
+    if not data:
+        raise ValueError("No dataset provide")
+
+    stats = {
+        "mean": sum(data) / len(data),
+        "median": None,
+        "mode": sorted(count_frequencies_dict(data).items(), key=lambda tup: -tup[1])[
+            0
+        ][0],
+    }
+
+    data = sorted(data)
+    n = len(data)
+
+    if n % 2 == 1:
+        stats["median"] = data[n // 2]  # zero based indexing
+    else:
+        stats["median"] = (data[n // 2 - 1] + data[n // 2]) / 2
+
+    return stats
+
+
+def compute_module_statistics(data: list[float]) -> dict[str, float]:
+    """
+    Compute mean, median, and mode using Python's built-in `statistics` module.
+
+    Parameters:
+        data (list[float]): Non-empty list of numerical values.
+
+    Returns:
+        dict[str, float]: A dictionary containing:
+            - "mean": statistics.mean(data)
+            - "median": statistics.median(data)
+            - "mode": statistics.mode(data)
+
+    Raises:
+        ValueError: If data is empty.
+    """
+    if not data:
+        raise ValueError("No dataset provide")
+
+    return {"mean": mean(data), "median": median(data), "mode": mode(data)}
+
+
+if __name__ == "__main__":
+    print("--- Program 20: Dataset Statistics (Manual vs Module) ---")
+    raw = input("Enter numbers separated by spaces (e.g. 10 20 20 30 40 40): ")
+    numbers = [float(x) for x in raw.split()]
+
+    if not numbers:
+        print("Dataset is empty! Cannot compute statistics.")
+    else:
+        print(f"\nDataset: {numbers}")
+        print(f"Sample Size (N): {len(numbers)}")
+
+        manual_stats = compute_manual_statistics(numbers)
+        module_stats = compute_module_statistics(numbers)
+
+        print("\n" + "=" * 55)
+        print(f"{'Statistic':<15} {'Manual Method':<18} {'Statistics Module':<18}")
+        print("=" * 55)
+        print(
+            f"{'Mean':<15} {manual_stats['mean']:<18.4f} {module_stats['mean']:<18.4f}"
+        )
+        print(
+            f"{'Median':<15} {manual_stats['median']:<18.4f} {module_stats['median']:<18.4f}"
+        )
+        print(
+            f"{'Mode':<15} {manual_stats['mode']:<18.4f} {module_stats['mode']:<18.4f}"
+        )
+        print("=" * 55)
+
+        # Verification check
+        match_mean = abs(manual_stats["mean"] - module_stats["mean"]) < 1e-9
+        match_median = abs(manual_stats["median"] - module_stats["median"]) < 1e-9
+        match_mode = abs(manual_stats["mode"] - module_stats["mode"]) < 1e-9
+
+        if match_mean and match_median and match_mode:
+            print(
+                "\nResult Verification: All manual metrics match the statistics module perfectly!"
+            )
+        else:
+            print(
+                "\nResult Verification: Discrepancy detected between manual and module calculations."
+            )
+```
+
+#### Sample Execution Outputs:
+```text
+Test Run 1 (Standard dataset):
+Enter numbers separated by spaces (e.g. 10 20 20 30 40 40): 10 20 20 20 30 40
+
+Dataset: [10.0, 20.0, 20.0, 20.0, 30.0, 40.0]
+Sample Size (N): 6
+
+=======================================================
+Statistic       Manual Method      Statistics Module 
+=======================================================
+Mean            23.3333            23.3333           
+Median          20.0000            20.0000           
+Mode            20.0000            20.0000           
+=======================================================
+
+Result Verification: All manual metrics match the statistics module perfectly!
+
+Test Run 2 (Multimodal tie-breaking with even length):
+Enter numbers separated by spaces (e.g. 10 20 20 30 40 40): 40 40 20 20 10 30
+
+Dataset: [40.0, 40.0, 20.0, 20.0, 10.0, 30.0]
+Sample Size (N): 6
+
+=======================================================
+Statistic       Manual Method      Statistics Module 
+=======================================================
+Mean            26.6667            26.6667           
+Median          25.0000            25.0000           
+Mode            40.0000            40.0000           
+=======================================================
+
+Result Verification: All manual metrics match the statistics module perfectly!
+```
