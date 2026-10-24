@@ -29,6 +29,7 @@ Out of scope by his decision: **FLUX** (a parked Flutter app spec), Flutter/Dart
 - **Hardware/OS:** Ubuntu Linux laptop + VS Code (recently switched; earlier he coded on Android via Termux/Acode/Pydroid).
 - **Tools in use:** uv (Astral), git + GitHub, TickTick (tasks), Notewise/NotebookLM (notes), Gemini, agy, Claude.
 - **Python:** CPython 3.14 (via uv), earlier 3.11/3.12 appear in the workspace.
+- **AI token budgets:** PLANNER and TEACHER chats are token-limited; batch requests and keep prompts self-contained.
 
 ## 4. Verified skill inventory
 
@@ -41,10 +42,12 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - FastAPI: has written basic routes himself; used a Pydantic model for a request body; tested endpoints via `/docs`.
 - SQL: writes basic queries from memory; primary/foreign keys; created tables himself; understands what an ORM does; has queried a DB from Python.
 - NumPy: array creation/operations/slicing (retention weaker than he fears).
-- Git (updated 2026-09-30): three areas, branch lifecycle (create/switch/safe-delete/force-delete), fast-forward vs three-way merge (verified with real commit graphs), conflict resolution, remotes (fetch/pull/push -u/clone), .gitignore + git rm --cached, git revert. Still shaky: git reset variants (explained, unproven), commit-message habit (understood, not yet automatic).
+- Git (updated 2026-09-30): three areas, branch lifecycle (create/switch/safe-delete/force-delete), fast-forward vs three-way merge (verified with real commit graphs), conflict resolution, remotes (fetch/pull/push -u/clone), .gitignore + git rm --cached, git revert. reset/restore/diff variants and the Conventional Commits habit verified 2026-10-24 (statements 16/16; 9 of 10 recent commits conform).
 - DSA (LeetCode-level): arrays, hashmaps, two pointers, stacks, queues; binary search; recursion; Big-O estimation; conceptual linked lists. Solved a handful of easy/medium problems (Two Sum, Add Two Numbers, Longest Substring Without Repeating Characters, Best Time to Buy/Sell Stock, Remove Duplicates from Sorted Array, HackerRank array set).
 - Debugging own code with prints/debugger; knows what a dependency and an environment variable are; understands frontend vs backend conceptually.
 - **Milestone 00 (uv):** completed and explained in his own README (see `07` log).
+- **Milestone 01 (JSON + Git):** complete 24/24 (2026-10-24). JSON read/write/modify-safely used in two M01 builds (see 07); merge conflicts resolved manually.
+- **CBSE Class 11 Units 1–2 (2026-10-24):** Unit 1 10/10 (systems, number systems, Boolean logic, encoding). Unit 2 28/28 (Python per CBSE; cold diagnostic 24/36, retest 23/24). Caveat: exception-type recall and dict-method details can fade; recheck in Class 12 week 1.
 
 ### PARTIAL
 - Multi-file imports: writes modules but repeatedly hits **circular imports** in SQLAlchemy model files.
@@ -54,16 +57,14 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - One-to-many / many-to-many relationships: mostly conceptual.
 
 ### GAP (never done / cannot do)
-- **JSON:** cannot write, read, or use it reliably (`json.dump/load` never used successfully).
 - **APIs/HTTP:** has never made a real `requests.get()`; does not know status codes, HTTP methods as concepts, headers, or authentication in practice. (Oddity: he can write `@app.get` routes without formally knowing HTTP methods.)
 - `uvicorn` and `async def` (what they do).
 - **Flask:** never wrote a route, does not know `render_template`. (See §9: an AI summary falsely claimed this.)
-- Merge conflicts (never resolved manually).
 - Plotting from memory (Matplotlib).
 - Deployment: never deployed anything.
 - Trees, graphs (BFS/DFS), dynamic programming: zero practical understanding.
 - CSS and JavaScript: never written. HTML: has written *some* (self-check statement "never written HTML" was false).
-- CBSE-style Python details (method lists, output prediction) and CBSE Units on Boolean logic/number systems/networks/society-law-ethics: not yet assessed.
+- CBSE Class 11 Unit 3 (Society, Law, Ethics; in progress) and Class 12 Units (networks, databases): not yet assessed.
 
 ## 5. Projects: who really wrote what
 
@@ -89,6 +90,8 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 9. **Structured note habit:** writes his own README per milestone; AI produces `notes.md` (mental models, steps, code, pitfalls) formatted for NotebookLM/Notewise.
 10. **Commits after each topic**; keeps one repo per phase (see `06` §3).
 11. Writes quickly with typos; do not "correct" this, read for meaning.
+12. Hand-arithmetic slips (addition in range/modulo traces) while the logic is right (2026-10-24). Fix with a write-out-and-re-add habit, not re-teaching.
+13. Answers often arrive by speech-to-text, so verbatim Q&A can contain garbled words; read for meaning but still grade the content.
 
 ## 7. AI pipeline (as he uses it)
 
@@ -97,6 +100,7 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 - His learning reports come back from the TEACHER and are pasted to the PLANNER for fact-checking.
 - His own README (in his words) is treated as the primary truth; TEACHER reports are secondary.
 - Any AI taking a role should follow the templates in `06`.
+- agy runs in several chats: the Unit 1/theory chat (also handles Class 11 Unit 3), the Unit 2 chat (root access to Journey_Docs/), and Milestones chats (scoped to Milestones/).
 
 ## 8. How to communicate with him
 
@@ -112,6 +116,7 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 2. **"Understood API"** was recorded because he could describe an API as "a link"; the audit showed the whole HTTP/API category was false.
 3. **agy's M00 final report** mentioned "Conventional Commits" history that the learner's notes did not show. He later explained he *did* commit after each topic and that the AI was confused by his commit-message instructions. Check with `git log --oneline` anyway.
 4. Language like "Concepts Mastered" and "Final Report" tends to inflate. Use the evidence bundle (`06` §6).
+5. (2026-10-24) UNIT_2_COMPLETION_REPORT claimed all 28 atoms 'mastered' with no retest. Q&A grading lines for three topics rewrote the learner's wrong answers as the right ones. The diagnostic score was mis-added (25 vs 24). Lab-file sample outputs for P17 (dice table statistically impossible for a real run), P18 (contradicted its own code) and P08 (stitched) were not real runs. Rule: re-run the code and recount the scores.
 
 ## 10. Decisions already made by the learner
 

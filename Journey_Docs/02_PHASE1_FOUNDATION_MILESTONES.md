@@ -73,9 +73,9 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 
 ---
 
-## MILESTONE 01 — JSON + Git Merge Conflicts
+## MILESTONE 01 — JSON + Git Merge Conflicts ✅ DONE
 
-**Status (2026-09-30): Substantially complete — 3 open items: fix+test the json.dump() bug, get terminal evidence for one `git reset --soft`, confirm the next 3-4 real commits follow Conventional Commits without reminders. Not blocking M02.**
+**Status (2026-10-24): ✅ COMPLETE, 24/24 atoms. Last four closed 2026-10-24 via a 16-statement check (16/16): dump vs dumps, git diff variants, reset/restore/revert, commit --amend. Learner reports real use of reset; no terminal output captured (accepted).**
 
 **Goal:** remove the "JSON blocker" and finally understand git branching/merging/remotes, including a real conflict.
 **Prerequisites:** M00. **Packages:** none required beyond stdlib (`rich` optional for pretty output).
@@ -88,7 +88,7 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 - [x] M01.01 JSON syntax rules: double quotes only, no trailing commas, six value types (object, array, string, number, `true/false`, `null`).
 - [x] M01.02 JSON is *text*; a Python dict is an in-memory object. Map: `true/false/null` ↔ `True/False/None`; JSON keys are always strings.
 - [x] M01.03 `json.load(f)` (file → object) vs `json.loads(s)` (string → object).
-- [~] M01.04 `json.dump(obj, f, indent=2)` (object → file) vs `json.dumps(obj)` (object → string).
+- [x] M01.04 `json.dump(obj, f, indent=2)` (object → file) vs `json.dumps(obj)` (object → string).
 - [x] M01.05 Always `with open(path, encoding="utf-8")`.
 - [x] M01.06 Nested access: `data[0]["address"]["geo"]["lat"]`; mixed list/dict paths.
 - [x] M01.07 Safe access: `.get(key, default)`, catching `KeyError`/`TypeError`, checking types.
@@ -107,10 +107,10 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 - [x] M01.18 Resolving: edit file → `git add` → `git commit` (or `git merge --continue`); `git merge --abort` to bail out.
 - [x] M01.19 Remotes: `git remote add origin`, `git push -u origin main`, `git clone`.
 - [x] M01.20 **`fetch` downloads without touching your files; `pull` = `fetch` + merge**; also `pull --rebase` (concept).
-- [~] M01.21 Inspect history: `git log --oneline --graph --all`, `git diff`, `git diff origin/main`.
+- [x] M01.21 Inspect history: `git log --oneline --graph --all`, `git diff`, `git diff origin/main`.
 - [x] M01.22 `.gitignore` patterns; stop tracking an already-added file (`git rm --cached`).
-- [~] M01.23 Undo tools: `git restore`, `git reset --soft/--mixed/--hard` (concept), `git revert`.
-- [~] M01.24 Commit message hygiene (Conventional Commits, e.g. `feat(m01): ...`).
+- [x] M01.23 Undo tools: `git restore`, `git reset --soft/--mixed/--hard` (concept), `git revert`.
+- [x] M01.24 Commit message hygiene (Conventional Commits, e.g. `feat(m01): ...`).
 
 ### Ordered learning sequence
 1. Download JSON, `python -m json.tool` it, read it by eye (M01.01–02, 12).

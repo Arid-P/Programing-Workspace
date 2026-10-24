@@ -1,6 +1,6 @@
 # 00 — START HERE: Master Handoff & Control Document
 
-**Document set version:** 1.0 · **Created:** 2026-09-28 · **Last updated:** 2026-09-28
+**Document set version:** 1.1 · **Created:** 2026-09-28 · **Last updated:** 2026-10-24
 **Maintained by:** the learner (in a git repo), with a PLANNER AI proposing every edit.
 
 ---
@@ -121,23 +121,27 @@ Assumptions (unverified, confirm with the learner):
 
 ## 4. Current Pointer (update this after every session)
 
-- **Date of pointer:** 2026-09-30
-- **Phase 1:** Milestone 00 ✅ done. Milestone 01 substantially complete (JSON mostly verified, Git verified with real evidence for branches/merges/gitignore/revert; open: json.dump() bug fix, reset --soft proof, commit-habit confirmation — see 02 for detail). **Next: start Milestone 02 (APIs & HTTP)** in parallel with closing M01's 3 open items.
-- **Phase 2 — ACTIVE:** Unit 1 (Computer Systems & Organisation) FULLY COMPLETE, all 10 atoms verified via real raw Q&A evidence (CBSE_CS/Class11/notes/Computer_Systems/u1_qna_and_verification_bank.md), including a passed retest on C11-U1-10 (Devanagari UTF-8 vs UTF-16 byte counts). No pre-unit diagnostic was run for Unit 1 (acceptable — content was genuinely new). Next: run the Class 11 diagnostic (03 §7) in a NEW agy chat before starting Unit 2 (Python) — mandatory this time, since Unit 2 overlaps heavily with already-proven skill in 01_LEARNER_PROFILE.md.
-- **Phase 3:** Not started. Next: install g++, follow the first learncpp topics, build gates in CircuitVerse.
+- **Date of pointer:** 2026-10-24
+- **Phase 1:** Milestone 00 ✅. Milestone 01 ✅ COMPLETE (24/24; last 4 atoms closed 2026-10-24 via a 16-statement check, 16/16). **Next: Milestone 02 (APIs & HTTP)**, window Nov–Dec 2026, not started.
+- **Phase 2 — ACTIVE (ahead of schedule):** Class 11 Unit 1 ✅ (10/10). Unit 2 ✅ (28/28): cold diagnostic 24/36, then a 24-statement retest 23/24 and a range/randrange mini-check passed; 20-program lab file, viva bank and project brief exist (the AI-written project reference solution is not skill evidence). **Next: Unit 3 Society, Law & Ethics (C11-U3-01..10)**, then two sample papers, brother teach-back and project handoff, all before 31 Dec 2026. Class 12 starts Jan 2027.
+- **Phase 3:** Not started. Next: install g++, first learncpp topics, CircuitVerse gates.
 - **Math:** dormant until a build needs it (`05`).
 
 ### Pending verifications and open questions
 
-1. [RESOLVED — confirmed via real git log --graph output in the M01 report] Run `git log --oneline` in the Milestones repo to confirm M00 commits exist (an AI report claimed a commit style not seen in the learner's own notes; the learner says he committed after each topic).
-2. Confirm which "half of Class 12 Python" the learner has actually done (diagnostic in `03`).
-3. Workspace has a folder `Python/3 Advance Topics 2/4 Libraries/Flask`, but the learner reports never having written Flask. Confirm authorship/depth before M03.
-4. Learner reported having written *some* HTML (self-check item 58 was false) but no CSS or JavaScript. Confirm scope during M04 diagnostic.
-5. Brother's school pacing is unknown; Class 11/12 dates above are the learner's, not the school's.
-6. Real GitHub repo URLs are not created yet; placeholders live in `07_PROGRESS_LOG.md` §4.
-7. Fix+test the json.dump() bug in the learner's own README code example (still present, unfixed, as of 2026-09-30).
-8. Get terminal evidence for a real `git reset --soft HEAD~1` (only revert was demonstrated with actual output; reset was explained but not run+proven).
-9. Confirm Conventional Commits habit sticks across the next several real commits without being reminded — check with `git log --oneline` in a future session.
+1. [RESOLVED] M00 commits confirmed via real git log output.
+2. Confirm which "half of Class 12 Python" the learner has done (Class 12 diagnostic, statements 37–66 of 03 §7, before Jan 2027).
+3. Workspace folder `Python/3 Advance Topics 2/4 Libraries/Flask`: confirm authorship/depth before M03.
+4. HTML/CSS/JS scope: confirm during the M04 diagnostic.
+5. Brother's school pacing is unknown; Class 11/12 dates are the learner's, not the school's.
+6. GitHub URLs: Phase 2 lives in the root workspace repo (D21); URLs still TBD except Milestones.
+7. [RESOLVED 2026-10-24] json.dump() README bug fixed (learner-reported; statements 15–16 correct).
+8. [RESOLVED 2026-10-24] git reset variants: statements 1–10 all correct; learner reports real use; no terminal output captured (accepted).
+9. [RESOLVED 2026-10-24] Conventional Commits habit: 9 of 10 recent commits conform.
+10. Lab file CBSE_CS/Class11/programs/class11_practicals_report.md: replace "Sample Execution Outputs" for P08, P17, P18 with real terminal runs (found stitched/hand-written on 2026-10-24).
+11. Log weekly hours in 07 §5 from now on (Unit 2 ≈ 9.3 h, self-reported).
+12. Optional: programs for official-list gaps (welcome message, smaller of two, the two missing series types).
+13. Lab-file authorship is unverified and not counted as skill evidence (cold-write test waived at learner's request).
 
 ---
 

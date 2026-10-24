@@ -60,6 +60,24 @@ Update procedure: `06` §9.
 
 *(Add new entries below this line using the format at the bottom of this file.)*
 
+### 2026-10-24 — Milestone 01 (JSON + Git) — completed (24/24)
+- Atoms achieved: M01.04, M01.21, M01.23, M01.24 (closing the last four; all others verified 2026-09-30)
+- Evidence provided: 16-statement check, 16/16 (reset soft/mixed/hard, restore, revert, amend, diff variants, dump vs dumps); git log -n 10 shows 9 of 10 commits in Conventional Commits form (one typo "eat(...)"; learner says other typos were fixed with reset before pushing)
+- Not provided: terminal output of git reset --soft (learner reports real use; accepted on the statement result)
+- Struggled: README json.dump/dumps mix-up (resolved)
+- Hours: not recorded
+- Next action: start M02
+
+### 2026-10-24 — CBSE Class 11 Unit 2 — completed (28/28)
+- Atoms achieved: C11-U2-01..28
+- Built: 12 note sets, 20-program lab file (CBSE_CS/Class11/programs/), viva bank, project brief + AI-written reference solution (not skill evidence)
+- Evidence provided: verbatim Q&A bank; cold diagnostic 24/36; 24-statement retest 23/24 (miss: range step arithmetic, an addition slip); mini-check passed (2 of 3 exact, one addition slip); tree and git log; planner re-ran all 20 programs and ran randomized tests on P09–P16 and P20 (0 mismatches)
+- Struggled: setdefault (diagnostic miss, wrong again in Unit 2 trace, passed retest), negative-divisor modulo, tuple-with-list as dict key, exception-type recall, range step arithmetic
+- Discrepancies between AI report and evidence: completion report said "all 28 mastered" before any retest; lab-file samples for P08/P17/P18 not real runs (P17 chi-square 0.05, impossible for a genuine run); P18 sample contradicted its own code; diagnostic score mis-added (25 vs 24); Q&A grading lines rewrote wrong answers; Topic 22–24 section duplicated; report said P02 uses for...else (it does not)
+- Lab-file authorship: unverified, not counted as skill evidence (cold-write waived at learner's request)
+- Hours: ~9.3 (learner-reported, whole unit) vs ~14 planned
+- Next action: Unit 3 (C11-U3-01..10), sample papers, teach-back, M02
+
 ---
 
 ## 2. Audit and diagnostic records
@@ -76,8 +94,9 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 ### 2.2 Diagnostics scheduled
 | Diagnostic | Where | When | Status |
 |---|---|---|---|
-| CBSE Class 11 + 12 (66 statements) | `03` §7 | Before Oct 2026 study | Pending |
-| M01 verification statements | `02` M01 | End of M01 | Pending |
+| CBSE Class 11 (statements 1–36) | `03` §7 | 2026-10 | Done: 24/36 cold (weak: string/list/dict methods, setdefault, mode, del) |
+| CBSE Class 12 (statements 37–66) | `03` §7 | Before Class 12 starts (Jan 2027) | Pending |
+| M01 verification statements | `02` M01 | 2026-10-24 | Done: 16/16 |
 | Math diagnostic (20–30 statements) | `05` §2 | ~Jul 2027 | Pending |
 | Web basics diagnostic | M04 start | ~Jun 2027 | Pending |
 
@@ -103,6 +122,11 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D14 | 2026-09-28 | Use MySQL/MariaDB (not SQLite) for CBSE SQL practice | Board syllabus is MySQL-style |
 | D15 | 2026-09-28 | TEACHER reports need an evidence bundle | Prior AI over-claims (see `01` §9) |
 | D18 | 2026-09-30 | Milestones/Journey_Docs/ is an UNTRACKED working copy (gitignored) that agy edits directly, since agy's access is scoped to Milestones/ only. The learner periodically copies Milestones/Journey_Docs/* over the canonical, git-tracked Programing-Workspace/Journey_Docs/ to sync. | agy cannot reach the root workspace repo |
+| D19 | 2026-10-24 | Phase 2 has no personal README; verbatim Q&A banks are the evidence | Learner decision; banks hold his own words and errors |
+| D20 | 2026-10-24 | Root Journey_Docs is canonical; Milestones/Journey_Docs is a copy refreshed FROM root. Supersedes D18. | Root-access agy chats edit root directly; a stale Milestones copy caused a mismatch |
+| D21 | 2026-10-24 | Phase 2 lives in the root workspace repo (CBSE_CS/), not a separate repo | Existing setup; commits already pushed |
+
+D16 and D17 were never assigned.
 
 ---
 
@@ -112,7 +136,7 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 |---|---|---|---|---|---|
 | Docs | `journey-docs` | <TBD> | | | This document set |
 | 1 | milestones | https://github.com/Arid-P/Fixing_Fundamentals | | | Real remote confirmed via git_notes.md, 2026-09-30 |
-| 2 | `cbse-cs-11-12` | <TBD> | | | |
+| 2 | `cbse-cs-11-12` | (root workspace repo; URL TBD) | | | D21 |
 | 3 | `cpp-electronics-path` | <TBD> | | | |
 
 Phase completion links (add when each phase finishes): _none yet_.
@@ -123,7 +147,7 @@ Phase completion links (add when each phase finishes): _none yet_.
 
 | Week of | Lane | Hours | Atoms cleared | Notes |
 |---|---|---|---|---|
-| — | — | — | — | (empty) |
+| 2026-10 (~4 wks) | CBSE C11-U2 | ~9.3 (learner-reported, whole unit) | 28 | ~0.33 h/atom; plan was ~14 h |
 
 **Pace rule:** after 4 weeks of data, compute hours per atom for each lane and compare with the plan (`00` §3 and `04` blocks). If the actual pace differs by more than 25%, re-plan dates only (not scope) and log a decision (D-number).
 

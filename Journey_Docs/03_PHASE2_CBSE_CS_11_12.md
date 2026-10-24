@@ -23,6 +23,8 @@ Atom legend: `[ ]` not started · `[~]` partial · `[x]` verified. Since he alre
 
 ## 2. CLASS 11 ATOMS
 
+**Progress (2026-10-24):** Unit 1 ✅ 10/10. Unit 2 ✅ 28/28 (cold diagnostic 24/36; retest 23/24; mini-check passed). Unit 3 next. Units 1–2 took ~4 weeks vs 10 planned.
+
 ### Unit 1 — Computer Systems and Organisation (10 marks)
 - [x] C11-U1-01 Basic organisation: hardware vs software; input device, output device, CPU.
 - [x] C11-U1-02 Memory types: primary, cache, secondary; speed/size/cost ordering.
@@ -88,6 +90,7 @@ Modules
 ### Class 11 practicals (official suggested list; record file needs ≥ 20 programs, write them all himself)
 Welcome message input/display · larger/smaller of two numbers · largest/smallest of three · three star/number/letter patterns with nested loops · four series sums (in `x` and `n`, alternating signs, `x^k/k`, `x^k/k!`) · perfect/Armstrong/palindrome numbers · prime vs composite · Fibonacci terms · GCD and LCM · count vowels/consonants/upper/lower in a string · palindrome string and case conversion · largest/smallest in a list/tuple · swap even/odd positioned list elements · search in list/tuple · dictionary of roll/name/marks and students above 75.
 To reach 20, add his own variants (each with documentation and clean code, since the lab test scores logic/documentation/code quality 60/20/20).
+Coverage note (2026-10-24): the 20-program file meets the count but has no welcome-message program, no "smaller of two", and covers only 2 of the 4 official series types. Optional small additions.
 **Class 11 project (8 marks):** something tangible using most concepts learned.
 
 ---
