@@ -23,7 +23,7 @@ Atom legend: `[ ]` not started · `[~]` partial · `[x]` verified. Since he alre
 
 ## 2. CLASS 11 ATOMS
 
-**Progress (2026-10-24):** Unit 1 ✅ 10/10. Unit 2 ✅ 28/28 (cold diagnostic 24/36; retest 23/24; mini-check passed). Unit 3 next. Units 1–2 took ~4 weeks vs 10 planned.
+**Progress (2026-10-24):** Unit 1 ✅ 10/10. Unit 2 ✅ 28/28 (cold diagnostic 24/36; retest 23/24; mini-check passed). Unit 3 deferred to the last week of Jan 2027 (D22); Class 11 target 31 Jan 2027. Units 1–2 took ~4 weeks vs 10 planned.
 
 ### Unit 1 — Computer Systems and Organisation (10 marks)
 - [x] C11-U1-01 Basic organisation: hardware vs software; input device, output device, CPU.

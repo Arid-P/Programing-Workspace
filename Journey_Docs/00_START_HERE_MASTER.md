@@ -1,6 +1,6 @@
 # 00 — START HERE: Master Handoff & Control Document
 
-**Document set version:** 1.1 · **Created:** 2026-09-28 · **Last updated:** 2026-10-24
+**Document set version:** 1.2 · **Created:** 2026-09-28 · **Last updated:** 2026-10-31
 **Maintained by:** the learner (in a git repo), with a PLANNER AI proposing every edit.
 
 ---
@@ -121,10 +121,10 @@ Assumptions (unverified, confirm with the learner):
 
 ## 4. Current Pointer (update this after every session)
 
-- **Date of pointer:** 2026-10-24
-- **Phase 1:** Milestone 00 ✅. Milestone 01 ✅ COMPLETE (24/24; last 4 atoms closed 2026-10-24 via a 16-statement check, 16/16). **Next: Milestone 02 (APIs & HTTP)**, window Nov–Dec 2026, not started.
-- **Phase 2 — ACTIVE (ahead of schedule):** Class 11 Unit 1 ✅ (10/10). Unit 2 ✅ (28/28): cold diagnostic 24/36, then a 24-statement retest 23/24 and a range/randrange mini-check passed; 20-program lab file, viva bank and project brief exist (the AI-written project reference solution is not skill evidence). **Next: Unit 3 Society, Law & Ethics (C11-U3-01..10)**, then two sample papers, brother teach-back and project handoff, all before 31 Dec 2026. Class 12 starts Jan 2027.
-- **Phase 3:** Not started. Next: install g++, first learncpp topics, CircuitVerse gates.
+- **Date of pointer:** 2026-10-31
+- **Phase 1:** M00 ✅, M01 ✅ (24/24). **M02 in progress:** M2-1 done (1.75 h): M02.01 [x]; M02.02 and M02.18 [~] (need a fresh port statement and a DevTools proof); M02.20 preview only. **Next: M2-2** (M02.03–06). Plan in 07 §7.
+- **Phase 2:** Unit 1 ✅ 10/10, Unit 2 ✅ 28/28. **Unit 3 deferred (D22):** learner studies it in the last week of Jan 2027 and teaches his brother in early Feb (brother's exams end Feb). Class 11 target is now 31 Jan 2027. Class 12 starts Jan 2027.
+- **Phase 3 — ACTIVE:** Block 1 part A, chats 1–2 done (P3-1..P3-4, 6.0 h): CPP-01, 02, 03, 05, 06, 07 [x]; CPP-04 [~] (mini-check misses plus signed-overflow bugs in p12/p02/p09). Next: chat 3 (P3-5): CPP-08 part 1, fix those bugs, port p13. Workspace: CPP_Path/ is its own VS Code workspace and repo (D23).
 - **Math:** dormant until a build needs it (`05`).
 
 ### Pending verifications and open questions
@@ -142,6 +142,10 @@ Assumptions (unverified, confirm with the learner):
 11. Log weekly hours in 07 §5 from now on (Unit 2 ≈ 9.3 h, self-reported).
 12. Optional: programs for official-list gaps (welcome message, smaller of two, the two missing series types).
 13. Lab-file authorship is unverified and not counted as skill evidence (cold-write test waived at learner's request).
+14. CPP-04: fix p12 (a*b overflow; (0,0) crash; non-positive input), p02 (d*d overflow at n=2147483647; is_prime on 0/1/negatives), p09 (overflow from n>=46; wrong for limit >= 1836311903). Then retest incl. signed/unsigned comparison and unary + on uint8_t.
+15. M02.02: fresh port statements at the M2-2 gate. M02.18: one-line DevTools proof.
+16. M02 README hygiene: TLS also authenticates the server and checks integrity; plain-text wire format is HTTP/1.1 (HTTP/2/3 are binary, same semantics); goal "build your own API" belongs to M03; add the dated struggle (2026-10-28: thought http:// defaults to port 443); mark blocks adapted from notes.md.
+17. Brother's Class 11 exams end Feb 2027 (learner-reported). His Class 12 start (assumed April 2027) is still unverified.
 
 ---
 

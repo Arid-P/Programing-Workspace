@@ -48,6 +48,8 @@ For diagrams: hand-drawn photo, ASCII, or Mermaid text is enough. Clarity beats 
 
 Phase 2 lives in the root workspace repo (CBSE_CS/), not a separate cbse-cs-11-12 repo (D21).
 
+CPP_Path/ is its own git repo and VS Code workspace (gitignored in the root repo), like Milestones/ (D23). Electronics_Sim/ and Math_Notes/ will live inside CPP_Path/ when needed.
+
 ### 3.1 Journey_Docs: root copy is canonical (D20, 2026-10-24; supersedes D18)
 - Canonical, git-tracked: ~/Programing-Workspace/Journey_Docs/. It is the only source of truth.
 - Milestones/Journey_Docs/ is a gitignored working copy for Milestones-scoped agy chats that cannot reach the root. It may be stale.
@@ -117,6 +119,8 @@ Rules for the PLANNER when writing statements:
 6. Score by atom, not by total. Wrong or partial → the atom stays `[ ]` or `[~]`.
 7. For atoms where "True/False" is weak (writing code), use a **cold-write test**: write from a blank file in ≤ 10 minutes, no AI, no notes.
 8. Spot-check the *why*: for two random correct answers, ask him to explain in one sentence.
+9. A retest must be a fresh statement that could be false; restating the corrected fact as a true statement does not count.
+10. Port-and-diff must include boundary inputs near type limits (INT_MAX) and invalid inputs (0, negatives); Python is the oracle.
 
 Other verification tools: explain-back (teach the brother), debugging a planted bug, predicting output before running.
 
@@ -165,6 +169,9 @@ Act as PLANNER per 00_START_HERE_MASTER.md §2. Tell me: (1) current pointer, (2
 atoms are open in the current milestone/block, (3) what evidence you need from me, and
 (4) the next single action. Do not re-plan phases. Do not ask me more than 3 questions.
 ```
+
+### 6.5 SESSION_STATE.md handoff
+Each project folder (Milestones/NN_*, CPP_Path/) keeps SESSION_STATE.md: checkpoint done, atoms achieved/partial, Q&A file, hours, next checkpoint, open issues. A new chat starts by reading it; the teacher updates it after every checkpoint. It is an instruction file: wrong text steers the teacher, so the planner checks it.
 
 ---
 

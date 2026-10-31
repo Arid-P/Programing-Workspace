@@ -158,8 +158,8 @@ Use the template in `06` §6. Insert: profile summary from `01` §4; "I already 
 **Real data sources (verify availability before use):** JSONPlaceholder (fake but practice for POST/PUT/DELETE), Open-Meteo (free weather, no key), PokeAPI (free, no key). For key-based auth practice pick one free-key API (e.g. NASA Open APIs). 
 
 ### Atoms
-- [ ] M02.01 Client–server model; one request → one response.
-- [ ] M02.02 URL anatomy: scheme, host, port, path, query string, fragment.
+- [x] M02.01 Client–server model; one request → one response.
+- [~] M02.02 URL anatomy: scheme, host, port, path, query string, fragment.
 - [ ] M02.03 Request anatomy: method, path, headers, optional body.
 - [ ] M02.04 Response anatomy: status line, headers, body.
 - [ ] M02.05 Methods: GET, POST, PUT, PATCH, DELETE; safe vs idempotent.
@@ -175,9 +175,9 @@ Use the template in `06` §6. Insert: profile summary from `01` §4; "I already 
 - [ ] M02.15 Rate limits and 429 handling.
 - [ ] M02.16 Pagination patterns: page/limit, cursor.
 - [ ] M02.17 Read API docs: endpoints, params, response schema, examples; what OpenAPI/Swagger is.
-- [ ] M02.18 Hand-test APIs: browser, `curl`, DevTools Network tab.
+- [~] M02.18 Hand-test APIs: browser, `curl`, DevTools Network tab.
 - [ ] M02.19 Cache responses to JSON on disk to avoid repeated calls.
-- [ ] M02.20 What happens when you request a URL: DNS → TCP → TLS → HTTP (ties to CBSE Class 12 networks).
+- [ ] M02.20 What happens when you request a URL: DNS → TCP → TLS → HTTP (ties to CBSE Class 12 networks). (preview 2026-10-28; formal check at M2-7)
 - [ ] M02.21 (optional) `httpx`/async preview.
 
 ### Ordered sequence

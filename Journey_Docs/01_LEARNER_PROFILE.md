@@ -48,6 +48,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - **Milestone 00 (uv):** completed and explained in his own README (see `07` log).
 - **Milestone 01 (JSON + Git):** complete 24/24 (2026-10-24). JSON read/write/modify-safely used in two M01 builds (see 07); merge conflicts resolved manually.
 - **CBSE Class 11 Units 1–2 (2026-10-24):** Unit 1 10/10 (systems, number systems, Boolean logic, encoding). Unit 2 28/28 (Python per CBSE; cold diagnostic 24/36, retest 23/24). Caveat: exception-type recall and dict-method details can fade; recheck in Class 12 week 1.
+- **C++ Block 1 part A (2026-10-31):** compilation pipeline, program structure, brace init, const/constexpr, operators (truncating division, dividend-signed modulo), control flow; 28/28 first-pass statements. Caveat: signed-overflow bugs in own ports (CPP-04 open).
 
 ### PARTIAL
 - Multi-file imports: writes modules but repeatedly hits **circular imports** in SQLAlchemy model files.
@@ -92,6 +93,7 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 11. Writes quickly with typos; do not "correct" this, read for meaning.
 12. Hand-arithmetic slips (addition in range/modulo traces) while the logic is right (2026-10-24). Fix with a write-out-and-re-add habit, not re-teaching.
 13. Answers often arrive by speech-to-text, so verbatim Q&A can contain garbled words; read for meaning but still grade the content.
+14. Strong on statements; bugs hide in boundary inputs (overflow) that only a real-data diff on large values exposes.
 
 ## 7. AI pipeline (as he uses it)
 
@@ -117,6 +119,7 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 3. **agy's M00 final report** mentioned "Conventional Commits" history that the learner's notes did not show. He later explained he *did* commit after each topic and that the AI was confused by his commit-message instructions. Check with `git log --oneline` anyway.
 4. Language like "Concepts Mastered" and "Final Report" tends to inflate. Use the evidence bundle (`06` §6).
 5. (2026-10-24) UNIT_2_COMPLETION_REPORT claimed all 28 atoms 'mastered' with no retest. Q&A grading lines for three topics rewrote the learner's wrong answers as the right ones. The diagnostic score was mis-added (25 vs 24). Lab-file sample outputs for P17 (dice table statistically impossible for a real run), P18 (contradicted its own code) and P08 (stitched) were not real runs. Rule: re-run the code and recount the scores.
+6. (2026-10-31) Chat reports said edge cases were handled but tested only small inputs; the planner found three signed-overflow bugs. The M2-1 report said the README was 'written entirely by learner' (unverified) and a 'retest' only restated the corrected fact.
 
 ## 10. Decisions already made by the learner
 

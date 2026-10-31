@@ -15,13 +15,13 @@ Follow **topics**, not chapter numbers (learncpp restructures its chapters).
 ## BLOCK 1 — Bits & Basics (~45 h)  · Oct–Dec 2026 (light, ~13 h) + Apr–Jun 2027 (~32 h)
 
 ### C++ atoms
-- [ ] CPP-01 Toolchain: install `g++`, compile a file, run it; what compiling, linking, and executables are.
-- [ ] CPP-02 Program structure: `main`, statements, `#include <iostream>`, `std::cout`/`std::cin`.
-- [ ] CPP-03 Variables, initialization forms (`{}` brace init preferred), naming.
-- [ ] CPP-04 Fundamental types: `int`, `unsigned`, `double`, `char`, `bool`; sizes; overflow behavior; fixed-width types from `<cstdint>` (`uint8_t`, `int32_t`).
-- [ ] CPP-05 Constants: `const`, `constexpr`.
-- [ ] CPP-06 Operators: arithmetic, integer division/modulo, comparison, logical, increment; precedence.
-- [ ] CPP-07 Control flow: `if`, `switch`, `for`, `while`, `do-while`, `break`, `continue`.
+- [x] CPP-01 Toolchain: install `g++`, compile a file, run it; what compiling, linking, and executables are.
+- [x] CPP-02 Program structure: `main`, statements, `#include <iostream>`, `std::cout`/`std::cin`.
+- [x] CPP-03 Variables, initialization forms (`{}` brace init preferred), naming.
+- [~] CPP-04 Fundamental types: `int`, `unsigned`, `double`, `char`, `bool`; sizes; overflow behavior; fixed-width types from `<cstdint>` (`uint8_t`, `int32_t`). (pending: fix signed-overflow bugs in p12/p02/p09 + retest)
+- [x] CPP-05 Constants: `const`, `constexpr`.
+- [x] CPP-06 Operators: arithmetic, integer division/modulo, comparison, logical, increment; precedence.
+- [x] CPP-07 Control flow: `if`, `switch`, `for`, `while`, `do-while`, `break`, `continue`.
 - [ ] CPP-08 Functions: declaration vs definition, parameters, return values, pass by value; header (`.h`) and source (`.cpp`) split; multiple-file compile with a Makefile.
 - [ ] CPP-09 Scope and lifetime: local/global, `static` locals.
 - [ ] CPP-10 Arrays (C-style) and `std::array`; `std::vector` basics (push_back, indexing, size).
