@@ -122,7 +122,7 @@ Assumptions (unverified, confirm with the learner):
 ## 4. Current Pointer (update this after every session)
 
 - **Date of pointer:** 2026-10-31
-- **Phase 1:** M00 ✅, M01 ✅ (24/24). **M02 in progress:** M2-1 done (1.75 h): M02.01 [x]; M02.02 and M02.18 [~] (need a fresh port statement and a DevTools proof); M02.20 preview only. **Next: M2-2** (M02.03–06). Plan in 07 §7.
+- **Phase 1:** M00 ✅, M01 ✅ (24/24). **M02 in progress (12 of 21 atoms, ~12.0 h):** M2-1..M2-5 done except the M2-5 closing gate (M02.16/17/19 pending). **Build target changed (D24):** new design-first GitHub activity report; learner writes DESIGN.md first. **Next:** M2-6 (design, auth, limits, pagination), then M2-7.
 - **Phase 2:** Unit 1 ✅ 10/10, Unit 2 ✅ 28/28. **Unit 3 deferred (D22):** learner studies it in the last week of Jan 2027 and teaches his brother in early Feb (brother's exams end Feb). Class 11 target is now 31 Jan 2027. Class 12 starts Jan 2027.
 - **Phase 3 — ACTIVE:** Block 1 part A, chats 1–2 done (P3-1..P3-4, 6.0 h): CPP-01, 02, 03, 05, 06, 07 [x]; CPP-04 [~] (mini-check misses plus signed-overflow bugs in p12/p02/p09). Next: chat 3 (P3-5): CPP-08 part 1, fix those bugs, port p13. Workspace: CPP_Path/ is its own VS Code workspace and repo (D23).
 - **Math:** dormant until a build needs it (`05`).
@@ -146,6 +146,9 @@ Assumptions (unverified, confirm with the learner):
 15. M02.02: fresh port statements at the M2-2 gate. M02.18: one-line DevTools proof.
 16. M02 README hygiene: TLS also authenticates the server and checks integrity; plain-text wire format is HTTP/1.1 (HTTP/2/3 are binary, same semantics); goal "build your own API" belongs to M03; add the dated struggle (2026-10-28: thought http:// defaults to port 443); mark blocks adapted from notes.md.
 17. Brother's Class 11 exams end Feb 2027 (learner-reported). His Class 12 start (assumed April 2027) is still unverified.
+18. M02: closing gate for M2-5 (7 statements), then DESIGN.md for gh_report reviewed by the planner.
+19. M02: icecream is imported in fetcher_core.py but not in the declared dependencies shown; send pyproject.toml.
+20. M02 README fixes (Request Line label, attribute vs method notation, What I built, M2-4 struggles).
 
 ---
 

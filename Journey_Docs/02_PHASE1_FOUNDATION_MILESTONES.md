@@ -159,23 +159,23 @@ Use the template in `06` §6. Insert: profile summary from `01` §4; "I already 
 
 ### Atoms
 - [x] M02.01 Client–server model; one request → one response.
-- [~] M02.02 URL anatomy: scheme, host, port, path, query string, fragment.
-- [ ] M02.03 Request anatomy: method, path, headers, optional body.
-- [ ] M02.04 Response anatomy: status line, headers, body.
-- [ ] M02.05 Methods: GET, POST, PUT, PATCH, DELETE; safe vs idempotent.
-- [ ] M02.06 Status families 1xx–5xx and must-know codes: 200, 201, 204, 301/302, 400, 401, 403, 404, 405, 409, 422, 429, 500, 502, 503.
-- [ ] M02.07 Headers: `Content-Type`, `Accept`, `Authorization`, `User-Agent`, `Retry-After`, rate-limit headers.
-- [ ] M02.08 Path params vs query params vs body; `params=` in `requests`.
-- [ ] M02.09 JSON bodies: `json=` vs `data=`.
-- [ ] M02.10 `requests.get/post`, `.status_code`, `.json()`, `.text`, `.headers`, `.raise_for_status()`.
-- [ ] M02.11 **Always set timeouts**; `requests.Session`; retry with backoff.
-- [ ] M02.12 Error classes: `ConnectionError`, `Timeout`, `HTTPError`, JSON decode errors.
+- [x] M02.02 URL anatomy: scheme, host, port, path, query string, fragment.
+- [x] M02.03 Request anatomy: method, path, headers, optional body.
+- [x] M02.04 Response anatomy: status line, headers, body.
+- [x] M02.05 Methods: GET, POST, PUT, PATCH, DELETE; safe vs idempotent.
+- [x] M02.06 Status families 1xx–5xx and must-know codes: 200, 201, 204, 301/302, 400, 401, 403, 404, 405, 409, 422, 429, 500, 502, 503.
+- [~] M02.07 Headers: `Content-Type`, `Accept`, `Authorization`, `User-Agent`, `Retry-After`, rate-limit headers.
+- [x] M02.08 Path params vs query params vs body; `params=` in `requests`.
+- [x] M02.09 JSON bodies: `json=` vs `data=`.
+- [x] M02.10 `requests.get/post`, `.status_code`, `.json()`, `.text`, `.headers`, `.raise_for_status()`.
+- [x] M02.11 **Always set timeouts**; `requests.Session`; retry with backoff.
+- [x] M02.12 Error classes: `ConnectionError`, `Timeout`, `HTTPError`, JSON decode errors.
 - [ ] M02.13 Auth types: API key (header/query), Bearer token, Basic auth; OAuth 2.0 *concept* (authorization code flow, access/refresh tokens).
 - [ ] M02.14 Secrets hygiene: environment variables, `.env` + `python-dotenv`, `.gitignore`, rotating a leaked key.
 - [ ] M02.15 Rate limits and 429 handling.
 - [ ] M02.16 Pagination patterns: page/limit, cursor.
 - [ ] M02.17 Read API docs: endpoints, params, response schema, examples; what OpenAPI/Swagger is.
-- [~] M02.18 Hand-test APIs: browser, `curl`, DevTools Network tab.
+- [x] M02.18 Hand-test APIs: browser, `curl`, DevTools Network tab.
 - [ ] M02.19 Cache responses to JSON on disk to avoid repeated calls.
 - [ ] M02.20 What happens when you request a URL: DNS → TCP → TLS → HTTP (ties to CBSE Class 12 networks). (preview 2026-10-28; formal check at M2-7)
 - [ ] M02.21 (optional) `httpx`/async preview.
@@ -183,10 +183,14 @@ Use the template in `06` §6. Insert: profile summary from `01` §4; "I already 
 ### Ordered sequence
 Browser + DevTools + `curl -i` first (see raw request/response) → `requests.get` on JSONPlaceholder → params and headers → POST/PUT/DELETE on JSONPlaceholder → error and timeout handling → Open-Meteo (real data) → key-based API with `.env` → caching → build.
 
-### Build spec — `build/data_fetcher.py`
-- Fetches real data (e.g. multi-day weather for 3+ cities via Open-Meteo, or PokeAPI records), validates responses, handles timeouts/HTTP errors/rate limits, caches to `data/cache/*.json`, writes a tidy summary JSON and prints a table with `rich`.
-- Second script `build/auth_demo.py` calls a key-protected API with the key read from `.env`.
-- **Acceptance tests:** works offline from cache; wrong URL and forced timeout each produce friendly messages; no secret appears in `git log -p`; `.env` is ignored.
+### Build spec — GitHub activity report, `build/gh_report/` (changed 2026-11-07, D24; design-first)
+- The learner writes `build/gh_report/DESIGN.md` BEFORE any code (template in 06 §2); the planner reviews the design, then the learner implements it. The weather/PokeAPI scripts stay in `practice/` as prototypes.
+- Tool: `uv run python src/02_apis_http/build/gh_report/gh_report.py <username>` (argparse). It reports on a user's public repos via the GitHub REST API.
+- Requirements: (1) list ALL public repos (follow `Link` pagination); (2) for the N most recently pushed repos fetch the language breakdown; (3) aggregate: total stars, top languages by % of bytes, repos untouched 90+ days; (4) print a `rich` table and write `data/output/summary_<user>.json`; (5) cache raw responses on disk with their ETag and revalidate with `If-None-Match` (304 = reuse cache); (6) read `X-RateLimit-Remaining/Reset`; when out of budget stop cleanly and say when it resets (local time); (7) optional `GITHUB_TOKEN` from `.env`, sent as `Authorization: Bearer ...`, never printed, works with or without it; (8) friendly messages for unknown user, timeout, rate limit, offline (cache still works), bad JSON.
+- Facts (checked 2026-11-07): 60 requests/hour per IP unauthenticated, 5,000/hour with a token; a 304 is free for unauthenticated requests (measure authenticated with X-RateLimit-Used); a `User-Agent` header is required; read docs.github.com REST "Rate limits".
+- Second script `build/auth_demo.py`: `GET /user` with the token from `.env` (about 15 minutes).
+- **Acceptance tests:** works offline from cache; unknown user and forced timeout give friendly messages; rate-limit stop is clean; works with and without a token; no secret in `git log -p`; `.env` is ignored; data paths are anchored to the file, not the working directory.
+- Estimate: M2-6 about 3 h (design, review, auth/limits/pagination pieces), M2-7 about 3–4 h (assemble, tests, final check).
 
 ### Verification statements (examples)
 1. `POST` is idempotent by definition. (False)
@@ -196,7 +200,7 @@ Browser + DevTools + `curl -i` first (see raw request/response) → `requests.ge
 5. `json=` sets `Content-Type: application/json` automatically. (True)
 
 ### Pitfalls
-No timeout; committing `.env`; assuming 200 means valid data; treating `.json()` as always safe; hammering a free API.
+No timeout; committing `.env`; assuming 200 means valid data; treating `.json()` as always safe; hammering a free API; writing the design after the code; relative data paths that depend on the working directory.
 
 ---
 

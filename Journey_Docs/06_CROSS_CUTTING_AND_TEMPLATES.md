@@ -34,6 +34,8 @@ Everything that spans phases: system design, repo conventions, documentation sta
 ```
 For diagrams: hand-drawn photo, ASCII, or Mermaid text is enough. Clarity beats polish.
 
+Rule (2026-11-07): the one-page design is written BEFORE any code of that build and reviewed by the planner; a design written after the code does not count.
+
 ---
 
 ## 3. Git, repo and workspace conventions
@@ -77,6 +79,9 @@ Online simulators keep projects on their sites: store the **share link, screensh
 - Branches for experiments: `feature/<topic>`; merge to `main` when the build passes.
 - `.gitignore` in every repo (`.venv/`, `__pycache__/`, `*.pyc`, `*.db`, `*.sqlite`, `.env`, build outputs).
 - **Never commit secrets.** If one is committed by mistake, rotate the key first, then clean history.
+
+### Python project hygiene
+Run scripts from the project root: uv run python src/<pkg>/build/<file>.py (the script's own folder is first on sys.path, so sibling imports work). Anchor data paths with Path(__file__).resolve().parent, never a bare relative string.
 
 ---
 

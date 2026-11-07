@@ -94,6 +94,7 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 12. Hand-arithmetic slips (addition in range/modulo traces) while the logic is right (2026-10-24). Fix with a write-out-and-re-add habit, not re-teaching.
 13. Answers often arrive by speech-to-text, so verbatim Q&A can contain garbled words; read for meaning but still grade the content.
 14. Strong on statements; bugs hide in boundary inputs (overflow) that only a real-data diff on large values exposes.
+15. Wants design-first on a genuinely new build; documenting an already-built program feels pointless to him (2026-11-07).
 
 ## 7. AI pipeline (as he uses it)
 

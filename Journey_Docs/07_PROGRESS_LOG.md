@@ -95,6 +95,16 @@ Update procedure: `06` §9.
 - Hours: 1.75 (learner-reported)
 - Next action: M2-2
 
+### 2026-10-31 to 2026-11-07 — Milestone 02, M2-2..M2-5 — in progress
+- Atoms achieved: M02.03, 04, 05, 06, 08, 09, 10, 11, 12, 18. Atoms partial: M02.07 (part 2 in M2-6). Pending gate: M02.16, 17, 19 (M2-5 statements), M02.20 (M2-7)
+- Built: practice/ scripts, build/fetcher_core.py (retry helper), prototype weather cache with TTL, notes.md, README
+- Evidence provided: Q&A banks (M2-2 7/8, M2-3 7/7, M2-4 7/7, catch-up 10/11 scored), README, notes.md, fetcher_core.py; planner ran fetch_json against a local mock server (503 retried with waits 1,2,4,8; 404/401 not retried; HTML-200 raises JSONDecodeError; timeout and refused connection retried; no sleep before the last raise)
+- Struggled: wire delimiter (blank line), DELETE idempotence vs status code, sys.path sibling imports, relative cache paths (cache folder ended up in two places)
+- Discrepancies between AI report and learner evidence: two retests (2R, 6R) restated the corrected fact as a true statement; report claimed a 16 s backoff wait (impossible with max_retries=5); SESSION_STATE listed M02.07 as achieved and partial; README labeled the request line "Response Line" and wrote attributes with parentheses
+- Process issue: SD-01 was scheduled after the code; learner objected; waived for the weather prototype and replaced by a design-first new build (D24)
+- Hours: M2-2 2.0, M2-3 2.0, M2-4 2.0, M2-5 4.25 (learner-reported); M02 cumulative ~12.0
+- Next action: close the M2-5 gate; write DESIGN.md for gh_report; M2-6
+
 ---
 
 ## 2. Audit and diagnostic records
@@ -144,6 +154,7 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D21 | 2026-10-24 | Phase 2 lives in the root workspace repo (CBSE_CS/), not a separate repo | Existing setup; commits already pushed |
 | D22 | 2026-10-31 | Unit 3 deferred to the last week of Jan 2027; Class 11 target moves from 31 Dec 2026 to 31 Jan 2027 | Brother's exams end Feb; learn late Jan, teach early Feb so it stays fresh |
 | D23 | 2026-10-31 | Phase 3 runs in CPP_Path/ (own workspace and repo, 4 chats of ~4 h, SESSION_STATE.md); Nov–Dec weekly split M02 2.0 / Phase 3 2.0 / misc 0.5 | Avoids opening the root workspace; avoids long chats losing context; CBSE hours freed |
+| D24 | 2026-11-07 | M02 build target changes from the weather data_fetcher to a design-first GitHub activity report (build/gh_report/); weather scripts become practice prototypes; SD-01 now precedes the build | Learner wanted to design before coding; a post-hoc design felt pointless; the GitHub API exercises the remaining M02 atoms (auth, rate limits, Link pagination, ETag) |
 
 D16 and D17 were never assigned.
 
@@ -169,6 +180,7 @@ Phase completion links (add when each phase finishes): _none yet_.
 | 2026-10 (~4 wks) | CBSE C11-U2 | ~9.3 (learner-reported, whole unit) | 28 | ~0.33 h/atom; plan was ~14 h |
 | 2026-10-26 week | Phase 3 | 6.0 | 6 [x], 1 [~] | 4 checkpoints, ~1.5 h each vs 2.0 planned |
 | 2026-10-26 week | M02 | 1.75 | 1 [x], 2 [~] | M2-1 vs 2.0 planned |
+| 2026-10-31 to 2026-11-07 | M02 M2-2..M2-5 | 10.25 | +9 atoms credited | M2-5 took 4.25 h vs 2.0 planned (path/import friction); M02 cumulative ~12.0 h |
 
 **Pace rule:** after 4 weeks of data, compute hours per atom for each lane and compare with the plan (`00` §3 and `04` blocks). If the actual pace differs by more than 25%, re-plan dates only (not scope) and log a decision (D-number).
 
@@ -195,7 +207,7 @@ Phase completion links (add when each phase finishes): _none yet_.
 ## 7. Nov–Dec 2026 plan (order is the contract; weeks are preferences)
 
 Weeks: W1 26 Oct–1 Nov; 2–8 Nov off; W2 9–15 Nov; W3 16–22; W4 23–29; W5 30 Nov–6 Dec; W6 7–13 Dec; W7 14–20 Dec; W8 21–24 Dec buffer.
-M02: M2-1 raw HTTP; M2-2 anatomy, methods, codes (M02.03–06); M2-3 requests basics (M02.07 pt1, 08, 09, 10) + NASA key; M2-4 failures (M02.11–12); M2-5 real data, docs, cache (M02.16, 17, 19, SD-01); M2-6 keys, secrets, limits (M02.07 pt2, 13–15); M2-7 assemble + final check (M02.20, build).
+M02: M2-1 raw HTTP; M2-2 anatomy, methods, codes; M2-3 requests basics; M2-4 failures; M2-5 real data, pagination, cache (design waived, D24); M2-6 DESIGN.md + review, auth, rate limits, Link pagination (M02.07 pt2, 13–15); M2-7 assemble gh_report, acceptance tests, M02.20 final check, auth_demo.py.
 Phase 3: P3-1 toolchain; P3-2 vars/types/const; P3-3 types 2 + operators; P3-4 control flow + ports; P3-5 CPP-08 pt1 + fix p12/p02/p09 + port p13; P3-6 CPP-08 pt2 (.h/.cpp, Makefile) + CPP-09; P3-7 CPP-10/11 + ports p14, p06, p18. Pass-by-reference stays in CPP-14 (Block 2).
 Rules: normal week = one checkpoint per track + 0.5 h misc; 2 h week = M02 only; big week = at most 2 checkpoints per track; M02 first; Phase 3 slips before M02; never skip a gate; M02 done by ~20 Dec; pause Phase 3 if M02 is a checkpoint behind at 13 Dec.
 Misc: replace P08/P17/P18 sample outputs with real runs; brother's project handoff; U1/U2 teach-back; Class 12 diagnostic (statements 37–66) before Jan.
