@@ -7,7 +7,9 @@ authors = [
     { name = "Arid-P", email = "aridamanpatel.srijan@gmail.com" }
 ]
 requires-python = ">=3.15"
-dependencies = []
+dependencies = [
+    "rich>=15.0.0",
+]
 
 [project.scripts]
 random = "random:main"
