@@ -95,6 +95,19 @@ Update procedure: `06` §9.
 - Hours: 1.75 (learner-reported)
 - Next action: M2-2
 
+### 2026-11-06 — Milestone 02 (APIs & HTTP) — in progress (M2-1, M2-2, M2-3, M2-4 complete)
+- **Atoms achieved:** M02.01, M02.02, M02.03, M02.04, M02.05, M02.06, M02.08, M02.09, M02.10, M02.11, M02.12, M02.18 (12 of 21)
+- **Atoms partial:** M02.07 (Content-Type, Accept, User-Agent verified; Auth & rate-limit headers pending M2-6)
+- **Checkpoints completed:**
+  - M2-1 (Raw HTTP, wire flow, DevTools proof, URL anatomy, socket concept)
+  - M2-2 (curl -v, request/response anatomy, safe vs idempotent, status code families & clusters)
+  - M2-3 (Python requests, params=, json= vs data=, headers inspection, practical GET script)
+  - M2-4 (Timeouts always, requests.Session, exponential backoff retry loop, 4 error classes, build/fetcher_core.py)
+- **Evidence provided:** Verbatim Q&A verification bank (`02_APIs_HTTP/qna_and_verification_bank.md`: M2-1 6/7 + retest passed; M2-2 7/8 + retest passed; M2-3 7/7 clean sweep; M2-4 7/7 clean sweep); DevTools Network tab request headers proof; `practice/get_practice.py` working run; `build/fetcher_core.py` built by learner with real exponential backoff terminal proof; learner-written README in `02_APIs_HTTP/`.
+- **Hours reported:** ~7.75h total (M2-1: 1.75h, M2-2: 2.00h, M2-3: 2.00h, M2-4: 2.00h)
+
+---
+
 ### 2026-10-31 to 2026-11-07 — Milestone 02, M2-2..M2-5 — in progress
 - Atoms achieved: M02.03, 04, 05, 06, 08, 09, 10, 11, 12, 18. Atoms partial: M02.07 (part 2 in M2-6). Pending gate: M02.16, 17, 19 (M2-5 statements), M02.20 (M2-7)
 - Built: practice/ scripts, build/fetcher_core.py (retry helper), prototype weather cache with TTL, notes.md, README

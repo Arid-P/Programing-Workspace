@@ -51,6 +51,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - **C++ Block 1 part A (2026-10-31):** compilation pipeline, program structure, brace init, const/constexpr, operators (truncating division, dividend-signed modulo), control flow; 28/28 first-pass statements. Caveat: signed-overflow bugs in own ports (CPP-04 open).
 
 ### PARTIAL
+- **APIs & HTTP (Milestone 02 in progress, 2026-11-07):** M02.01–M02.06, M02.08–M02.12, M02.18 verified. Has written real `requests.get()` and `requests.post()`, handles status codes, URL/request/response anatomy, safe vs idempotent, `params=`, `json=` vs `data=`, retry loop with exponential backoff on `requests.Session`, timeouts and error hierarchy, and prototype cache. Pending: auth/rate limits, final gh_report build.
 - Multi-file imports: writes modules but repeatedly hits **circular imports** in SQLAlchemy model files.
 - `pip install`: works, does not understand the mechanics (partly addressed by M00).
 - Inheritance: understands, has not used it properly.
@@ -58,7 +59,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - One-to-many / many-to-many relationships: mostly conceptual.
 
 ### GAP (never done / cannot do)
-- **APIs/HTTP:** has never made a real `requests.get()`; does not know status codes, HTTP methods as concepts, headers, or authentication in practice. (Oddity: he can write `@app.get` routes without formally knowing HTTP methods.)
+- **APIs/HTTP (pre-M02 baseline):** (In progress under M02 — moved to PARTIAL above; foundational gaps closed).
 - `uvicorn` and `async def` (what they do).
 - **Flask:** never wrote a route, does not know `render_template`. (See §9: an AI summary falsely claimed this.)
 - Plotting from memory (Matplotlib).

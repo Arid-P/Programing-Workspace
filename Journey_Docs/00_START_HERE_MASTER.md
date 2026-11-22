@@ -1,6 +1,6 @@
 # 00 — START HERE: Master Handoff & Control Document
 
-**Document set version:** 1.2 · **Created:** 2026-09-28 · **Last updated:** 2026-10-31
+**Document set version:** 1.2 · **Created:** 2026-09-28 · **Last updated:** 2026-11-07
 **Maintained by:** the learner (in a git repo), with a PLANNER AI proposing every edit.
 
 ---
@@ -121,7 +121,7 @@ Assumptions (unverified, confirm with the learner):
 
 ## 4. Current Pointer (update this after every session)
 
-- **Date of pointer:** 2026-10-31
+- **Date of pointer:** 2026-11-07
 - **Phase 1:** M00 ✅, M01 ✅ (24/24). **M02 in progress (12 of 21 atoms, ~12.0 h):** M2-1..M2-5 done except the M2-5 closing gate (M02.16/17/19 pending). **Build target changed (D24):** new design-first GitHub activity report; learner writes DESIGN.md first. **Next:** M2-6 (design, auth, limits, pagination), then M2-7.
 - **Phase 2:** Unit 1 ✅ 10/10, Unit 2 ✅ 28/28. **Unit 3 deferred (D22):** learner studies it in the last week of Jan 2027 and teaches his brother in early Feb (brother's exams end Feb). Class 11 target is now 31 Jan 2027. Class 12 starts Jan 2027.
 - **Phase 3 — ACTIVE:** Block 1 part A, chats 1–2 done (P3-1..P3-4, 6.0 h): CPP-01, 02, 03, 05, 06, 07 [x]; CPP-04 [~] (mini-check misses plus signed-overflow bugs in p12/p02/p09). Next: chat 3 (P3-5): CPP-08 part 1, fix those bugs, port p13. Workspace: CPP_Path/ is its own VS Code workspace and repo (D23).
