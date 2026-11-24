@@ -120,6 +120,17 @@ Update procedure: `06` §9.
 
 ---
 
+### 2026-11-24 — Milestone 02 (APIs & HTTP) — atoms complete, build partial
+- Atoms achieved: M02.01–M02.20. Optional M02.21 skipped
+- Built: practice scripts, fetcher_core.py, gh_report/ (cli, main, processing, cache, paths, utilis), auth_demo.py
+- Evidence provided: Q&A banks (M2-5, M2-6, M2-7: 7/7 each), closeout report, source read by the planner from GitHub main, git log -n 20 (20/20 Conventional Commits), history grep (placeholders only)
+- Struggled: wire delimiter, DELETE idempotence, sys.path and relative paths, writing the design after the code
+- Discrepancies between AI report and code: token logged at DEBUG and printed by ic(headers); no reset message; per_page=2, 30-day threshold, total_stars counts repos; retry counters never increment; DESIGN.md states/modules and final alignment were AI-generated after the code (commits 65367d9, 94417a9); a summary file for a nonexistent user exists
+- Hours: ~20.0 (M2-1 1.75, M2-2 2.0, M2-3 2.0, M2-4 2.0, M2-5 4.25, M2-6 1.0, M2-7 7.0)
+- Next action: M2-8 hardening; M03 in Feb; vision-lane decision
+
+---
+
 ## 2. Audit and diagnostic records
 
 ### 2.1 The 68-statement audit (statement numbers by topic)
@@ -168,6 +179,8 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D22 | 2026-10-31 | Unit 3 deferred to the last week of Jan 2027; Class 11 target moves from 31 Dec 2026 to 31 Jan 2027 | Brother's exams end Feb; learn late Jan, teach early Feb so it stays fresh |
 | D23 | 2026-10-31 | Phase 3 runs in CPP_Path/ (own workspace and repo, 4 chats of ~4 h, SESSION_STATE.md); Nov–Dec weekly split M02 2.0 / Phase 3 2.0 / misc 0.5 | Avoids opening the root workspace; avoids long chats losing context; CBSE hours freed |
 | D24 | 2026-11-07 | M02 build target changes from the weather data_fetcher to a design-first GitHub activity report (build/gh_report/); weather scripts become practice prototypes; SD-01 now precedes the build | Learner wanted to design before coding; a post-hoc design felt pointless; the GitHub API exercises the remaining M02 atoms (auth, rate limits, Link pagination, ETag) |
+| D25 | 2026-11-24 | One copy of Journey_Docs at the workspace root; Milestones/Journey_Docs and other chat-scoped folders are symlinks to it; supersedes D18 and D20 | Removes the stale-copy problem; chats scoped to Milestones can edit the docs; docs are committed from the root repo |
+| D26 | 2026-11-24 | gh_report drops the "sleep until reset or exit" prompt; on rate-limit exhaustion it stops cleanly and shows the reset time | Learner decision: simpler and testable without prompts |
 
 D16 and D17 were never assigned.
 
@@ -194,6 +207,7 @@ Phase completion links (add when each phase finishes): _none yet_.
 | 2026-10-26 week | Phase 3 | 6.0 | 6 [x], 1 [~] | 4 checkpoints, ~1.5 h each vs 2.0 planned |
 | 2026-10-26 week | M02 | 1.75 | 1 [x], 2 [~] | M2-1 vs 2.0 planned |
 | 2026-10-31 to 2026-11-07 | M02 M2-2..M2-5 | 10.25 | +9 atoms credited | M2-5 took 4.25 h vs 2.0 planned (path/import friction); M02 cumulative ~12.0 h |
+| 2026-11-07 to 2026-11-24 | M02 M2-6..M2-7 | 8.0 | +8 atoms credited | M02 total ~20.0 h vs ~12 planned (x1.7); apply x1.5 to build-heavy milestones when re-planning |
 
 **Pace rule:** after 4 weeks of data, compute hours per atom for each lane and compare with the plan (`00` §3 and `04` blocks). If the actual pace differs by more than 25%, re-plan dates only (not scope) and log a decision (D-number).
 

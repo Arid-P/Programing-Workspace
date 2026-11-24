@@ -52,12 +52,10 @@ Phase 2 lives in the root workspace repo (CBSE_CS/), not a separate cbse-cs-11-1
 
 CPP_Path/ is its own git repo and VS Code workspace (gitignored in the root repo), like Milestones/ (D23). Electronics_Sim/ and Math_Notes/ will live inside CPP_Path/ when needed.
 
-### 3.1 Journey_Docs: root copy is canonical (D20, 2026-10-24; supersedes D18)
-- Canonical, git-tracked: ~/Programing-Workspace/Journey_Docs/. It is the only source of truth.
-- Milestones/Journey_Docs/ is a gitignored working copy for Milestones-scoped agy chats that cannot reach the root. It may be stale.
-- Any agy chat with root access edits the canonical copy directly.
-- Before every Milestones agy session, refresh the working copy FROM the root: cp -r Journey_Docs/* Milestones/Journey_Docs/ (run in ~/Programing-Workspace).
-- Never copy Milestones/Journey_Docs over the root. If a Milestones chat needs doc changes, it writes proposed edits to a separate file and the learner applies them to the root copy.
+### 3.1 Journey_Docs: single copy, symlinks elsewhere (D25, 2026-11-24; supersedes D18 and D20)
+- The only real copy is ~/Programing-Workspace/Journey_Docs/, tracked by the root repo.
+- Milestones/Journey_Docs and other chat-scoped folders are symlinks to it. Any agy chat may edit through the symlink; never create a second copy.
+- Commit the docs from the root repo: docs(journey): <what changed>.
 - Upload the root copy to the PLANNER.
 
 ### Workspace layout (extend the existing `~/Programing-Workspace`)

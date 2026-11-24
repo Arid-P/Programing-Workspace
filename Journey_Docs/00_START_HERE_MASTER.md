@@ -122,7 +122,7 @@ Assumptions (unverified, confirm with the learner):
 ## 4. Current Pointer (update this after every session)
 
 - **Date of pointer:** 2026-11-07
-- **Phase 1:** M00 ✅, M01 ✅ (24/24). **M02 in progress (12 of 21 atoms, ~12.0 h):** M2-1..M2-5 done except the M2-5 closing gate (M02.16/17/19 pending). **Build target changed (D24):** new design-first GitHub activity report; learner writes DESIGN.md first. **Next:** M2-6 (design, auth, limits, pagination), then M2-7.
+- **Phase 1:** M00 ✅, M01 ✅ (24/24), **M02 atoms 20/21 complete (2026-11-24, ~20.0 h vs ~12 h estimated)**. gh_report build is [~]; hardening checkpoint M2-8 (about 2 h) is next. Then M03 (planned Feb 2027). The vision-lane (school_project) decision is pending.
 - **Phase 2:** Unit 1 ✅ 10/10, Unit 2 ✅ 28/28. **Unit 3 deferred (D22):** learner studies it in the last week of Jan 2027 and teaches his brother in early Feb (brother's exams end Feb). Class 11 target is now 31 Jan 2027. Class 12 starts Jan 2027.
 - **Phase 3 — ACTIVE:** Block 1 part A, chats 1–2 done (P3-1..P3-4, 6.0 h): CPP-01, 02, 03, 05, 06, 07 [x]; CPP-04 [~] (mini-check misses plus signed-overflow bugs in p12/p02/p09). Next: chat 3 (P3-5): CPP-08 part 1, fix those bugs, port p13. Workspace: CPP_Path/ is its own VS Code workspace and repo (D23).
 - **Math:** dormant until a build needs it (`05`).
@@ -146,9 +146,14 @@ Assumptions (unverified, confirm with the learner):
 15. M02.02: fresh port statements at the M2-2 gate. M02.18: one-line DevTools proof.
 16. M02 README hygiene: TLS also authenticates the server and checks integrity; plain-text wire format is HTTP/1.1 (HTTP/2/3 are binary, same semantics); goal "build your own API" belongs to M03; add the dated struggle (2026-10-28: thought http:// defaults to port 443); mark blocks adapted from notes.md.
 17. Brother's Class 11 exams end Feb 2027 (learner-reported). His Class 12 start (assumed April 2027) is still unverified.
-18. M02: closing gate for M2-5 (7 statements), then DESIGN.md for gh_report reviewed by the planner.
+18. [RESOLVED 2026-11-24] M02: closing gate for M2-5 (7 statements), then DESIGN.md for gh_report reviewed by the planner (README fixed in commit f12a470).
 19. M02: icecream is imported in fetcher_core.py but not in the declared dependencies shown; send pyproject.toml.
-20. M02 README fixes (Request Line label, attribute vs method notation, What I built, M2-4 struggles).
+20. [RESOLVED 2026-11-24] M02 README fixes (Request Line label, attribute vs method notation, What I built, M2-4 struggles; fixed in commit f12a470).
+21. M2-8 must-fix: per_page 2 -> 100; untouched 30 -> 90 days; total_stars = sum of stars; seconds display (time_diff = 60 bug); ci/tr counters never increment (infinite loop on persistent write failure); mutable default in api_failure_handler; 5xx must not print "Rate limit exceeded"; show the reset time (local) when stopping on rate limit (sleep prompt dropped, D26).
+22. Security: rotate the GitHub token; delete data/logs/app.log; remove ic(headers) from auth_demo.py; never log headers; verbose logging off by default; chmod 600 on data/.env; decide whether to empty the source .env (design step 4) or record the decision not to.
+23. Evidence: git log -n 20 is 20/20 Conventional Commits (verified 2026-11-24); history grep for ghp_/github_pat_ finds only placeholders. STILL NEEDED: real terminal outputs in ai_nd_report/ACCEPTANCE_RUN.md.
+24. README: add a "design vs what I built" section; DESIGN.md final states/modules were AI-written from the code (commits 65367d9, 94417a9).
+25. Verify a nonexistent user no longer writes a summary file (summary_user_does_not_exist_404_test.json exists from an earlier run). Deferred to pytest: rate-limit stop and forced timeout (need mocks), N-aware cache, If-None-Match on page 1 only, corrupt-cache handling, 5xx backoff.
 
 ---
 
