@@ -1,7 +1,7 @@
-# 02 — Phase 1: Foundation Milestones 00–04
+# 02 — Phase 1: Foundation Milestones 00–05
 
 **Status legend for atoms:** `[ ]` not started · `[~]` partial · `[x]` verified (own words, no AI writing the answer)
-**Frozen structure:** milestone list and order were fixed by the learner. Refinements inside a milestone must be logged in `07`.
+**Structure:** originally M00–M04 were frozen (D12); D27 (2026-11-25) inserted `03_Testing_Pytest` and renumbered FastAPI/Frontend to M04/M05. Refinements inside a milestone must be logged in `07`.
 **Repo:** one git repo for the `Milestones/` folder; URL goes in `07` §4.
 
 ---
@@ -17,9 +17,10 @@ Milestones/
 ├── 00_Environment_UV/
 ├── 01_JSON_Environments_Git/      # folder name kept; venv content moved to 00
 ├── 02_APIs_HTTP/
-├── 03_FastAPI_SQLAlchemy_Backend/
-└── 04_Frontend_Deployment/
-    each has: README.md, data/ (if needed), practice/, build/
+├── 03_Testing_Pytest/
+├── 04_FastAPI_SQLAlchemy_Backend/
+└── 05_Frontend_Deployment/
+    each has: README.md, data/ (if needed), practice/, build/ (03 uses practice/ + gh_report/ + tests/)
 ```
 
 ### The uv ritual (start of every milestone)
@@ -38,11 +39,12 @@ Be specific (code lines, error messages, dates). Detail standard is in `06` §4.
 ### Hours (at 1.5 h/week milestone lane) and target windows
 | Milestone | Est. hours | Target window |
 |---|---|---|
-| M00 | ~8 | DONE (Sep 2026) |
-| M01 | ~10 | Oct – early Nov 2026 |
-| M02 | ~12 | Nov – Dec 2026 |
-| M03 | ~28 | Feb – Jun 2027 (after Class 12 SQL, ideally) |
-| M04 | ~28 | Jun – Sep 2027 |
+| M00 | ~8 | DONE (Sep 2026; ~3.25 h actual) |
+| M01 | ~10 | DONE (Oct 2026) |
+| M02 | ~12 | DONE (Nov 2026; ~22.0 h logged / ~24.0–24.5 h with 11–11.5 h gh_report) |
+| M03 | ~12–15 | Dec 2026 – mid Jan 2027 (~2 h/week) |
+| M04 | ~28 | Feb – Jun 2027 (after Class 12 SQL, ideally) |
+| M05 | ~28 | Jun – Sep 2027 |
 
 ---
 
@@ -151,9 +153,9 @@ Use the template in `06` §6. Insert: profile summary from `01` §4; "I already 
 
 ---
 
-## MILESTONE 02 — APIs & HTTP (for real)
+## MILESTONE 02 — APIs & HTTP (for real) ✅ DONE
 
-**Status (2026-11-24): atoms 20/21 complete. Build gh_report works but acceptance is partly unmet: R3 (total stars counts repos; untouched threshold 30 not 90; per_page=2), R6 (no reset time shown when stopping), R7 (token written to DEBUG log; ic(headers) prints it). Hardening checkpoint M2-8 closes these; see 00 pending items 21-25.**
+**Status (2026-11-24/25): ✅ COMPLETE. Atoms 20/21 `[x]` (M02.21 optional httpx skipped). M2-8 hardening committed (`618b5f2`), S-Gate 7/7 & C-Gate 7/7 passed, token rotated. Hours ~22.0 h logged (M2-8 ~2.0 h; learner later reported ~11–11.5 h for whole gh_report, ~24.0–24.5 h total). C1 request-count proof waived to pytest; `Used: N/A` and UI typos accepted; six deferred behaviors moved to M03 (`03_Testing_Pytest`) capstone.**
 
 **Goal:** replace "an API is a link" with a working mental and practical model of HTTP requests.
 **Prerequisites:** M00, M01 (JSON). **Packages:** `uv add requests python-dotenv rich`.
@@ -206,44 +208,89 @@ No timeout; committing `.env`; assuming 200 means valid data; treating `.json()`
 
 ---
 
-## MILESTONE 03 — FastAPI + SQLAlchemy Backend (fix circular imports)
+## MILESTONE 03 — Testing with pytest (practice first, gh_report capstone)
+
+**Goal:** write real, trustworthy tests with `pytest`. Practice first on small modules (the teacher may generate them; the learner writes every test); capstone = `gh_report`.
+**Prerequisites:** M02. **Packages:** `uv add --dev pytest pytest-cov` (plus `gh_report` runtime deps `requests`, `python-dotenv`, `rich`, `icecream`).
+**Estimate:** 12–15 h (window: Dec 2026 – mid Jan 2027, ~2 h/week).
+
+### Atoms
+- [ ] M03.01 Test layout, discovery, `uv run pytest`, `-k`/`-x`/`-q`, reading failures, pytest config in `pyproject.toml` (`pythonpath`).
+- [ ] M03.02 `assert`, `pytest.raises` (incl. `SystemExit`), `pytest.approx`.
+- [ ] M03.03 `@pytest.mark.parametrize`.
+- [ ] M03.04 Fixtures and `conftest.py`.
+- [ ] M03.05 `tmp_path`, `monkeypatch`, `capsys`, `caplog`.
+- [ ] M03.06 Faking HTTP (`monkeypatch` a fake response vs a mock library vs a local server fixture; tradeoffs).
+- [ ] M03.07 Testing time and retries (patch `sleep`, injectable clock, count attempts).
+- [ ] M03.08 Testing files and caches (atomic write, backup, 0-byte and corrupt file, write failure).
+- [ ] M03.09 Testing a CLI (`argparse`, monkeypatched `input`, exit paths).
+- [ ] M03.10 Test design (arrange-act-assert, naming, isolation, determinism, boundaries, behavior not implementation).
+- [ ] M03.11 Coverage and markers (`pytest-cov`, `slow`/`network`, an opt-in live smoke test).
+- [ ] M03.12 Red-then-green: reproduce a bug as a failing test, then fix.
+- [ ] M03.13 Capstone setup: seams plan for `gh_report` (minimal changes, separate commits).
+- [ ] M03.14 Capstone tests (`gh_report` suite).
+
+### Checkpoints (about 2 h each)
+- **M3-1:** M03.01–02 (practice module A: pure functions).
+- **M3-2:** M03.03–04 (practice module B: class with state) + cold-write test.
+- **M3-3:** M03.05 + M03.07 (practice module C: timer/retry).
+- **M3-4:** M03.06, 08, 09 (practice module D: tiny client + cache + CLI).
+- **M3-5:** M03.10–12 + gate + cold-write test.
+- **M3-6:** M03.13 (seams plan for `gh_report`). *Do not touch `gh_report/` until M3-1..M3-5 practice atoms are done.*
+- **M3-7:** M03.14 + acceptance + README.
+
+### Build / acceptance — `gh_report` test suite (copied into `src/03_testing_pytest/gh_report/`, D29)
+- Capstone suite for `gh_report` with **30+ tests**, all passing with **no network** in **under 5 s**.
+- Covers the six deferred M02 behaviors: (1) forced timeout, (2) 429/403 stop with reset time, (3) N-aware cache, (4) page-1-only `If-None-Match`, (5) corrupt cache, (6) 5xx backoff wait.
+- Covers `per_page=100` request count and the 90-day boundary (`89`/`90`/`91`).
+- Coverage **≥ 80%** on `processing`, `cache`, and `utilis`.
+- **3 real bugs** reproduced red-then-green.
+- Learner `README.md` filled in.
+
+### Verification
+- 6–8 atomic True/False statements per checkpoint, verbatim answers in `qna_and_verification_bank.md`.
+- Cold-write test (one test file from a blank page in ≤ 10 minutes, no AI, no notes) at **M3-2** and **M3-5**.
+
+---
+
+## MILESTONE 04 — FastAPI + SQLAlchemy Backend (fix circular imports)
 
 **Goal:** understand and control a real backend: routes, validation, DB layer, tests, import structure.
-**Prerequisites:** M01, M02. Strongly helped by CBSE Class 12 SQL (Feb–Mar 2027).
+**Prerequisites:** M01, M02, M03. Strongly helped by CBSE Class 12 SQL (Feb–Mar 2027).
 **Packages (uv):** `fastapi`, `uvicorn` (or `fastapi[standard]`), `sqlalchemy`, `pydantic`, `pytest`, `httpx`, `alembic` (later). Confirm current CLI (`fastapi dev`) in docs.
 
 ### Atoms — Web layer
-- [ ] M03.01 Server concepts: WSGI vs ASGI; what `uvicorn` does (listen on a port, speak HTTP, call the app). Run: `uv run uvicorn app.main:app --reload`.
-- [ ] M03.02 App object, route decorators, HTTP-method decorators.
-- [ ] M03.03 Path params with types; query params with defaults/optional; automatic 422 on bad input.
-- [ ] M03.04 Request bodies with Pydantic models; `Field` constraints.
-- [ ] M03.05 `response_model`, `status_code`, `HTTPException`.
-- [ ] M03.06 `def` vs `async def`: event loop, I/O-bound benefit, never block inside `async def`; sync routes run in a threadpool.
-- [ ] M03.07 Dependency injection with `Depends` (DB session, auth).
-- [ ] M03.08 `APIRouter` and project layout.
-- [ ] M03.09 Settings via environment (e.g. `pydantic-settings`).
-- [ ] M03.10 CORS middleware (needed for M04).
-- [ ] M03.11 Auto docs at `/docs` and `/redoc`.
-- [ ] M03.12 Auth basics: never store plaintext passwords; hashing; token concept. (Implementation optional, late.)
+- [ ] M04.01 Server concepts: WSGI vs ASGI; what `uvicorn` does (listen on a port, speak HTTP, call the app). Run: `uv run uvicorn app.main:app --reload`.
+- [ ] M04.02 App object, route decorators, HTTP-method decorators.
+- [ ] M04.03 Path params with types; query params with defaults/optional; automatic 422 on bad input.
+- [ ] M04.04 Request bodies with Pydantic models; `Field` constraints.
+- [ ] M04.05 `response_model`, `status_code`, `HTTPException`.
+- [ ] M04.06 `def` vs `async def`: event loop, I/O-bound benefit, never block inside `async def`; sync routes run in a threadpool.
+- [ ] M04.07 Dependency injection with `Depends` (DB session, auth).
+- [ ] M04.08 `APIRouter` and project layout.
+- [ ] M04.09 Settings via environment (e.g. `pydantic-settings`).
+- [ ] M04.10 CORS middleware (needed for M05).
+- [ ] M04.11 Auto docs at `/docs` and `/redoc`.
+- [ ] M04.12 Auth basics: never store plaintext passwords; hashing; token concept. (Implementation optional, late.)
 
 ### Atoms — Database layer
-- [ ] M03.13 Map SQL knowledge to ORM: table ↔ class, row ↔ instance, column ↔ attribute.
-- [ ] M03.14 SQLAlchemy 2.x style: `engine`, `Session`, `DeclarativeBase`, `Mapped[...]`, `mapped_column`.
-- [ ] M03.15 `metadata.create_all` vs migrations (Alembic concept + one migration).
-- [ ] M03.16 CRUD via session: add, get, `select()`, update, delete, commit, rollback.
-- [ ] M03.17 Relationships: `ForeignKey`, `relationship`, `back_populates`; one-to-many; many-to-many with an association table; cascades.
-- [ ] M03.18 Queries: filters, joins, `order_by`, `limit/offset`; lazy vs eager loading; the N+1 problem.
-- [ ] M03.19 One session per request via a yielding dependency; closing it.
-- [ ] M03.20 SQLite specifics: enable `PRAGMA foreign_keys=ON`; `check_same_thread` for FastAPI.
+- [ ] M04.13 Map SQL knowledge to ORM: table ↔ class, row ↔ instance, column ↔ attribute.
+- [ ] M04.14 SQLAlchemy 2.x style: `engine`, `Session`, `DeclarativeBase`, `Mapped[...]`, `mapped_column`.
+- [ ] M04.15 `metadata.create_all` vs migrations (Alembic concept + one migration).
+- [ ] M04.16 CRUD via session: add, get, `select()`, update, delete, commit, rollback.
+- [ ] M04.17 Relationships: `ForeignKey`, `relationship`, `back_populates`; one-to-many; many-to-many with an association table; cascades.
+- [ ] M04.18 Queries: filters, joins, `order_by`, `limit/offset`; lazy vs eager loading; the N+1 problem.
+- [ ] M04.19 One session per request via a yielding dependency; closing it.
+- [ ] M04.20 SQLite specifics: enable `PRAGMA foreign_keys=ON`; `check_same_thread` for FastAPI.
 
 ### Atoms — Circular imports (the learner's chronic pain)
-- [ ] M03.21 Why they occur: import statements execute code; A imports B while B imports A; `sys.modules` holds a partially initialized module.
-- [ ] M03.22 Fix toolbox in preference order: restructure (separate `db/base.py` from models; models never import services/routers); string names in `relationship("Model")`; `if TYPE_CHECKING:` for type-only imports; function-level imports as last resort.
-- [ ] M03.23 Reproduce a circular import on a toy pair of files, read the traceback, fix it, then repeat in a model package.
+- [ ] M04.21 Why they occur: import statements execute code; A imports B while B imports A; `sys.modules` holds a partially initialized module.
+- [ ] M04.22 Fix toolbox in preference order: restructure (separate `db/base.py` from models; models never import services/routers); string names in `relationship("Model")`; `if TYPE_CHECKING:` for type-only imports; function-level imports as last resort.
+- [ ] M04.23 Reproduce a circular import on a toy pair of files, read the traceback, fix it, then repeat in a model package.
 
 ### Atoms — Testing
-- [ ] M03.24 `pytest` basics, fixtures, `TestClient`, dependency overrides with in-memory SQLite.
-- [ ] M03.25 Test both happy paths and failure paths (404, 422, duplicates).
+- [ ] M04.24 `pytest` basics, fixtures, `TestClient`, dependency overrides with in-memory SQLite.
+- [ ] M04.25 Test both happy paths and failure paths (404, 422, duplicates).
 
 ### Build spec — "Study Tracker API" (not FLUX, not the diary system)
 - Tables: `topics` (1) → `sessions` (many) plus `tags` (many-to-many with topics).
@@ -260,48 +307,48 @@ No timeout; committing `.env`; assuming 200 means valid data; treating `.json()`
 
 ---
 
-## MILESTONE 04 — Frontend Basics + Deployment (first full loop)
+## MILESTONE 05 — Frontend Basics + Deployment (first full loop)
 
 **Goal:** frontend → API → DB → **live URL**. Learn just enough HTML/CSS/JS to call his own API, then deploy.
-**Prerequisites:** M03. **Constraint:** design method is "study examples, then vary"; never blank-canvas design (`06` §8).
+**Prerequisites:** M04. **Constraint:** design method is "study examples, then vary"; never blank-canvas design (`06` §8).
 
 ### Atoms — HTML
-- [ ] M04.01 Document skeleton, semantic tags (`header`, `nav`, `main`, `section`, `article`, `footer`).
-- [ ] M04.02 Forms, inputs, labels, buttons, built-in validation attributes.
-- [ ] M04.03 Lists, tables, links, images, accessibility basics (`alt`, labels).
+- [ ] M05.01 Document skeleton, semantic tags (`header`, `nav`, `main`, `section`, `article`, `footer`).
+- [ ] M05.02 Forms, inputs, labels, buttons, built-in validation attributes.
+- [ ] M05.03 Lists, tables, links, images, accessibility basics (`alt`, labels).
 
 ### Atoms — CSS
-- [ ] M04.04 Selectors, cascade, specificity, inheritance.
-- [ ] M04.05 Box model, `display`, `position`.
-- [ ] M04.06 Flexbox and Grid layouts.
-- [ ] M04.07 Responsive design: viewport meta, relative units, media queries.
-- [ ] M04.08 CSS variables; light/dark via `prefers-color-scheme`.
-- [ ] M04.09 Spacing/typography/color decisions as tokens, copied from reference apps.
+- [ ] M05.04 Selectors, cascade, specificity, inheritance.
+- [ ] M05.05 Box model, `display`, `position`.
+- [ ] M05.06 Flexbox and Grid layouts.
+- [ ] M05.07 Responsive design: viewport meta, relative units, media queries.
+- [ ] M05.08 CSS variables; light/dark via `prefers-color-scheme`.
+- [ ] M05.09 Spacing/typography/color decisions as tokens, copied from reference apps.
 
 ### Atoms — JavaScript
-- [ ] M04.10 `let/const`, types, functions/arrow functions, arrays/objects, template strings.
-- [ ] M04.11 DOM: `querySelector`, creating/updating elements, events, event delegation.
-- [ ] M04.12 `fetch` GET/POST with JSON, `response.ok`, error handling.
-- [ ] M04.13 Promises, `async/await`, `try/catch`.
-- [ ] M04.14 State → render pattern (one state object, one render function).
-- [ ] M04.15 DevTools: Elements, Console, Network, Application.
-- [ ] M04.16 ES modules (`type="module"`), split into `api.js`, `state.js`, `ui.js`.
-- [ ] M04.17 `localStorage` for small per-user conveniences.
+- [ ] M05.10 `let/const`, types, functions/arrow functions, arrays/objects, template strings.
+- [ ] M05.11 DOM: `querySelector`, creating/updating elements, events, event delegation.
+- [ ] M05.12 `fetch` GET/POST with JSON, `response.ok`, error handling.
+- [ ] M05.13 Promises, `async/await`, `try/catch`.
+- [ ] M05.14 State → render pattern (one state object, one render function).
+- [ ] M05.15 DevTools: Elements, Console, Network, Application.
+- [ ] M05.16 ES modules (`type="module"`), split into `api.js`, `state.js`, `ui.js`.
+- [ ] M05.17 `localStorage` for small per-user conveniences.
 
 ### Atoms — Integration and deployment
-- [ ] M04.18 CORS: what it is, why browsers enforce it, fix in FastAPI; alternative is serving the frontend from FastAPI via `StaticFiles`.
-- [ ] M04.19 API base URL per environment.
-- [ ] M04.20 What deployment means: a machine, a process, a port, a URL, HTTPS.
-- [ ] M04.21 Production server: no `--reload`; workers; reverse proxy concept.
-- [ ] M04.22 Config through environment variables; secrets in the platform dashboard.
-- [ ] M04.23 Reproducible install on the server (`uv sync --frozen` or platform equivalent), pinned Python version.
-- [ ] M04.24 Persistent data: ephemeral disks and SQLite risk; managed Postgres or a persistent volume; change SQLAlchemy URL/driver.
-- [ ] M04.25 Logs and a health-check endpoint.
-- [ ] M04.26 Choose a host with *currently* free terms (verify at the time; candidates: Render, Fly.io, PythonAnywhere for Python; GitHub Pages/Cloudflare Pages/Netlify for static). Note cold-start behavior.
-- [ ] M04.27 (optional) GitHub Actions to run tests on every push.
+- [ ] M05.18 CORS: what it is, why browsers enforce it, fix in FastAPI; alternative is serving the frontend from FastAPI via `StaticFiles`.
+- [ ] M05.19 API base URL per environment.
+- [ ] M05.20 What deployment means: a machine, a process, a port, a URL, HTTPS.
+- [ ] M05.21 Production server: no `--reload`; workers; reverse proxy concept.
+- [ ] M05.22 Config through environment variables; secrets in the platform dashboard.
+- [ ] M05.23 Reproducible install on the server (`uv sync --frozen` or platform equivalent), pinned Python version.
+- [ ] M05.24 Persistent data: ephemeral disks and SQLite risk; managed Postgres or a persistent volume; change SQLAlchemy URL/driver.
+- [ ] M05.25 Logs and a health-check endpoint.
+- [ ] M05.26 Choose a host with *currently* free terms (verify at the time; candidates: Render, Fly.io, PythonAnywhere for Python; GitHub Pages/Cloudflare Pages/Netlify for static). Note cold-start behavior.
+- [ ] M05.27 (optional) GitHub Actions to run tests on every push.
 
 ### Build spec — deployed full-stack app
-- New small app or an extension of the M03 Study Tracker: list/add/edit/delete with a filter and a stats view.
+- New small app or an extension of the M04 Study Tracker: list/add/edit/delete with a filter and a stats view.
 - Frontend pure HTML/CSS/JS (no framework). Built from ≥ 3 reference apps he screenshotted and annotated.
 - **Acceptance:** live URL opened by someone else who completes a task; tests pass locally and (optionally) in CI; README includes an architecture diagram (boxes and arrows: browser → server → DB); secrets not in repo; documented free-tier limits.
 
@@ -315,5 +362,5 @@ No timeout; committing `.env`; assuming 200 means valid data; treating `.json()`
 ---
 
 ## Cross-links
-- M01 ↔ CBSE 12 (file handling, CSV) · M02 ↔ CBSE 12 (networks: IP, HTTP, TCP/IP, URL) · M03 ↔ CBSE 12 (SQL, Python-SQL connectivity) and Phase 3 (system design).
-- M04 web work is deliberately separate from Flutter (dropped).
+- M01 ↔ CBSE 12 (file handling, CSV) · M02 ↔ CBSE 12 (networks: IP, HTTP, TCP/IP, URL) · M03 ↔ M02 (`gh_report` capstone) and M04 (`pytest`) · M04 ↔ CBSE 12 (SQL, Python-SQL connectivity) and Phase 3 (system design).
+- M05 web work is deliberately separate from Flutter (dropped).

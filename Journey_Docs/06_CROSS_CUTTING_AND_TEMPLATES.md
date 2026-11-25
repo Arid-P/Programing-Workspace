@@ -17,7 +17,7 @@ Everything that spans phases: system design, repo conventions, documentation sta
 | SD-02 | Block 2 | Draw and implement a finite state machine (states, events, transitions) |
 | SD-03 | Block 3 | Design data flow between modules (producer/consumer, ring buffers), define interfaces |
 | SD-04 | Block 4 | Compute a timing/latency budget; separate ISR work from main-loop work |
-| SD-05 | Block 5 (reuses M03/M04) | Sketch client/server + API + DB schema; identify failure points |
+| SD-05 | Block 5 (reuses M04/M05) | Sketch client/server + API + DB schema; identify failure points |
 | SD-06 | Block 5 | Write a design doc with requirements, options, tradeoffs, failure modes |
 
 ### One-page design template (copy into each build's `README.md` or `DESIGN.md`)
@@ -44,7 +44,7 @@ Rule (2026-11-07): the one-page design is written BEFORE any code of that build 
 | Repo (suggested name) | Contents |
 |---|---|
 | `journey-docs` | This document set (updated by the update protocol) |
-| `milestones` | Phase 1: `Milestones/` folder (M00–M04) |
+| `milestones` | Phase 1: `Milestones/` folder (M00–M05) |
 | `cbse-cs-11-12` | Phase 2: notes, record-file programs, projects, diagnostic results |
 | `cpp-electronics-path` | Phase 3: C++ exercises, block builds, simulator links/screenshots, math notes |
 
@@ -175,6 +175,11 @@ atoms are open in the current milestone/block, (3) what evidence you need from m
 
 ### 6.5 SESSION_STATE.md handoff
 Each project folder (Milestones/NN_*, CPP_Path/) keeps SESSION_STATE.md: checkpoint done, atoms achieved/partial, Q&A file, hours, next checkpoint, open issues. A new chat starts by reading it; the teacher updates it after every checkpoint. It is an instruction file: wrong text steers the teacher, so the planner checks it.
+
+### 6.6 Main chats (MMAIN, CMAIN) and PLANNER_CHARTER.md (D28, 2026-11-25)
+- `MMAIN` (Phase 1: M00–M05) and `CMAIN` (Phase 3) act as PLANNER chats following `Journey_Docs/PLANNER_CHARTER.md`, auditing evidence, designing checkpoints, and keeping `Journey_Docs/` true.
+- Each maintains a rolling state file: `Milestones/main_state/MMAIN_STATE.md` and `CPP_PATH/main_state/CMAIN_STATE.md`.
+- Teacher chats teach inside each project folder. `MMAIN` owns `Journey_Docs/`; `CMAIN` edits only `04` and the Phase 3 lines; the Claude planner audits when available.
 
 ---
 

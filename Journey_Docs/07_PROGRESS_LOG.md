@@ -1,6 +1,7 @@
 # 07 — Progress Log (append-only)
 
 Rules: never rewrite old entries; add corrections as new lines ("Correction <date>: ...").
+Correction 2026-11-25: M03/M04 in earlier entries mean FastAPI/Frontend, which became M04/M05 under D27.
 Update procedure: `06` §9.
 
 ---
@@ -129,6 +130,19 @@ Update procedure: `06` §9.
 - Hours: ~20.0 (M2-1 1.75, M2-2 2.0, M2-3 2.0, M2-4 2.0, M2-5 4.25, M2-6 1.0, M2-7 7.0)
 - Next action: M2-8 hardening; M03 in Feb; vision-lane decision
 
+### 2026-11-24 to 2026-11-25 — Milestone 02 (APIs & HTTP) — finalized closeout (M2-8)
+- Atoms achieved: M02.01–M02.20 (20/21 `[x]`). M02.21 skipped.
+- Built: `gh_report` hardened in `618b5f2` (S1–S4, C1–C8), `auth_demo.py`, `DESIGN.md` & `README.md` reconciled (2026-11-25).
+- Evidence provided: S-Gate 7/7 and C-Gate 7/7 verbatim in `qna_and_verification_bank.md`; `ACCEPTANCE_RUN.md`; GitHub token rotated (`18:44 IST`); `chmod 600` on `data/.env`; `grep -c "Bearer" app.log` = 0; `404` summary deleted.
+- Accepted / waived: C1 request-count proof waived to M03 pytest; `Used: N/A` and UI typos accepted; six behaviors deferred to M03 (forced timeout, 429/403 stop with reset time, N-aware cache, page-1-only `If-None-Match`, corrupt cache, 5xx backoff wait).
+- Hours: ~22.0 total logged (M2-8 ~2.0; learner later reported ~11–11.5h for whole `gh_report` [M2-7+M2-8], ~24.0–24.5h total).
+- Next action: M03 Testing with pytest (`03_Testing_Pytest`).
+
+### 2026-11-25 — Phase 1 restructure (D27–D29) & MMAIN takeover
+- Renamed `03_FastAPI_SQLAlchemy_Backend` -> `04_FastAPI_SQLAlchemy_Backend` and `04_Frontend_Deployment` -> `05_Frontend_Deployment`; initialized `03_Testing_Pytest` (est. 12–15h) and copied `gh_report` source as capstone (`9884a52`).
+- Created `Journey_Docs/PLANNER_CHARTER.md` and `Milestones/main_state/MMAIN_STATE.md`. Context harvest completed for all 6 prior chats (`M00`, `M01`, `M02_1..4`).
+- Next action: Start M03 (`M3-1`, practice module A).
+
 ---
 
 ## 2. Audit and diagnostic records
@@ -181,6 +195,9 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D24 | 2026-11-07 | M02 build target changes from the weather data_fetcher to a design-first GitHub activity report (build/gh_report/); weather scripts become practice prototypes; SD-01 now precedes the build | Learner wanted to design before coding; a post-hoc design felt pointless; the GitHub API exercises the remaining M02 atoms (auth, rate limits, Link pagination, ETag) |
 | D25 | 2026-11-24 | One copy of Journey_Docs at the workspace root; Milestones/Journey_Docs and other chat-scoped folders are symlinks to it; supersedes D18 and D20 | Removes the stale-copy problem; chats scoped to Milestones can edit the docs; docs are committed from the root repo |
 | D26 | 2026-11-24 | gh_report drops the "sleep until reset or exit" prompt; on rate-limit exhaustion it stops cleanly and shows the reset time | Learner decision: simpler and testable without prompts |
+| D27 | 2026-11-25 | Insert new milestone `03_Testing_Pytest` (practice modules first, `gh_report` capstone; est. 12–15 h); FastAPI+SQLAlchemy becomes M04 and Frontend+Deployment becomes M05 | Closes testing/mocking gap before FastAPI and gives the six deferred M02 behaviors a real pytest suite |
+| D28 | 2026-11-25 | Main-chat architecture: `MMAIN` (Phase 1) and `CMAIN` (Phase 3) act as PLANNER chats following `Journey_Docs/PLANNER_CHARTER.md`, each keeping a rolling state file (`Milestones/main_state/MMAIN_STATE.md`, `CPP_PATH/main_state/CMAIN_STATE.md`); teacher chats teach; `MMAIN` owns `Journey_Docs`, `CMAIN` edits only `04` and Phase 3 lines; Claude planner audits when available | Token-limit resilience and clean lane separation without losing continuity |
+| D29 | 2026-11-25 | Copy (do not move) `gh_report` source into `03_Testing_Pytest` as the capstone project; tests live in `03_Testing_Pytest` and `02_APIs_HTTP` keeps its original | Preserves M02 deliverable intact while providing a real multi-module target for M03 |
 
 D16 and D17 were never assigned.
 
@@ -208,6 +225,8 @@ Phase completion links (add when each phase finishes): _none yet_.
 | 2026-10-26 week | M02 | 1.75 | 1 [x], 2 [~] | M2-1 vs 2.0 planned |
 | 2026-10-31 to 2026-11-07 | M02 M2-2..M2-5 | 10.25 | +9 atoms credited | M2-5 took 4.25 h vs 2.0 planned (path/import friction); M02 cumulative ~12.0 h |
 | 2026-11-07 to 2026-11-24 | M02 M2-6..M2-7 | 8.0 | +8 atoms credited | M02 total ~20.0 h vs ~12 planned (x1.7); apply x1.5 to build-heavy milestones when re-planning |
+| 2026-11-24 | M02 M2-8 | ~2.0 | hardening gates 7/7 | M02 total ~22.0 h vs 12 planned (learner later noted 11–11.5 h for whole gh_report -> ~24.0–24.5 h) |
+| 2026-11-25 (planned) | M03 Testing (pytest) | 12–15 h est | 14 atoms planned | Dec 2026–mid Jan 2027 (~2 h/week); practice modules first, `gh_report` capstone |
 
 **Pace rule:** after 4 weeks of data, compute hours per atom for each lane and compare with the plan (`00` §3 and `04` blocks). If the actual pace differs by more than 25%, re-plan dates only (not scope) and log a decision (D-number).
 

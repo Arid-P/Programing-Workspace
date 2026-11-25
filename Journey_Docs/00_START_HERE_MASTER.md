@@ -1,6 +1,6 @@
 # 00 — START HERE: Master Handoff & Control Document
 
-**Document set version:** 1.2 · **Created:** 2026-09-28 · **Last updated:** 2026-11-07
+**Document set version:** 1.3 · **Created:** 2026-09-28 · **Last updated:** 2026-11-25
 **Maintained by:** the learner (in a git repo), with a PLANNER AI proposing every edit.
 
 ---
@@ -26,7 +26,7 @@ It has two jobs:
 |---|---|
 | `00_START_HERE_MASTER.md` | This file. Rules for the AI, dashboard, timeline, pending items. |
 | `01_LEARNER_PROFILE.md` | Verified skills, gaps, environment, constraints, learning quirks, AI pipeline, communication style. |
-| `02_PHASE1_FOUNDATION_MILESTONES.md` | Milestones 00–04 (uv, JSON+Git, APIs, FastAPI+SQLAlchemy, Frontend+Deployment). Atoms, builds, checks. |
+| `02_PHASE1_FOUNDATION_MILESTONES.md` | Milestones 00–05 (uv, JSON+Git, APIs, Testing+pytest, FastAPI+SQLAlchemy, Frontend+Deployment). Atoms, builds, checks. |
 | `03_PHASE2_CBSE_CS_11_12.md` | CBSE Computer Science Class 11 and 12 (2026-27 syllabus) as atoms, schedule, practical lists. |
 | `04_PHASE3_CPP_ELECTRONICS_SYSTEMS.md` | C++, electronics, digital logic, embedded (simulated), Blocks 1–5. |
 | `05_MATH_TRACK.md` | Just-in-time math protocol and atom map. |
@@ -50,7 +50,7 @@ You are taking over as the **PLANNER** (auditor and architect). Follow these rul
 4. **Verify understanding with atomic true/false statements**, not "do you understand?".
    The learner explicitly asked for this and is happy to answer 20–80 statements.
    Format is in `06` §5.
-5. **Milestones 00–04 are frozen.** The learner asked for no changes to their structure.
+5. **Milestones 00–05 structure (D27, 2026-11-25).** Originally 00–04 were frozen (D12); D27 inserted M03 Testing and renumbered FastAPI/Frontend to M04/M05.
    You may refine *inside* a milestone (add an atom, fix an inaccuracy) but log it.
 6. **Do not reintroduce FLUX** (a parked Flutter app project). It is out of scope for this journey.
 7. **Do not let AI write the code the learner is supposed to learn.** AI explains, reviews,
@@ -86,7 +86,7 @@ per the learner) with:
 
 | Phase | Name | Doc |
 |---|---|---|
-| 1 | Foundation Milestones 00–04 | `02` |
+| 1 | Foundation Milestones 00–05 | `02` |
 | 2 | CBSE CS Class 11 & 12 | `03` |
 | 3 | C++ / Electronics / Digital / Embedded / Systems | `04` |
 | T | Math (just-in-time) | `05` |
@@ -98,7 +98,7 @@ per the learner) with:
 |---|---|---|---|---|
 | Oct–Dec 2026 | 2.0 | 1.5 | 1.0 | Class 11 target: done by 31 Dec 2026 |
 | Jan–Mar 2027 | 3.0 | 1.5 | 0 (paused) | Class 12 target: done by 31 Mar 2027 |
-| Apr–Sep 2027 | 0.5 (teach-back) | 1.5 | 2.5 | M03 finishes, M04 done ~Sep 2027 |
+| Apr–Sep 2027 | 0.5 (teach-back) | 1.5 | 2.5 | M04 finishes, M05 done ~Sep 2027 |
 | Oct 2027–Jun 2028 | 0.5 (teach-back) | 0 | 4.0 | Phase 3 gets nearly all the time |
 
 Assumptions (unverified, confirm with the learner):
@@ -121,8 +121,8 @@ Assumptions (unverified, confirm with the learner):
 
 ## 4. Current Pointer (update this after every session)
 
-- **Date of pointer:** 2026-11-07
-- **Phase 1:** M00 ✅, M01 ✅ (24/24), **M02 atoms 20/21 complete (2026-11-24, ~20.0 h vs ~12 h estimated)**. gh_report build is [~]; hardening checkpoint M2-8 (about 2 h) is next. Then M03 (planned Feb 2027). The vision-lane (school_project) decision is pending.
+- **Date of pointer:** 2026-11-25
+- **Phase 1:** M00 ✅, M01 ✅ (24/24), **M02 ✅ complete (2026-11-24, 20/21 atoms [x], M02.21 skipped, ~22.0 h logged [~24.0–24.5 h with learner's 11–11.5 h gh_report count]; M2-8 S-Gate & C-Gate 7/7)**. Next: **M03 Testing with pytest** (window Dec 2026–mid Jan 2027, ~2 h/week; estimate 12–15 h; practice first, `gh_report` capstone). Then **M04 FastAPI + SQLAlchemy** after Class 12 SQL (planned Feb 2027), and **M05 Frontend + Deployment**. Vision lane (`school_project`): decision pending (paused until M03 completes).
 - **Phase 2:** Unit 1 ✅ 10/10, Unit 2 ✅ 28/28. **Unit 3 deferred (D22):** learner studies it in the last week of Jan 2027 and teaches his brother in early Feb (brother's exams end Feb). Class 11 target is now 31 Jan 2027. Class 12 starts Jan 2027.
 - **Phase 3 — ACTIVE:** Block 1 part A, chats 1–2 done (P3-1..P3-4, 6.0 h): CPP-01, 02, 03, 05, 06, 07 [x]; CPP-04 [~] (mini-check misses plus signed-overflow bugs in p12/p02/p09). Next: chat 3 (P3-5): CPP-08 part 1, fix those bugs, port p13. Workspace: CPP_Path/ is its own VS Code workspace and repo (D23).
 - **Math:** dormant until a build needs it (`05`).
@@ -131,8 +131,8 @@ Assumptions (unverified, confirm with the learner):
 
 1. [RESOLVED] M00 commits confirmed via real git log output.
 2. Confirm which "half of Class 12 Python" the learner has done (Class 12 diagnostic, statements 37–66 of 03 §7, before Jan 2027).
-3. Workspace folder `Python/3 Advance Topics 2/4 Libraries/Flask`: confirm authorship/depth before M03.
-4. HTML/CSS/JS scope: confirm during the M04 diagnostic.
+3. Workspace folder `Python/3 Advance Topics 2/4 Libraries/Flask`: confirm authorship/depth before M04.
+4. HTML/CSS/JS scope: confirm during the M05 diagnostic.
 5. Brother's school pacing is unknown; Class 11/12 dates are the learner's, not the school's.
 6. GitHub URLs: Phase 2 lives in the root workspace repo (D21); URLs still TBD except Milestones.
 7. [RESOLVED 2026-10-24] json.dump() README bug fixed (learner-reported; statements 15–16 correct).
@@ -144,16 +144,17 @@ Assumptions (unverified, confirm with the learner):
 13. Lab-file authorship is unverified and not counted as skill evidence (cold-write test waived at learner's request).
 14. CPP-04: fix p12 (a*b overflow; (0,0) crash; non-positive input), p02 (d*d overflow at n=2147483647; is_prime on 0/1/negatives), p09 (overflow from n>=46; wrong for limit >= 1836311903). Then retest incl. signed/unsigned comparison and unary + on uint8_t.
 15. M02.02: fresh port statements at the M2-2 gate. M02.18: one-line DevTools proof.
-16. M02 README hygiene: TLS also authenticates the server and checks integrity; plain-text wire format is HTTP/1.1 (HTTP/2/3 are binary, same semantics); goal "build your own API" belongs to M03; add the dated struggle (2026-10-28: thought http:// defaults to port 443); mark blocks adapted from notes.md.
+16. M02 README hygiene: TLS also authenticates the server and checks integrity; plain-text wire format is HTTP/1.1 (HTTP/2/3 are binary, same semantics); goal "build your own API" belongs to M04; add the dated struggle (2026-10-28: thought http:// defaults to port 443); mark blocks adapted from notes.md.
 17. Brother's Class 11 exams end Feb 2027 (learner-reported). His Class 12 start (assumed April 2027) is still unverified.
 18. [RESOLVED 2026-11-24] M02: closing gate for M2-5 (7 statements), then DESIGN.md for gh_report reviewed by the planner (README fixed in commit f12a470).
-19. M02: icecream is imported in fetcher_core.py but not in the declared dependencies shown; send pyproject.toml.
+19. [CLOSED 2026-11-25] M02: `icecream` 2.2.0 is in `02_APIs_HTTP/.venv` without being listed in `02_APIs_HTTP/pyproject.toml`; declared properly in `03_Testing_Pytest/pyproject.toml` (M02 accepted as closed).
 20. [RESOLVED 2026-11-24] M02 README fixes (Request Line label, attribute vs method notation, What I built, M2-4 struggles; fixed in commit f12a470).
-21. M2-8 must-fix: per_page 2 -> 100; untouched 30 -> 90 days; total_stars = sum of stars; seconds display (time_diff = 60 bug); ci/tr counters never increment (infinite loop on persistent write failure); mutable default in api_failure_handler; 5xx must not print "Rate limit exceeded"; show the reset time (local) when stopping on rate limit (sleep prompt dropped, D26).
-22. Security: rotate the GitHub token; delete data/logs/app.log; remove ic(headers) from auth_demo.py; never log headers; verbose logging off by default; chmod 600 on data/.env; decide whether to empty the source .env (design step 4) or record the decision not to.
-23. Evidence: git log -n 20 is 20/20 Conventional Commits (verified 2026-11-24); history grep for ghp_/github_pat_ finds only placeholders. STILL NEEDED: real terminal outputs in ai_nd_report/ACCEPTANCE_RUN.md.
-24. README: add a "design vs what I built" section; DESIGN.md final states/modules were AI-written from the code (commits 65367d9, 94417a9).
-25. Verify a nonexistent user no longer writes a summary file (summary_user_does_not_exist_404_test.json exists from an earlier run). Deferred to pytest: rate-limit stop and forced timeout (need mocks), N-aware cache, If-None-Match on page 1 only, corrupt-cache handling, 5xx backoff.
+21. [RESOLVED 2026-11-24] M2-8 fixes committed (`618b5f2`): per_page 100, untouched 90 days, total_stars sum, time_diff %= 60, ci/tr increments, mutable default fix, 5xx vs rate-limit reset display (D26). `Used: N/A` and UI typos accepted.
+22. [RESOLVED 2026-11-24] Security: GitHub token rotated; `ic(headers)` removed from `auth_demo.py`; `verbose=False`; `chmod 600` on `data/.env`; `app.log` 0 Bearer matches; source `.env` never wiped (S4).
+23. [RESOLVED 2026-11-24] Evidence: `git log -n 20` clean; history grep placeholders only; `ACCEPTANCE_RUN.md` written (C1 request-count proof waived to M03 pytest).
+24. [RESOLVED 2026-11-25] README: `"## Design vs What I Built"` added to `02_APIs_HTTP/README.md` and `DESIGN.md` reconciled.
+25. [RESOLVED / DEFERRED 2026-11-25] `summary_user_does_not_exist_404_test.json` deleted and 404 exit verified (`ACCEPTANCE_RUN.md`). Six behaviors deferred to M03 (`03_Testing_Pytest`) capstone: forced timeout, 429/403 stop with reset time, N-aware cache, page-1-only `If-None-Match`, corrupt-cache recovery, 5xx backoff wait.
+26. Vision lane (`school_project`) decision pending (paused until M03 Testing completes).
 
 ---
 

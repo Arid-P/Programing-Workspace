@@ -28,7 +28,7 @@ Out of scope by his decision: **FLUX** (a parked Flutter app spec), Flutter/Dart
 - **Money:** none for hardware. Simulators and free tools only.
 - **Hardware/OS:** Ubuntu Linux laptop + VS Code (recently switched; earlier he coded on Android via Termux/Acode/Pydroid).
 - **Tools in use:** uv (Astral), git + GitHub, TickTick (tasks), Notewise/NotebookLM (notes), Gemini, agy, Claude.
-- **Python:** CPython 3.14 (via uv), earlier 3.11/3.12 appear in the workspace.
+- **Python:** CPython 3.14 / 3.15 (via uv; M00 pinned 3.14, M01–M03 pin 3.15), earlier 3.11/3.12 appear in the workspace.
 - **AI token budgets:** PLANNER and TEACHER chats are token-limited; batch requests and keep prompts self-contained.
 
 ## 4. Verified skill inventory
@@ -47,7 +47,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - Debugging own code with prints/debugger; knows what a dependency and an environment variable are; understands frontend vs backend conceptually.
 - **Milestone 00 (uv):** completed and explained in his own README (see `07` log).
 - **Milestone 01 (JSON + Git):** complete 24/24 (2026-10-24). JSON read/write/modify-safely used in two M01 builds (see 07); merge conflicts resolved manually.
-- **Milestone 02 (APIs & HTTP, 2026-11-24):** requests, retries/backoff, pagination, ETag/304 cache design, secrets hygiene, rate-limit headers; atoms 20/21. gh_report has known defects (hardening M2-8). Last 20 commits are clean Conventional Commits.
+- **Milestone 02 (APIs & HTTP, 2026-11-24):** complete (20/21 atoms, M02.21 skipped). `requests`, retries/backoff, pagination, ETag/304 cache design, secrets hygiene, rate-limit headers. M2-8 hardening committed (`618b5f2`, S-Gate & C-Gate 7/7); token rotated; six edge/mock tests deferred to M03 (`03_Testing_Pytest`). Last 20+ commits are clean Conventional Commits.
 - **CBSE Class 11 Units 1–2 (2026-10-24):** Unit 1 10/10 (systems, number systems, Boolean logic, encoding). Unit 2 28/28 (Python per CBSE; cold diagnostic 24/36, retest 23/24). Caveat: exception-type recall and dict-method details can fade; recheck in Class 12 week 1.
 - **C++ Block 1 part A (2026-10-31):** compilation pipeline, program structure, brace init, const/constexpr, operators (truncating division, dividend-signed modulo), control flow; 28/28 first-pass statements. Caveat: signed-overflow bugs in own ports (CPP-04 open).
 
@@ -98,14 +98,15 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 14. Strong on statements; bugs hide in boundary inputs (overflow) that only a real-data diff on large values exposes.
 15. Wants design-first on a genuinely new build; documenting an already-built program feels pointless to him (2026-11-07).
 
-## 7. AI pipeline (as he uses it)
+## 7. AI pipeline (main-chat architecture, D28, 2026-11-25)
 
-`PLANNER` (currently Claude; audits, designs, fact-checks) → `ADAPTER` (Gemini; tailors the planner's prompts and holds his chat history) → `TEACHER` (agy; hands-on tutor that runs inside his workspace and writes notes/reports).
+`MMAIN` (Phase 1: M00–M05) and `CMAIN` (Phase 3) are the **PLANNER** chats following `Journey_Docs/PLANNER_CHARTER.md` → `TEACHER` chats (agy; hands-on tutors inside each project folder writing notes/reports/Q&A banks). The Claude planner audits when available.
 
-- His learning reports come back from the TEACHER and are pasted to the PLANNER for fact-checking.
-- His own README (in his words) is treated as the primary truth; TEACHER reports are secondary.
-- Any AI taking a role should follow the templates in `06`.
-- agy runs in several chats: the Unit 1/theory chat (also handles Class 11 Unit 3), the Unit 2 chat (root access to Journey_Docs/), and Milestones chats (scoped to Milestones/).
+- `MMAIN` owns `Journey_Docs/` and keeps `Milestones/main_state/MMAIN_STATE.md`. `CMAIN` keeps `CPP_PATH/main_state/CMAIN_STATE.md` and edits only `04` and Phase 3 lines.
+- Learning reports and Q&A banks come back from the `TEACHER` and are audited by `MMAIN`/`CMAIN` against real files, terminal output, and git history.
+- His own README (in his words) is treated as the primary truth; `TEACHER` reports are secondary.
+- Any AI taking a role should follow `PLANNER_CHARTER.md` and the templates in `06`.
+- agy teacher chats run inside each project folder (CBSE Unit 1/3, CBSE Unit 2, Milestones per-milestone chats, CPP_Path chats).
 
 ## 8. How to communicate with him
 
@@ -127,4 +128,4 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 
 ## 10. Decisions already made by the learner
 
-See the decision log in `07` §3. Key ones: uv over pip; milestone list 00–04 frozen; FLUX ignored; C++ chosen over C; math learned just-in-time or in college; simulators only; CBSE 11/12 syllabus inserted with deadlines (31 Dec 2026, 31 Mar 2027).
+See the decision log in `07` §3. Key ones: uv over pip; milestone list 00–04 originally frozen (D12), extended to 00–05 with `03_Testing_Pytest` (D27); FLUX ignored; C++ chosen over C; math learned just-in-time or in college; simulators only; CBSE 11/12 syllabus inserted with deadlines (31 Dec 2026, 31 Mar 2027).

@@ -156,7 +156,7 @@ Wokwi (or desktop C++ plant simulation) controlling a simulated heater/motor: on
 - [ ] SIG-03 FFT in Python (record or synthesize a signal, spot frequencies).
 - [ ] MA-LA Vectors, matrices, solving linear systems, eigenvalues (intuition).
 - [ ] MA-FS Fourier series and transform intuition; Laplace transform intuition (RLC as motivation).
-- [ ] SD-05 Classic software system design: client/server, APIs, database schema, failure handling (reuses M03/M04).
+- [ ] SD-05 Classic software system design: client/server, APIs, database schema, failure handling (reuses M04/M05).
 - [ ] SD-06 Design doc with tradeoffs and failure modes.
 
 ### Build 5 — Filter comparison
