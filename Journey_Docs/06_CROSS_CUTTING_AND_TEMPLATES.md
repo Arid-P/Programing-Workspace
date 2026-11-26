@@ -94,6 +94,9 @@ Quality bar: specific enough that a stranger learns exactly what he knows and do
 - Never delete earlier confusion; append "resolved on <date> because ...".
 - List atom IDs achieved, partial, and pushed to the debt/revisit list.
 - Own words only. AI-generated `notes.md` is a separate file and not a substitute.
+- **Size & multi-chunk split rule (D30, 2026-11-26):**
+  - Single small topic (`≤ 500 lines`, e.g. Milestones 00–05): keep one plain `README.md` in the folder.
+  - Multi-chunk or large block (`> 500 lines`, e.g. Phase 3 blocks with C++, digital/electronics, simulator, design): keep `block_<N>/README.md` as a thin index only (goal, atom status, links; ≤ ~100 lines), and create uniquely named learner READMEs per chunk as `README_<chunk>_b<N>.md` (e.g. `README_cpp_b1.md`, `README_digital_b1.md`, `README_design_b1.md`). If a single chunk passes ~500 lines, split as `_p1.md`/`_p2.md` and link from the block index. Keep AI notes separate in `notes/`.
 Exception (D19, 2026-10-24): Phase 2 (CBSE Class 11/12) has no personal README. Evidence = verbatim Q&A banks, retests and the 07 log (teach-back fumbles go in the 07 entry). For Phase 2, §6.1 item 4 is satisfied by the verbatim Q&A banks.
 
 ### 4.2 DSA upkeep (light, runs alongside everything)
@@ -142,7 +145,7 @@ Other verification tools: explain-back (teach the brother), debugging a planted 
 The PLANNER rejects "Mastered/Completed" claims that lack items 1–4.
 
 ### 6.2 Teacher-AI (agy) prompt template (fill the brackets)
-agy reads `Milestones/mentor_rules.md` automatically — do not restate those rules here.
+agy reads `Milestones/mentor_rules.md` (and `~/.gemini/config/skills/teacher/SKILL.md` when loaded; `ari-teacher` wins on conflicts) — do not restate those rules here.
 This template only carries session-specific context.
 
 \`\`\`

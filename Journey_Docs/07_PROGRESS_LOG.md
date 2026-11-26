@@ -198,6 +198,7 @@ Topics: 1–9 Python core · 10–13 classes · 14–18 files/JSON · 19–26 AP
 | D27 | 2026-11-25 | Insert new milestone `03_Testing_Pytest` (practice modules first, `gh_report` capstone; est. 12–15 h); FastAPI+SQLAlchemy becomes M04 and Frontend+Deployment becomes M05 | Closes testing/mocking gap before FastAPI and gives the six deferred M02 behaviors a real pytest suite |
 | D28 | 2026-11-25 | Main-chat architecture: `MMAIN` (Phase 1) and `CMAIN` (Phase 3) act as PLANNER chats following `Journey_Docs/PLANNER_CHARTER.md`, each keeping a rolling state file (`Milestones/main_state/MMAIN_STATE.md`, `CPP_PATH/main_state/CMAIN_STATE.md`); teacher chats teach; `MMAIN` owns `Journey_Docs`, `CMAIN` edits only `04` and Phase 3 lines; Claude planner audits when available | Token-limit resilience and clean lane separation without losing continuity |
 | D29 | 2026-11-25 | Copy (do not move) `gh_report` source into `03_Testing_Pytest` as the capstone project; tests live in `03_Testing_Pytest` and `02_APIs_HTTP` keeps its original | Preserves M02 deliverable intact while providing a real multi-module target for M03 |
+| D30 | 2026-11-26 | README split & naming rule: ≤500-line single topic uses plain `README.md`; multi-chunk or >500-line blocks use thin `block_<N>/README.md` index + uniquely named `README_<chunk>_b<N>.md` per chunk (keeping AI `notes/` separate) | Prevents monolithic >500-line READMEs and filename collisions when searching across Phase 3 chunks |
 
 D16 and D17 were never assigned.
 

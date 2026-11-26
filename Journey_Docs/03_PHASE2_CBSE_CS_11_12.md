@@ -2,7 +2,7 @@
 
 **Why this phase exists:** the learner teaches his younger brother (school, CBSE) and wants to learn the
 syllabus properly first. It also fills real gaps (number systems, Boolean logic, networking, SQL, file handling).
-**Deadlines (learner's):** Class 11 fully learned by **31 Dec 2026**; Class 12 by **31 Mar 2027**.
+**Deadlines (learner's):** Class 11 fully learned by **31 Jan 2027** (originally 31 Dec 2026; Unit 3 moved per D22); Class 12 by **31 Mar 2027**.
 **Source of truth:** official CBSE syllabus, Computer Science (083), 2026-27:
 `https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart2/Computer_Science_SecP2_2026-27.pdf`
 (fetched 2026-09-28). **Re-check it each academic year;** syllabi change.
@@ -215,7 +215,7 @@ Security aside: the syllabus allows `%s` or `format()`. Always prefer `%s` param
 - File handling, CSV, JSON ↔ Milestone 01.
 - Networks (IP, HTTP, URL, TCP/IP) ↔ Milestone 02.
 - Stack ↔ DSA (stack) ↔ C++ Block 3.
-- SQL + Python connectivity ↔ Milestone 03 (SQLAlchemy).
+- SQL + Python connectivity ↔ Milestone 04 (SQLAlchemy, renumbered per D27).
 
 ---
 

@@ -1,6 +1,6 @@
 # 00 — START HERE: Master Handoff & Control Document
 
-**Document set version:** 1.3 · **Created:** 2026-09-28 · **Last updated:** 2026-11-25
+**Document set version:** 1.4 · **Created:** 2026-09-28 · **Last updated:** 2026-11-26
 **Maintained by:** the learner (in a git repo), with a PLANNER AI proposing every edit.
 
 ---
@@ -72,7 +72,7 @@ per the learner) with:
 
 - working ability to write and debug C++ (pointers, classes, STL) without AI writing it;
 - Python + tooling fluency (uv, JSON, APIs, FastAPI, SQL, one deployed full-stack app);
-- the CBSE Class 11 and 12 Computer Science syllabus fully mastered (needed to teach his
+- the CBSE Class 11 and 12 Computer Science syllabus fully verified (needed to teach his
   younger brother, who is in school);
 - hands-on simulated experience of circuits, digital logic, microcontrollers, control loops;
 - just-in-time math exposure (calculus, linear algebra, complex numbers, basic differential
@@ -96,7 +96,7 @@ per the learner) with:
 
 | Period | CBSE (Phase 2) | Milestones (Phase 1) | C++/Electronics (Phase 3) | Notes |
 |---|---|---|---|---|
-| Oct–Dec 2026 | 2.0 | 1.5 | 1.0 | Class 11 target: done by 31 Dec 2026 |
+| Oct–Dec 2026 | 2.0 | 1.5 | 1.0 | Class 11 U1–U2 done; U3 moved to 31 Jan 2027 (D22) |
 | Jan–Mar 2027 | 3.0 | 1.5 | 0 (paused) | Class 12 target: done by 31 Mar 2027 |
 | Apr–Sep 2027 | 0.5 (teach-back) | 1.5 | 2.5 | M04 finishes, M05 done ~Sep 2027 |
 | Oct 2027–Jun 2028 | 0.5 (teach-back) | 0 | 4.0 | Phase 3 gets nearly all the time |

@@ -52,7 +52,6 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - **C++ Block 1 part A (2026-10-31):** compilation pipeline, program structure, brace init, const/constexpr, operators (truncating division, dividend-signed modulo), control flow; 28/28 first-pass statements. Caveat: signed-overflow bugs in own ports (CPP-04 open).
 
 ### PARTIAL
-- **APIs & HTTP (Milestone 02 in progress, 2026-11-07):** M02.01–M02.06, M02.08–M02.12, M02.18 verified. Has written real `requests.get()` and `requests.post()`, handles status codes, URL/request/response anatomy, safe vs idempotent, `params=`, `json=` vs `data=`, retry loop with exponential backoff on `requests.Session`, timeouts and error hierarchy, and prototype cache. Pending: auth/rate limits, final gh_report build.
 - Multi-file imports: writes modules but repeatedly hits **circular imports** in SQLAlchemy model files.
 - `pip install`: works, does not understand the mechanics (partly addressed by M00).
 - Inheritance: understands, has not used it properly.
@@ -67,7 +66,7 @@ Legend: **SOLID** (can do without help), **PARTIAL** (works but shaky), **GAP** 
 - Deployment: never deployed anything.
 - Trees, graphs (BFS/DFS), dynamic programming: zero practical understanding.
 - CSS and JavaScript: never written. HTML: has written *some* (self-check statement "never written HTML" was false).
-- CBSE Class 11 Unit 3 (Society, Law, Ethics; in progress) and Class 12 Units (networks, databases): not yet assessed.
+- CBSE Class 11 Unit 3 (Society, Law, Ethics; deferred to late Jan 2027 per D22) and Class 12 Units (networks, databases): not yet assessed.
 
 ## 5. Projects: who really wrote what
 
@@ -128,4 +127,4 @@ Workspace root (`~/Programing-Workspace`): `Leetcode/`, `Miscellanious/`, `Proje
 
 ## 10. Decisions already made by the learner
 
-See the decision log in `07` §3. Key ones: uv over pip; milestone list 00–04 originally frozen (D12), extended to 00–05 with `03_Testing_Pytest` (D27); FLUX ignored; C++ chosen over C; math learned just-in-time or in college; simulators only; CBSE 11/12 syllabus inserted with deadlines (31 Dec 2026, 31 Mar 2027).
+See the decision log in `07` §3. Key ones: uv over pip; milestone list 00–04 originally frozen (D12), extended to 00–05 with `03_Testing_Pytest` (D27); FLUX ignored; C++ chosen over C; math learned just-in-time or in college; simulators only; CBSE 11/12 syllabus inserted with deadlines (Class 11 originally 31 Dec 2026, U3 moved to 31 Jan 2027 per D22; Class 12 by 31 Mar 2027).
